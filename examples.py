@@ -10,6 +10,7 @@ def example():
     text_pt = linguae.translate(from_language='en',to_language='pt',text=text_en)
     text_es = linguae.translate(from_language='en',to_language='es',text=text_en)
 
+    print()
     print('English sentence:')
     print(text_en)
     print(linguae.parse(language='en', sentence=text_en))
@@ -22,6 +23,21 @@ def example():
     print(text_es)
     print(linguae.parse(language='es', sentence=text_es))
 
+    print('Frequencies')
+    print('English: the')
+    print(linguae.wordFreq(language='en',word='the'))
+    print('English: house')
+    print(linguae.wordFreq(language='en',word='house'))
+    print()
+    print('Portuguese: de')
+    print(linguae.wordFreq(language='pt',word='de'))
+    print('Portuguese: casa')
+    print(linguae.wordFreq(language='pt',word='casa'))
+    print()
+    print('Spanish: de')
+    print(linguae.wordFreq(language='es',word='de'))
+    print('Spanish: casa')
+    print(linguae.wordFreq(language='es',word='casa'))
 
 if __name__ == "__main__":
    example()
