@@ -39,5 +39,17 @@ def example():
     print('Spanish: casa')
     print(linguae.wordFreq(language='es',word='casa'))
 
+    print("Word Vectors")
+    print("Loading models")
+    por = linguae.loadVectors('pt')
+    print('Portuguese Word Vectors loaded.')
+    eng = linguae.loadVectors('en')
+    print('English Word Vectors loaded.')
+    esp = linguae.loadVectors('es')
+    print('Spanish Word Vectors loaded.')
+    print(linguae.similar(por,'casa', [eng,esp]))
+    print(linguae.similar(eng,'cat', [por,esp]))
+    print(linguae.similar(esp,'perro', [por,eng]))
+
 if __name__ == "__main__":
    example()
