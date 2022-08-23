@@ -1,4 +1,5 @@
 gensim
 spacy
 textblob
+transformers
 wordfreq

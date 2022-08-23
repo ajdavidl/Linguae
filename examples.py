@@ -38,6 +38,7 @@ def example():
     print(linguae.wordFreq(language='es',word='de'))
     print('Spanish: casa')
     print(linguae.wordFreq(language='es',word='casa'))
+    print()
 
     print("Word Vectors")
     print("Loading models")
@@ -50,6 +51,14 @@ def example():
     print(linguae.similar(por,'casa', [eng,esp]))
     print(linguae.similar(eng,'cat', [por,esp]))
     print(linguae.similar(esp,'perro', [por,eng]))
+    print()
+
+    print("Text generation")
+    bloom = linguae.loadBloom()
+    print("Bloom language model loaded.")
+    print(linguae.generateText(bloom, "Linguae is a Python package that helps one to learn a language. The package is ", 100))
+    print()
+    print(linguae.generateText(bloom, "Aprender um idioma deve ser divertido. Por isso, uso o pacote Linguae para explorar ",100))
 
 if __name__ == "__main__":
    example()
