@@ -1,3 +1,6 @@
+"""
+Module to parse sentences and give the part-of-speech tags.
+"""
 from spacy import load
 
 SPACY_MODEL_PT = "pt_core_news_sm"

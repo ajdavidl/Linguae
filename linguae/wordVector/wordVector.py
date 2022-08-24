@@ -1,3 +1,6 @@
+"""
+Module to explore word similarity using pre-trained word embeddings.
+"""
 from gensim.models import KeyedVectors
 try:
     import importlib.resources as pkg_resources

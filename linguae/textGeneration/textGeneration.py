@@ -1,3 +1,6 @@
+"""
+Module to generate text using language models.
+"""
 from transformers import pipeline
 
 def loadBloom():

@@ -1,3 +1,6 @@
+"""
+Module to translate sentences between languages.
+"""
 from textblob import TextBlob
 
 def translate(from_language, to_language, text):

@@ -1,3 +1,6 @@
+"""
+Personal package to explore languages and to learn about them.
+"""
 from .translation.translate import translate
 from .parsing.parse import parse
 from .wordFrequency.wordFrequency import wordFreq

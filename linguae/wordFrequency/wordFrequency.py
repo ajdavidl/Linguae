@@ -1,3 +1,6 @@
+"""
+Module to give the word frequency of a word.
+"""
 from wordfreq import word_frequency
 
 def wordFreq(language, word):
