@@ -70,6 +70,11 @@ def example():
     print()
     spa = linguae.loadLanguageTatoeba("spa")
     print(linguae.concordance(spa,"escuchar"))
+    print()
+
+    print("Verb conjugation")
+    print(linguae.conjugation('pt','aprender'))
+    print()
     
 if __name__ == "__main__":
    example()
