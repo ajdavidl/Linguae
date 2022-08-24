@@ -5,4 +5,5 @@ spacy
 textblob
 transformers
 verbecc
+WiktionaryParser
 wordfreq

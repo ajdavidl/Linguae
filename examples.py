@@ -76,5 +76,10 @@ def example():
     print(linguae.conjugation('pt','aprender'))
     print()
     
+    print("wiktionary")
+    print(linguae.wiktionaryQuery('en','time'))
+    print(linguae.wiktionaryQuery('en','ship'))
+    print()
+    
 if __name__ == "__main__":
    example()

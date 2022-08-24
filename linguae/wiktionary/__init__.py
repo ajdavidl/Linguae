@@ -1,0 +1,3 @@
+"""
+Module to query Wiktionary
+"""
