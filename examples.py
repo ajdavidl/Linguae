@@ -59,6 +59,17 @@ def example():
     print(linguae.generateText(bloom, "Linguae is a Python package that helps one to learn a language. The package is ", 100))
     print()
     print(linguae.generateText(bloom, "Aprender um idioma deve ser divertido. Por isso, uso o pacote Linguae para explorar ",100))
+    print()
 
+    print("Concordance")
+    eng = linguae.loadLanguageTatoeba("eng")
+    print(linguae.concordance(eng,"listen"))
+    print()
+    por = linguae.loadLanguageTatoeba("por")
+    print(linguae.concordance(por,"escutar"))
+    print()
+    spa = linguae.loadLanguageTatoeba("spa")
+    print(linguae.concordance(spa,"escuchar"))
+    
 if __name__ == "__main__":
    example()

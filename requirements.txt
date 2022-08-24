@@ -1,4 +1,6 @@
 gensim
+nltk
+pandas
 spacy
 textblob
 transformers
