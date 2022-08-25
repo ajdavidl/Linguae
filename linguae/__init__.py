@@ -9,3 +9,4 @@ from .textGeneration.textGeneration import *
 from .concordance.concordance import *
 from .verbConjugation.verbConjugation import conjugation
 from .wiktionary.wiktionary import wiktionaryQuery
+from .conceptnet.conceptnet import conceptnetQuery

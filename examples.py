@@ -80,6 +80,12 @@ def example():
     print(linguae.wiktionaryQuery('en','time'))
     print(linguae.wiktionaryQuery('en','ship'))
     print()
-    
+
+    print("Conceptnet")
+    print(linguae.conceptnetQuery('en','language'))
+    print(linguae.conceptnetQuery('pt','idioma'))
+    print(linguae.conceptnetQuery('es','lenguaje'))
+    print()
+
 if __name__ == "__main__":
    example()
