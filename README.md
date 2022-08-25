@@ -3,7 +3,7 @@ Python package to explore languages and learn about them.
 
 This is a personal project to learn NLP and study languages.
 
-The available features are parsing, translation, word embeddings similarities, text generation, concordance, verb conjugation, wiktionary queries, word frequency queries, conceptnet queries and news from Google.
+The available features are parsing, translation, word embeddings similarities, text generation, concordance, verb conjugation, fill mask, wiktionary queries, word frequency queries, conceptnet queries and news from Google.
 
 ## Status
 In construction!!
