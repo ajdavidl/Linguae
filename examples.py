@@ -87,5 +87,11 @@ def example():
     print(linguae.conceptnetQuery('es','lenguaje'))
     print()
 
+    print("News")
+    print(linguae.googleNews('en',10))
+    print(linguae.googleNews('pt',10))
+    print(linguae.googleNews('es',10))
+    print()
+
 if __name__ == "__main__":
    example()

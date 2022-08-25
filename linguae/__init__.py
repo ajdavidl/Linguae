@@ -1,5 +1,5 @@
 """
-Personal package to explore languages and to learn about them.
+Personal package to explore languages and learn about them.
 """
 from .translation.translate import translate
 from .parsing.parse import parse
@@ -10,3 +10,4 @@ from .concordance.concordance import *
 from .verbConjugation.verbConjugation import conjugation
 from .wiktionary.wiktionary import wiktionaryQuery
 from .conceptnet.conceptnet import conceptnetQuery
+from .news.news import googleNews
