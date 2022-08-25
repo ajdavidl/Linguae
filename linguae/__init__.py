@@ -11,3 +11,4 @@ from .verbConjugation.verbConjugation import conjugation
 from .wiktionary.wiktionary import wiktionaryQuery
 from .conceptnet.conceptnet import conceptnetQuery
 from .news.news import googleNews
+from .fillMask.fillMask import *
