@@ -3,7 +3,7 @@ Python package to explore languages and learn about them.
 
 This is a personal project to learn NLP and study languages.
 
-The available features are parsing, translation, word embeddings similarities, text generation, concordance, verb conjugation, wiktionay queries and word frequency queries.
+The available features are parsing, translation, word embeddings similarities, text generation, concordance, verb conjugation, wiktionary queries, word frequency queries, conceptnet queries and news from Google.
 
 ## Status
 In construction!!
@@ -15,7 +15,7 @@ git clone https://github.com/ajdavidl/Linguae.git
 cd Linguae
 pip install -r requirements.txt
 ```
-After that you need some SpaCy models to use the parse funtion.
+After that you need some SpaCy models to use the parse function.
 
 ```bash
 python -m spacy download en_core_web_sm
