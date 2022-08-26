@@ -76,7 +76,7 @@ def example():
     print(linguae.concordance(spa, "escuchar"))
     print()
 
-    print("Text examples")
+    print("Text samples")
     print(linguae.textSamples(eng, 'learn '))
     print(linguae.textSamples(por, 'aprender '))
     print(linguae.textSamples(spa, 'aprender '))
