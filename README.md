@@ -1,11 +1,13 @@
 # Linguae
+
 Python package to explore languages and learn about them.
 
 This is a personal project to learn NLP and study languages.
 
-The available features are parsing, translation, word embeddings similarities, text generation, concordance, verb conjugation, fill mask, wiktionary queries, word frequency queries, conceptnet queries and news from Google.
+The available features are parsing, translation, word embeddings similarities, text generation, concordance, verb conjugation, fill mask, wiktionary queries, wikipedia queries, word frequency queries, conceptnet queries and news from Google.
 
 ## Status
+
 In construction!!
 
 ## Installation
@@ -15,6 +17,7 @@ git clone https://github.com/ajdavidl/Linguae.git
 cd Linguae
 pip install -r requirements.txt
 ```
+
 After that you need some SpaCy models to use the parse function.
 
 ```bash
@@ -25,11 +28,11 @@ python -m spacy download it_core_news_sm
 python -m spacy download fr_core_news_sm
 ```
 
-If you want to play with word embeddings, you need the MUSE word vectors. The links are in [MUSE](https://github.com/facebookresearch/MUSE#download) repository. 
+If you want to play with word embeddings, you need the MUSE word vectors. The links are in [MUSE](https://github.com/facebookresearch/MUSE#download) repository.
 Download some of it and put the files on `Linguae/linguae/data` folder.
 
-To use the concordance function you need the Tatoeba's sentences. 
-Download the sentences in [Tatoeba](https://tatoeba.org/en/downloads). 
+To use the concordance function you need the Tatoeba's sentences.
+Download the sentences in [Tatoeba](https://tatoeba.org/en/downloads).
 Extract the csv file (`sentences.csv`) and put it on `Linguae/linguae/data` folder.
 
 ## Usage

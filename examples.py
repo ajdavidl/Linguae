@@ -112,6 +112,12 @@ def example():
     print(linguae.fillMaskXLMRoberta(xlm, "No almoço ela comeu <mask>"))
     print()
 
+    print("Wikipedia Queries")
+    print(linguae.wikipediaQuery('en', 'Earth'))
+    print(linguae.wikipediaQuery('pt', 'Sol'))
+    print(linguae.wikipediaQuery('es', 'Luna'))
+    print()
+
 
 if __name__ == "__main__":
     example()

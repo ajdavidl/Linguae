@@ -14,3 +14,4 @@ from .news.news import googleNews
 from .fillMask.fillMask import *
 from .textSamples.textSamples import textSamples
 from .tatoeba.tatoeba import *
+from .wikipediaQuery.wikipediaQuery import wikipediaQuery
