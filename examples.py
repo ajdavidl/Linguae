@@ -76,6 +76,12 @@ def example():
     print(linguae.concordance(spa, "escuchar"))
     print()
 
+    print("Text examples")
+    print(linguae.textSamples(eng, 'learn '))
+    print(linguae.textSamples(por, 'aprender '))
+    print(linguae.textSamples(spa, 'aprender '))
+    print()
+
     print("Verb conjugation")
     print(linguae.conjugation('pt', 'aprender'))
     print()
