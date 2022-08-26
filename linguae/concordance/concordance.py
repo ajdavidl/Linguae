@@ -3,7 +3,7 @@ Module to create concordance views for a given word.
 Is uses NLTK under the hood.
 """
 import nltk
-import pandas as np
+import pandas as pd
 try:
     import importlib.resources as pkg_resources
 except ImportError:
@@ -12,6 +12,7 @@ except ImportError:
 from .. import data
 
 MAX_NR_SENTENCES = 100000
+
 
 def loadTatoeba():
     """
@@ -26,10 +27,11 @@ def loadTatoeba():
         Returns
         -------
         Pandas data frame with 3 columns: "index", "language", "sentence"
-            
+
         """
     tatoebaFile = pkg_resources.open_text(data, "sentences.csv")
-    return np.read_csv(tatoebaFile,sep="\t",header=None, names=["index", "language", "sentence"])
+    return pd.read_csv(tatoebaFile, sep="\t", header=None, names=["index", "language", "sentence"])
+
 
 def loadLanguageTatoeba(language):
     """
@@ -47,11 +49,13 @@ def loadLanguageTatoeba(language):
         -------
         list
             List of sentences from the desired language
-            
+
         """
     tatoebaFile = pkg_resources.open_text(data, "sentences.csv")
-    tatoeba = np.read_csv(tatoebaFile,sep="\t",header=None, names=["index", "language", "sentence"])
+    tatoeba = pd.read_csv(tatoebaFile, sep="\t", header=None, names=[
+                          "index", "language", "sentence"])
     return tatoeba[tatoeba.language == language]['sentence'].values.tolist()
+
 
 def concordance(listSentences, word):
     """
@@ -76,8 +80,9 @@ def concordance(listSentences, word):
         listSentences = listSentences[:MAX_NR_SENTENCES]
     tokens = nltk.word_tokenize("\n".join(listSentences))
     text1 = nltk.Text(tokens)
-    results = text1.concordance_list(word, width = 100, lines = 20)
+    results = text1.concordance_list(word, width=100, lines=20)
     textOutput = ""
     for i in range(len(results)):
-        textOutput = textOutput + results[i][4] + " " + results[i][1] + " " + results[i][5]  + "\n"
+        textOutput = textOutput + \
+            results[i][4] + " " + results[i][1] + " " + results[i][5] + "\n"
     return(textOutput)
