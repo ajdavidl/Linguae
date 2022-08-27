@@ -15,3 +15,4 @@ from .fillMask.fillMask import *
 from .textSamples.textSamples import textSamples
 from .tatoeba.tatoeba import *
 from .wikipediaQuery.wikipediaQuery import wikipediaQuery
+from .language.language import Language
