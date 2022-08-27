@@ -49,9 +49,7 @@ def loadSpacyModel(language):
 
 def parseSpacy(model, sentence):
     """
-        Parse text from in one language
-
-        It uses the SpaCy package under the hood.
+        Parse text using spaCy model
 
         Parameters
         ----------
@@ -60,7 +58,6 @@ def parseSpacy(model, sentence):
 
         sentence : str
             Text to be parsed
-            example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'it'
 
         Returns
         -------
@@ -89,7 +86,6 @@ def parse(language, sentence):
 
         sentence : str
             Text to be parsed
-            example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'it'
 
         Returns
         -------
