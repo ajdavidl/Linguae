@@ -3,7 +3,7 @@ Class Language
 """
 
 from ..translation.translate import translate
-# from ..parsing.parse import parse
+from ..parsing.parse import loadSpacyModel, parseSpacy
 # from ..wordFrequency.wordFrequency import wordFreq
 # from ..wordVector.wordVector import *
 # from ..textGeneration.textGeneration import *
@@ -44,6 +44,7 @@ class Language:
         self.name = name
         self.code2 = code2
         self.code3 = code3
+        self.spaCyModel = loadSpacyModel(self.code2)
 
     def translateTo(self, to_language, text):
         """
@@ -78,3 +79,19 @@ class Language:
             String with the text translated in the language of the class.
         """
         return translate(from_language, self.code2, text)
+
+    def parse(self, text):
+        """
+        Parse text using spaCy model
+
+        Parameters
+        ----------
+        sentence : str
+            Text to be parsed
+
+        Returns
+        -------
+        str
+            String with with the token, pos, tags and dependencies in a table format.
+        """
+        return parseSpacy(self.spaCyModel, text)
