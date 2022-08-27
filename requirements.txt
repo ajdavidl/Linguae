@@ -2,6 +2,7 @@ feedparser
 gensim
 nltk
 pandas
+pyhyphen
 spacy
 textblob
 transformers

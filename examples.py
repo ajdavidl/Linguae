@@ -118,6 +118,13 @@ def example():
     print(linguae.wikipediaQuery('es', 'Luna'))
     print()
 
+    print("Syllables")
+    h = linguae.loadHyphenator('en')
+    print(linguae.syllables(h, 'languages'))
+    h = linguae.loadHyphenator('pt')
+    print(linguae.syllables(h, 'idiomas'))
+    print()
+
 
 if __name__ == "__main__":
     example()
