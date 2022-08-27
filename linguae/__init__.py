@@ -2,7 +2,7 @@
 Personal package to explore languages and learn about them.
 """
 from .translation.translate import translate
-from .parsing.parse import parse
+from .parsing.parse import parse, loadSpacyModel, parseSpacy
 from .wordFrequency.wordFrequency import wordFreq
 from .wordVector.wordVector import *
 from .textGeneration.textGeneration import *
