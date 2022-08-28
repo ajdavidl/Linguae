@@ -4,8 +4,8 @@ Class Language
 
 from ..translation.translate import translate
 from ..parsing.parse import loadSpacyModel, parseSpacy
-# from ..wordFrequency.wordFrequency import wordFreq
-# from ..wordVector.wordVector import *
+from ..wordFrequency.wordFrequency import wordFreq
+from ..wordVector.wordVector import *
 # from ..textGeneration.textGeneration import *
 # from ..concordance.concordance import concordance
 # from ..verbConjugation.verbConjugation import conjugation
@@ -16,6 +16,7 @@ from ..parsing.parse import loadSpacyModel, parseSpacy
 # from ..textSamples.textSamples import textSamples
 # from ..tatoeba.tatoeba import *
 # from ..wikipediaQuery.wikipediaQuery import wikipediaQuery
+# from ..syllables.syllables import *
 
 
 class Language:
@@ -45,6 +46,7 @@ class Language:
         self.code2 = code2
         self.code3 = code3
         self.spaCyModel = loadSpacyModel(self.code2)
+        self.wordVectorModel = loadVectors(self.code2)
 
     def translateTo(self, to_language, text):
         """
@@ -95,3 +97,39 @@ class Language:
             String with with the token, pos, tags and dependencies in a table format.
         """
         return parseSpacy(self.spaCyModel, text)
+
+    def wordFreq(self, word):
+        """
+        Get the frequency of `word`
+
+        Parameters
+        ----------
+
+        word : str
+            word to be queried.
+
+        Returns
+        -------
+        str
+            String with with the number of frequency.
+        """
+        return wordFreq(self.code2, word)
+
+    def similarWords(self, word, otherLanguages=[]):
+        """
+        Give the most similar words in each word vector model.
+
+        Parameters
+        ----------
+        word : str
+            word to be queried.
+
+        otherLanguages : list of gensim KeyedVectors models in other languages
+            MUSE models from other languages loaded by the function loadVectors.
+
+        Returns
+        -------
+        str
+            String with the similar words and their scores.
+        """
+        return similar(self.wordVectorModel, word, otherLanguages)
