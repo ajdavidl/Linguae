@@ -7,5 +7,7 @@ spacy
 textblob
 transformers
 verbecc
+wikipedia
+wikipediaapi
 WiktionaryParser
 wordfreq
