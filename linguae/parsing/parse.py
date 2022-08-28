@@ -62,7 +62,7 @@ def parseSpacy(model, sentence):
         Returns
         -------
         str
-            String with with the token, pos, tags and dependencies in a table format.
+            String with the token, pos, tags and dependencies in a table format.
         """
     doc = model(sentence)
     text = "Token → POS → Tag → Dep\n"
@@ -90,7 +90,7 @@ def parse(language, sentence):
         Returns
         -------
         str
-            String with with the token, pos, tags and dependencies in a table format.
+            String with the token, pos, tags and dependencies in a table format.
         """
     if language == 'pt':
         nlp = load(SPACY_MODEL_PT)
