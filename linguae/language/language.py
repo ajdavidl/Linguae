@@ -10,8 +10,8 @@ from ..textGeneration.textGeneration import *
 from ..concordance.concordance import concordance
 from ..verbConjugation.verbConjugation import conjugation
 from ..wiktionary.wiktionary import wiktionaryQuery
-# from ..conceptnet.conceptnet import conceptnetQuery
-# from ..news.news import googleNews
+from ..conceptnet.conceptnet import conceptnetQuery
+from ..news.news import googleNews
 # from ..fillMask.fillMask import *
 # from ..textSamples.textSamples import textSamples
 from ..tatoeba.tatoeba import loadLanguageTatoeba
@@ -243,3 +243,38 @@ class Language:
             String with the definitions.
         """
         return wiktionaryQuery('en', word)
+
+    def conceptnet(self, word, num=20):
+        """
+        Query Conceptnet multilingual knowledge graph
+
+        Parameters
+        ----------
+        word : str
+            word to be queried.
+
+        num : integer
+            number of edges in the knowledge graph to be returned.
+
+        Returns
+        -------
+        str
+            String with the concepts in the knowledge graph.
+        """
+        return conceptnetQuery(self.code2, word, num)
+
+    def googleNews(self, num=None):
+        """
+        Return the news' title from Google news using RSS feeds.
+
+        Parameters
+        ----------
+        num : integer
+            Maximum number of news to be returned.
+
+        Returns
+        -------
+        str
+            String with the titles of the news.
+        """
+        return googleNews(self.code2, num)
