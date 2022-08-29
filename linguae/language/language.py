@@ -7,14 +7,14 @@ from ..parsing.parse import loadSpacyModel, parseSpacy
 from ..wordFrequency.wordFrequency import wordFreq
 from ..wordVector.wordVector import *
 from ..textGeneration.textGeneration import *
-# from ..concordance.concordance import concordance
-# from ..verbConjugation.verbConjugation import conjugation
-# from ..wiktionary.wiktionary import wiktionaryQuery
+from ..concordance.concordance import concordance
+from ..verbConjugation.verbConjugation import conjugation
+from ..wiktionary.wiktionary import wiktionaryQuery
 # from ..conceptnet.conceptnet import conceptnetQuery
 # from ..news.news import googleNews
 # from ..fillMask.fillMask import *
 # from ..textSamples.textSamples import textSamples
-# from ..tatoeba.tatoeba import *
+from ..tatoeba.tatoeba import loadLanguageTatoeba
 # from ..wikipediaQuery.wikipediaQuery import wikipediaQuery
 # from ..syllables.syllables import *
 
@@ -52,6 +52,7 @@ class Language:
         self.wordVectorModel = loadVectors(self.code2)
         self.Bloom = BLOOM
         self.mGPT = MGPT
+        self.tatoeba = loadLanguageTatoeba(self.code3)
 
     def translateTo(self, to_language, text):
         """
@@ -176,3 +177,69 @@ class Language:
             String with the seed text and all text generated.
         """
         return generateText(self.mGPT, textSeed, textSize)
+
+    def concordance(self, word):
+        """
+        Return the concordances of a word 
+
+        Parameters
+        ----------
+        word : str
+            word
+
+        Returns
+        -------
+        str
+            String with the text of the word concordances.
+        """
+        return concordance(self.tatoeba, word)
+
+    def conjugation(self, verb):
+        """
+        Conjugate a verb
+
+        Parameters
+        ----------
+        verb : str
+            verb to be conjugated.
+
+        Returns
+        -------
+        str
+            String with the verb conjugation in json format.
+        """
+        return conjugation(self.code2, verb)
+
+    def wiktionary(self, word):
+        """
+        Give definitions from Wiktionary.
+
+        Parameters
+        ----------
+        word : str
+            word to be queried.
+
+        Returns
+        -------
+        str
+            String with the definitions.
+        """
+        return wiktionaryQuery(self.code2, word)
+
+    def wiktionaryEnglish(self, word):
+        """
+        Give definitions from English Wiktionary.
+
+        English Wiktionary has the most words.
+
+        Parameters
+        ----------
+        word : str
+            word to be queried.
+
+        Returns
+        -------
+        str
+            String with the definitions.
+        """
+        return wiktionaryQuery('en', word)
