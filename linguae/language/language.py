@@ -6,7 +6,7 @@ from ..translation.translate import translate
 from ..parsing.parse import loadSpacyModel, parseSpacy
 from ..wordFrequency.wordFrequency import wordFreq
 from ..wordVector.wordVector import *
-# from ..textGeneration.textGeneration import *
+from ..textGeneration.textGeneration import *
 # from ..concordance.concordance import concordance
 # from ..verbConjugation.verbConjugation import conjugation
 # from ..wiktionary.wiktionary import wiktionaryQuery
@@ -17,6 +17,9 @@ from ..wordVector.wordVector import *
 # from ..tatoeba.tatoeba import *
 # from ..wikipediaQuery.wikipediaQuery import wikipediaQuery
 # from ..syllables.syllables import *
+
+BLOOM = loadBloom()
+MGPT = loadmGPT()
 
 
 class Language:
@@ -47,6 +50,8 @@ class Language:
         self.code3 = code3
         self.spaCyModel = loadSpacyModel(self.code2)
         self.wordVectorModel = loadVectors(self.code2)
+        self.Bloom = BLOOM
+        self.mGPT = MGPT
 
     def translateTo(self, to_language, text):
         """
@@ -133,3 +138,41 @@ class Language:
             String with the similar words and their scores.
         """
         return similar(self.wordVectorModel, word, otherLanguages)
+
+    def generateTextBloom(self, textSeed, textSize=80):
+        """
+        Generate texts using the Bloom language model.
+
+        Parameters
+        ----------
+        textSeed : str
+            The text to be used by the language model as a seed.
+
+        textSize : integer
+            The number of words to be generated.
+
+        Returns
+        -------
+        str
+            String with the seed text and all text generated.
+        """
+        return generateText(self.Bloom, textSeed, textSize)
+
+    def generateTextMGPT(self, textSeed, textSize=80):
+        """
+        Generate texts using the mGPT language model.
+
+        Parameters
+        ----------
+        textSeed : str
+            The text to be used by the language model as a seed.
+
+        textSize : integer
+            The number of words to be generated.
+
+        Returns
+        -------
+        str
+            String with the seed text and all text generated.
+        """
+        return generateText(self.mGPT, textSeed, textSize)
