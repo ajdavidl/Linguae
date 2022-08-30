@@ -18,9 +18,6 @@ from ..tatoeba.tatoeba import loadLanguageTatoeba
 # from ..wikipediaQuery.wikipediaQuery import wikipediaQuery
 # from ..syllables.syllables import *
 
-BLOOM = loadBloom()
-MGPT = loadmGPT()
-
 
 class Language:
     """
@@ -48,11 +45,11 @@ class Language:
         self.name = name
         self.code2 = code2
         self.code3 = code3
-        self.spaCyModel = loadSpacyModel(self.code2)
-        self.wordVectorModel = loadVectors(self.code2)
-        self.Bloom = BLOOM
-        self.mGPT = MGPT
-        self.tatoeba = loadLanguageTatoeba(self.code3)
+        self.spaCyModel = None
+        self.wordVectorModel = None
+        self.Bloom = None
+        self.mGPT = None
+        self.tatoeba = None
 
     def translateTo(self, to_language, text):
         """
@@ -102,6 +99,8 @@ class Language:
         str
             String with with the token, pos, tags and dependencies in a table format.
         """
+        if self.spaCyModel == None:
+            self.spaCyModel = loadSpacyModel(self.code2)
         return parseSpacy(self.spaCyModel, text)
 
     def wordFreq(self, word):
@@ -138,7 +137,16 @@ class Language:
         str
             String with the similar words and their scores.
         """
+        if self.wordVectorModel == None:
+            self.wordVectorModel = loadVectors(self.code2)
         return similar(self.wordVectorModel, word, otherLanguages)
+
+    def deleteWordVectorsModel(self):
+        """
+        Delete the word vectors model
+        """
+        del self.wordVectorModel
+        self.wordVectorModel = None
 
     def generateTextBloom(self, textSeed, textSize=80):
         """
@@ -157,7 +165,16 @@ class Language:
         str
             String with the seed text and all text generated.
         """
+        if self.Bloom == None:
+            self.Bloom = loadBloom()
         return generateText(self.Bloom, textSeed, textSize)
+
+    def deleteBloomModel(self):
+        """
+        Delete the Bloom Language model
+        """
+        del self.Bloom
+        self.Bloom = None
 
     def generateTextMGPT(self, textSeed, textSize=80):
         """
@@ -176,7 +193,16 @@ class Language:
         str
             String with the seed text and all text generated.
         """
+        if self.mGPT == None:
+            self.mGPT = loadmGPT()
         return generateText(self.mGPT, textSeed, textSize)
+
+    def deleteMGPTModel(self):
+        """
+        Delete the mGPT Language model
+        """
+        del self.mGPT
+        self.mGPT = None
 
     def concordance(self, word):
         """
@@ -192,7 +218,16 @@ class Language:
         str
             String with the text of the word concordances.
         """
+        if self.tatoeba == None:
+            self.tatoeba = loadLanguageTatoeba(self.code3)
         return concordance(self.tatoeba, word)
+
+    def deleteTatoebaList(self):
+        """
+        Delete the tatoeba word list
+        """
+        del self.tatoeba
+        self.tatoeba = None
 
     def conjugation(self, verb):
         """
