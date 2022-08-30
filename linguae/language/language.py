@@ -12,8 +12,8 @@ from ..verbConjugation.verbConjugation import conjugation
 from ..wiktionary.wiktionary import wiktionaryQuery
 from ..conceptnet.conceptnet import conceptnetQuery
 from ..news.news import googleNews
-# from ..fillMask.fillMask import *
-# from ..textSamples.textSamples import textSamples
+from ..fillMask.fillMask import *
+from ..textSamples.textSamples import textSamples
 from ..tatoeba.tatoeba import loadLanguageTatoeba
 # from ..wikipediaQuery.wikipediaQuery import wikipediaQuery
 # from ..syllables.syllables import *
@@ -50,6 +50,8 @@ class Language:
         self.Bloom = None
         self.mGPT = None
         self.tatoeba = None
+        self.BertMultilingual = None
+        self.XLMRoberta = None
 
     def translateTo(self, to_language, text):
         """
@@ -313,3 +315,74 @@ class Language:
             String with the titles of the news.
         """
         return googleNews(self.code2, num)
+
+    def fillMaskmBert(self, maskedSentence):
+        """
+        Fill the mask tag on the masked Sentence
+
+        Parameters
+        ----------
+        maskedSentence : str
+            The masked sentence to be used by the language model.
+
+        Returns
+        -------
+        str
+            String with the words that fill the mask and their score.
+        """
+        if self.BertMultilingual == None:
+            self.BertMultilingual = loadBertMultilingual()
+        return fillMaskmBert(self.BertMultilingual, maskedSentence)
+
+    def deleteBertMultilingual(self):
+        """
+        Delete the Bert Multilingual Language model
+        """
+        del self.BertMultilingual
+        self.BertMultilingual = None
+
+    def fillMaskXLMRoberta(self, maskedSentence):
+        """
+        Fill the mask tag on the masked Sentence
+
+        Parameters
+        ----------
+        maskedSentence : str
+            The masked sentence to be used by the language model.
+
+        Returns
+        -------
+        str
+            String with the words that fill the mask and their scores.
+        """
+        if self.XLMRoberta == None:
+            self.XLMRoberta = loadXLMRoberta()
+        return fillMaskXLMRoberta(self.XLMRoberta, maskedSentence)
+
+    def deleteXLMRoberta(self):
+        """
+        Delete the XLM Roberta Language model
+        """
+        del self.XLMRoberta
+        self.XLMRoberta = None
+
+    def textSamples(self, expression, num=20):
+        """
+        Return the text samples of an expression
+
+        Parameters
+        ----------
+        expression : str
+            words 
+
+        num : integer
+            number of examples to show.
+
+        Returns
+        -------
+        str
+            String with the examples of sentences with the given expression.
+        """
+        if self.tatoeba == None:
+            self.tatoeba = loadLanguageTatoeba(self.code3)
+        return textSamples(self.tatoeba, expression, num=20)
