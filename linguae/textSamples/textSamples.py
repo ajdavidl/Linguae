@@ -1,5 +1,5 @@
 """
-Module to present text samples given words
+Module to present text samples
 """
 
 import pandas as pd
@@ -7,7 +7,7 @@ import pandas as pd
 
 def textSamples(listSentences, expression, num=20):
     """
-        Return the text samples of a expression in a list of sentences
+        Return the text samples of an expression in a list of sentences
 
         Parameters
         ----------
