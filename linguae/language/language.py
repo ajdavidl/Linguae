@@ -15,8 +15,8 @@ from ..news.news import googleNews
 from ..fillMask.fillMask import *
 from ..textSamples.textSamples import textSamples
 from ..tatoeba.tatoeba import loadLanguageTatoeba
-# from ..wikipediaQuery.wikipediaQuery import wikipediaQuery
-# from ..syllables.syllables import *
+from ..wikipediaQuery.wikipediaQuery import wikipediaQuery
+from ..syllables.syllables import *
 
 
 class Language:
@@ -52,6 +52,7 @@ class Language:
         self.tatoeba = None
         self.BertMultilingual = None
         self.XLMRoberta = None
+        self.hyphenatorModel = None
 
     def translateTo(self, to_language, text):
         """
@@ -386,3 +387,37 @@ class Language:
         if self.tatoeba == None:
             self.tatoeba = loadLanguageTatoeba(self.code3)
         return textSamples(self.tatoeba, expression, num=20)
+
+    def wikipedia(self, query):
+        """
+        Query Wikipedia
+
+        Parameters
+        ----------
+        query : str
+            words to be queried.
+
+        Returns
+        -------
+        str
+            String with the wikipedia page summary.
+        """
+        return wikipediaQuery(self.code2, query)
+
+    def syllables(self, word):
+        """
+        Split the given word in syllables
+
+        Parameters
+        ----------
+        word : str
+            word to be split
+
+        Returns
+        -------
+        str
+            String with word's syllables
+        """
+        if self.hyphenatorModel == None:
+            self.hyphenatorModel = loadHyphenator(self.code2)
+        return syllables(self.hyphenatorModel, word)
