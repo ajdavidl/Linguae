@@ -58,7 +58,7 @@ def fillMaskmBert(modelPipeline, maskedSentence):
         Returns
         -------
         str
-            String with the words that fills the mask and its score.
+            String with the words that fill the mask and their scores.
         """
     if "[MASK]" not in maskedSentence:
         return("Token [MASK] not found.")
@@ -89,7 +89,7 @@ def fillMaskXLMRoberta(modelPipeline, maskedSentence):
         Returns
         -------
         str
-            String with the words that fills the mask and its score.
+            String with the words that fill the mask and their scores.
         """
     if "<mask>" not in maskedSentence:
         return("Token <mask> not found.")
