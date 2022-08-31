@@ -17,3 +17,4 @@ from .tatoeba.tatoeba import *
 from .wikipediaQuery.wikipediaQuery import wikipediaQuery
 from .language.language import Language
 from .syllables.syllables import *
+from .image.image import *

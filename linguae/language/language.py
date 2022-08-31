@@ -17,6 +17,7 @@ from ..textSamples.textSamples import textSamples
 from ..tatoeba.tatoeba import loadLanguageTatoeba
 from ..wikipediaQuery.wikipediaQuery import wikipediaQuery
 from ..syllables.syllables import *
+from ..image.image import *
 
 
 class Language:
@@ -209,7 +210,7 @@ class Language:
 
     def concordance(self, word):
         """
-        Return the concordances of a word 
+        Return the concordances of a word
 
         Parameters
         ----------
@@ -374,7 +375,7 @@ class Language:
         Parameters
         ----------
         expression : str
-            words 
+            words
 
         num : integer
             number of examples to show.
@@ -421,3 +422,24 @@ class Language:
         if self.hyphenatorModel == None:
             self.hyphenatorModel = loadHyphenator(self.code2)
         return syllables(self.hyphenatorModel, word)
+
+    def image(self, query, websearch='google'):
+        """
+        Open browser and query Images from Internet
+
+        Parameters
+        ----------
+        query : str
+
+        websearch : str
+            search engine to be used: google or duckduckgo
+            deafault : google
+
+        """
+        if websearch == 'google':
+            return googleImages(query)
+        elif websearch == 'duckduckgo' or websearch == 'ddg':
+            return duckduckGoImages(query)
+        else:
+            print('websearch not understood, using google')
+            return googleImages(query)
