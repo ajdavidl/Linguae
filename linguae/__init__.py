@@ -16,6 +16,9 @@ from .textSamples.textSamples import textSamples
 from .tatoeba.tatoeba import *
 from .wikipediaQuery.wikipediaQuery import wikipediaQuery
 from .language.language import Language
+from .language.portuguese import Portuguese
+from .language.english import English
+from .language.spanish import Spanish
 from .syllables.syllables import *
 from .image.image import *
 from .audioSamples.audioSamples import forvo
