@@ -18,6 +18,7 @@ from ..tatoeba.tatoeba import loadLanguageTatoeba
 from ..wikipediaQuery.wikipediaQuery import wikipediaQuery
 from ..syllables.syllables import *
 from ..image.image import *
+from ..audioSamples.audioSamples import forvo
 
 
 class Language:
@@ -443,3 +444,15 @@ class Language:
         else:
             print('websearch not understood, using google')
             return googleImages(query)
+
+    def audio(self, word):
+        """
+        Open browser and query Forvo audios
+
+        Parameters
+        ----------
+        word : str
+            word to be queried.
+
+        """
+        return forvo(self.code2, word)
