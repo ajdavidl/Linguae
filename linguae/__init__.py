@@ -8,7 +8,8 @@ from .wordVector.wordVector import *
 from .textGeneration.textGeneration import *
 from .concordance.concordance import concordance
 from .verbConjugation.verbConjugation import conjugation
-from .wiktionary.wiktionary import wiktionaryQuery
+from .dictionary.wiktionary import wiktionaryQuery
+from .dictionary.dictionaries import *
 from .conceptnet.conceptnet import conceptnetQuery
 from .news.news import googleNews
 from .fillMask.fillMask import *
