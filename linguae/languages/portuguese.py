@@ -20,7 +20,7 @@ class Portuguese(Language):
 
         Parameters
         ----------
-        query : str
+        word : str
             word
 
         """
@@ -32,7 +32,7 @@ class Portuguese(Language):
 
         Parameters
         ----------
-        query : str
+        word : str
             word
 
         """

@@ -10,6 +10,7 @@ from ..textGeneration.textGeneration import *
 from ..concordance.concordance import concordance
 from ..verbConjugation.verbConjugation import conjugation
 from ..dictionary.wiktionary import wiktionaryQuery
+from ..dictionary.dictionaries import linguee, glosbe
 from ..conceptnet.conceptnet import conceptnetQuery
 from ..news.news import googleNews
 from ..fillMask.fillMask import *
@@ -456,3 +457,67 @@ class Language:
 
         """
         return forvo(self.code2, word)
+
+    def glosbeTo(self, to_language, word):
+        """
+        Open browser and query word to the informed language using Glosbe dictionary
+
+        Parameters
+        ----------
+        to_language : str
+            Language that the text will be translated
+            example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
+
+        word : str
+            word to be queried.
+
+        """
+        return glosbe(self.code2, to_language, word)
+
+    def glosbeFrom(self, from_language, word):
+        """
+        Open browser and query word from the informed language using Glosbe dictionary
+
+        Parameters
+        ----------
+        from_language : str
+            Language from the word that will be translated
+            example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
+
+        word : str
+            word to be queried.
+
+        """
+        return glosbe(from_language, self.code2, word)
+
+    def lingueeTo(self, to_language, word):
+        """
+        Open browser and query word to the informed language using Linguee dictionary
+
+        Parameters
+        ----------
+        to_language : str
+            Language that the text will be translated
+            examples: 'english', 'portuguese', 'spanish', 'french'
+
+        word : str
+            word to be queried.
+
+        """
+        return linguee(self.name.lower(), to_language, word)
+
+    def lingueeFrom(self, from_language, word):
+        """
+        Open browser and query word from the informed language using Linguee dictionary
+
+        Parameters
+        ----------
+        from_language : str
+            Language from the word that will be translated
+            examples: 'english', 'portuguese', 'spanish', 'french'
+
+        word : str
+            word to be queried.
+
+        """
+        return linguee(from_language, self.name.lower(), word)
