@@ -7,7 +7,7 @@ from .wordFrequency.wordFrequency import wordFreq
 from .wordVector.wordVector import *
 from .textGeneration.textGeneration import *
 from .concordance.concordance import concordance
-from .verbConjugation.verbConjugation import conjugation
+from .verbConjugation.verbConjugation import *
 from .dictionary.wiktionary import wiktionaryQuery
 from .dictionary.dictionaries import *
 from .conceptnet.conceptnet import conceptnetQuery

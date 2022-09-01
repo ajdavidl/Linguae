@@ -8,7 +8,7 @@ from ..wordFrequency.wordFrequency import wordFreq
 from ..wordVector.wordVector import *
 from ..textGeneration.textGeneration import *
 from ..concordance.concordance import concordance
-from ..verbConjugation.verbConjugation import conjugation
+from ..verbConjugation.verbConjugation import *
 from ..dictionary.wiktionary import wiktionaryQuery
 from ..dictionary.dictionaries import linguee, glosbe
 from ..conceptnet.conceptnet import conceptnetQuery
@@ -250,6 +250,18 @@ class Language:
             String with the verb conjugation in json format.
         """
         return conjugation(self.code2, verb)
+
+    def verbix(self, verb):
+        """
+        Open browser and query the Verbix site
+
+        Parameters
+        ----------
+        verb : str
+            verb to be conjugated
+
+        """
+        return verbix(self.name.lower(), verb)
 
     def wiktionary(self, word):
         """

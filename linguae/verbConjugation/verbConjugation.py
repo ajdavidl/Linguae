@@ -4,7 +4,9 @@ It uses verbecc package under the hood.
 https://github.com/bretttolbert/verbecc
 """
 import json
+import webbrowser
 from verbecc import Conjugator
+
 
 def conjugation(language, verb):
     """
@@ -31,7 +33,23 @@ def conjugation(language, verb):
         return None
     cg = Conjugator(lang=language)
     conj = cg.conjugate(verb)
-    return  json.dumps(conj, indent=4, ensure_ascii = False)
-    
+    return json.dumps(conj, indent=4, ensure_ascii=False)
 
-    
+
+def verbix(language, verb):
+    """
+        Open browser and query the Verbix site
+
+        Parameters
+        ----------
+        language : str
+            Language of the text.
+            examples: 'portuguese', 'spanish', 'french', 'english', 'italian', 'german'
+
+        verb : str
+            verb to be conjugated
+
+        """
+    url = 'https://www.verbix.com/webverbix/%s/%s' % (language, verb)
+    print(url)
+    webbrowser.open_new_tab(url)
