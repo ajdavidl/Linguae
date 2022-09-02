@@ -7,7 +7,7 @@ from transformers import pipeline
 
 def loadBertMultilingual():
     """
-        Load Bert multilingual Language model
+        Load multilingual Bert Language model
 
         It uses the pipeline from transformers package.
 
@@ -41,7 +41,7 @@ def loadXLMRoberta():
     return pipeline('fill-mask', model='xlm-roberta-base')
 
 
-def fillMaskmBert(modelPipeline, maskedSentence):
+def fillMaskBert(modelPipeline, maskedSentence):
     """
         It receives the pipeline with the language model loaded; 
         Fill the mask tag on the masked Sentence
@@ -101,3 +101,39 @@ def fillMaskXLMRoberta(modelPipeline, maskedSentence):
                           str((dic["score"]*100 % 100)/100))
         outputText.append("\n")
     return(' '.join(outputText))
+
+
+def loadBertPortuguese():
+    """
+        Load Portuguese Bert Language model
+
+        It uses the pipeline from transformers package.
+
+        Parameters
+        ----------
+        No parameters
+
+        Returns
+        -------
+        a Pipeline object from the transformers package with the model loaded
+
+        """
+    return pipeline('fill-mask', model='neuralmind/bert-base-portuguese-cased')
+
+
+def loadBertEnglish():
+    """
+        Load English Bert Language model
+
+        It uses the pipeline from transformers package.
+
+        Parameters
+        ----------
+        No parameters
+
+        Returns
+        -------
+        a Pipeline object from the transformers package with the model loaded
+
+        """
+    return pipeline('fill-mask', model='bert-base-cased')

@@ -105,8 +105,8 @@ def example():
 
     print("Fill Mask")
     mBert = linguae.loadBertMultilingual()
-    print(linguae.fillMaskmBert(mBert, "I'm going to study [MASK]"))
-    print(linguae.fillMaskmBert(mBert, "No almoço ela comeu [MASK]"))
+    print(linguae.fillMaskBert(mBert, "I'm going to study [MASK]"))
+    print(linguae.fillMaskBert(mBert, "No almoço ela comeu [MASK]"))
     xlm = linguae.loadXLMRoberta()
     print(linguae.fillMaskXLMRoberta(xlm, "I'm going to study <mask>"))
     print(linguae.fillMaskXLMRoberta(xlm, "No almoço ela comeu <mask>"))

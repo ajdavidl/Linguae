@@ -348,7 +348,7 @@ class Language:
         """
         if self.BertMultilingual == None:
             self.BertMultilingual = loadBertMultilingual()
-        return fillMaskmBert(self.BertMultilingual, maskedSentence)
+        return fillMaskBert(self.BertMultilingual, maskedSentence)
 
     def deleteBertMultilingual(self):
         """

@@ -4,6 +4,7 @@ English Class language
 
 from .language import Language
 from ..dictionary.dictionaries import dictionary_com, thesaurus
+from ..fillMask.fillMask import fillMaskBert, loadBertEnglish
 
 
 class English(Language):
@@ -13,6 +14,7 @@ class English(Language):
 
     def __init__(self):
         Language.__init__(self, name='English', code2='en', code3='emg')
+        self.BertEnglish = None
 
     def dictionary_com(self, word):
         """
@@ -37,3 +39,28 @@ class English(Language):
 
         """
         return thesaurus(word)
+
+    def fillMaskBert(self, maskedSentence):
+        """
+        Fill the mask tag on the masked Sentence
+
+        Parameters
+        ----------
+        maskedSentence : str
+            The masked sentence to be used by the language model.
+
+        Returns
+        -------
+        str
+            String with the words that fill the mask and their score.
+        """
+        if self.BertEnglish == None:
+            self.BertEnglish = loadBertEnglish()
+        return fillMaskBert(self.BertEnglish, maskedSentence)
+
+    def deleteBertEnglish(self):
+        """
+        Delete the Bert English Language model
+        """
+        del self.BertEnglish
+        self.BertEnglish = None
