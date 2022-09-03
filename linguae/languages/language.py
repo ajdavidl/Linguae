@@ -10,7 +10,7 @@ from ..textGeneration.textGeneration import *
 from ..concordance.concordance import concordance
 from ..verbConjugation.verbConjugation import *
 from ..dictionary.wiktionary import wiktionaryQuery
-from ..dictionary.dictionaries import linguee, glosbe
+from ..dictionary.dictionaries import linguee, glosbe, pons
 from ..conceptnet.conceptnet import conceptnetQuery
 from ..news.news import googleNews
 from ..fillMask.fillMask import *
@@ -533,3 +533,35 @@ class Language:
 
         """
         return linguee(from_language, self.name.lower(), word)
+
+    def ponsTo(self, to_language, word):
+        """
+        Open browser and query word to the informed language using Pons dictionary
+
+        Parameters
+        ----------
+        to_language : str
+            Language that the text will be translated
+            examples: 'english', 'portuguese', 'spanish', 'french'
+
+        word : str
+            word to be queried.
+
+        """
+        return pons(self.name.lower(), to_language, word)
+
+    def ponsFrom(self, from_language, word):
+        """
+        Open browser and query word from the informed language using Pons dictionary
+
+        Parameters
+        ----------
+        from_language : str
+            Language from the word that will be translated
+            examples: 'english', 'portuguese', 'spanish', 'french'
+
+        word : str
+            word to be queried.
+
+        """
+        return pons(from_language, self.name.lower(), word)

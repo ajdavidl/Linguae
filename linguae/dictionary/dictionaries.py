@@ -125,3 +125,27 @@ def thesaurus(word):
     url = 'https://www.thesaurus.com/browse/%s' % word
     print(url)
     webbrowser.open_new_tab(url)
+
+
+def pons(from_language, to_language, word):
+    """
+        Open browser and query the multilingual Pons dictionary
+
+        Parameters
+        ----------
+        from_language : str
+            Language of the text.
+            examples: 'english', 'portuguese', 'spanish', 'french', 'german'  
+
+        to_language : str
+            Language that the text will be translated
+            examples: 'english', 'portuguese', 'spanish', 'french', 'german' 
+
+        word : str
+            word
+
+        """
+    url = 'https://en.pons.com/translate/%s-%s/%s' % (
+        from_language, to_language, word)
+    print(url)
+    webbrowser.open_new_tab(url)
