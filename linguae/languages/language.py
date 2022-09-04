@@ -6,14 +6,14 @@ from ..translation.translate import translate
 from ..parsing.parse import loadSpacyModel, parseSpacy
 from ..wordFrequency.wordFrequency import wordFreq
 from ..wordVector.wordVector import *
-from ..textGeneration.textGeneration import *
+from ..textGeneration.textGeneration import loadBloom, loadmGPT, generateText
 from ..concordance.concordance import concordance
 from ..verbConjugation.verbConjugation import *
 from ..dictionary.wiktionary import wiktionaryQuery
 from ..dictionary.dictionaries import linguee, glosbe, pons
 from ..conceptnet.conceptnet import conceptnetQuery
 from ..news.news import googleNews
-from ..fillMask.fillMask import *
+from ..fillMask.fillMask import loadBertMultilingual, loadXLMRoberta, fillMaskBert, fillMaskXLMRoberta
 from ..textSamples.textSamples import textSamples
 from ..tatoeba.tatoeba import loadLanguageTatoeba
 from ..wikipediaQuery.wikipediaQuery import wikipediaQuery
