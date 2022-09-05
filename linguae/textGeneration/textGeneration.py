@@ -76,6 +76,24 @@ def loadGPTEnglish():
     return pipeline("text-generation", model="gpt2-medium")
 
 
+def loadGPTSpanish():
+    """
+        Load Spanish GPT2 Language model
+
+        It uses the pipeline from transformers package.
+
+        Parameters
+        ----------
+        No parameters
+
+        Returns
+        -------
+        a Pipeline object from the transformers package with the Portuguese GPT model loaded
+
+        """
+    return pipeline("text-generation", model="datificate/gpt2-small-spanish")
+
+
 def generateText(modelPipeline, textSeed, textSize=80, numberSentences=1):
     """
         It receives the pipeline with the language model loaded; 
