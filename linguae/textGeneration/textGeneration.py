@@ -42,7 +42,7 @@ def loadmGPT():
 
 def loadGPTPortuguese():
     """
-        Load Portuguese GPT Language model
+        Load Portuguese GPT2 Language model
 
         It uses the pipeline from transformers package.
 
@@ -56,6 +56,24 @@ def loadGPTPortuguese():
 
         """
     return pipeline("text-generation", model="pierreguillou/gpt2-small-portuguese")
+
+
+def loadGPTEnglish():
+    """
+        Load English GPT2 Language model
+
+        It uses the pipeline from transformers package.
+
+        Parameters
+        ----------
+        No parameters
+
+        Returns
+        -------
+        a Pipeline object from the transformers package with the Portuguese GPT model loaded
+
+        """
+    return pipeline("text-generation", model="gpt2-medium")
 
 
 def generateText(modelPipeline, textSeed, textSize=80, numberSentences=1):
