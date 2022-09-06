@@ -3,6 +3,7 @@ Spanish Class language
 """
 
 from .language import Language
+from ..fillMask.fillMask import fillMaskBert, loadBertSpanish
 from ..textGeneration.textGeneration import loadGPTSpanish, generateText
 
 
@@ -13,6 +14,7 @@ class Spanish(Language):
 
     def __init__(self):
         Language.__init__(self, name='Spanish', code2='es', code3='spa')
+        self.BertSpanish = None
         self.GPTSpanish = None
 
     def generateTextGPTSpanish(self, textSeed, textSize=80):
@@ -42,3 +44,28 @@ class Spanish(Language):
         """
         del self.GPTSpanish
         self.GPTSpanish = None
+
+    def fillMaskBert(self, maskedSentence):
+        """
+        Fill the mask tag on the masked Sentence
+
+        Parameters
+        ----------
+        maskedSentence : str
+            The masked sentence to be used by the language model.
+
+        Returns
+        -------
+        str
+            String with the words that fill the mask and their score.
+        """
+        if self.BertSpanish == None:
+            self.BertSpanish = loadBertSpanish()
+        return fillMaskBert(self.BertSpanish, maskedSentence)
+
+    def deleteBertSpanish(self):
+        """
+        Delete the Bert Spanish Language model
+        """
+        del self.BertSpanish
+        self.BertSpanish = None

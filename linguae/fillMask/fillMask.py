@@ -137,3 +137,21 @@ def loadBertEnglish():
 
         """
     return pipeline('fill-mask', model='bert-base-cased')
+
+
+def loadBertSpanish():
+    """
+        Load Spanish Bert Language model
+
+        It uses the pipeline from transformers package.
+
+        Parameters
+        ----------
+        No parameters
+
+        Returns
+        -------
+        a Pipeline object from the transformers package with the model loaded
+
+        """
+    return pipeline('fill-mask', model='dccuchile/bert-base-spanish-wwm-cased')
