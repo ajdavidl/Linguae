@@ -149,3 +149,20 @@ def pons(from_language, to_language, word):
         from_language, to_language, word)
     print(url)
     webbrowser.open_new_tab(url)
+
+
+def dlerae(word):
+    """
+        Open browser and query the Diccionario de la lengua española
+
+        Parameters
+        ----------
+        word : str
+            word
+
+        """
+    if ' ' in word:
+        word = re.sub(' ', '-', word)
+    url = 'https://dle.rae.es/%s?m=form' % word
+    print(url)
+    webbrowser.open_new_tab(url)

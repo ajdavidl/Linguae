@@ -3,6 +3,7 @@ Spanish Class language
 """
 
 from .language import Language
+from ..dictionary.dictionaries import dlerae
 from ..fillMask.fillMask import fillMaskBert, loadBertSpanish
 from ..textGeneration.textGeneration import loadGPTSpanish, generateText
 
@@ -16,6 +17,17 @@ class Spanish(Language):
         Language.__init__(self, name='Spanish', code2='es', code3='spa')
         self.BertSpanish = None
         self.GPTSpanish = None
+
+    def dlerae(self, word):
+        """
+        Open browser and query the Diccionario de la lengua española
+
+        Parameters
+        ----------
+        word : str
+            word
+        """
+        return dlerae(word)
 
     def generateTextGPTSpanish(self, textSeed, textSize=80):
         """
