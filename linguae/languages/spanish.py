@@ -3,7 +3,7 @@ Spanish Class language
 """
 
 from .language import Language
-from ..dictionary.dictionaries import dlerae
+from ..dictionary.dictionaries import dlerae, wordReference
 from ..fillMask.fillMask import fillMaskBert, loadBertSpanish
 from ..textGeneration.textGeneration import loadGPTSpanish, generateText
 
@@ -28,6 +28,18 @@ class Spanish(Language):
             word
         """
         return dlerae(word)
+
+    def wordReference(self, word):
+        """
+        Open browser and query the WordReference dictionary
+
+        Parameters
+        ----------
+        word : str
+            word
+
+        """
+        return wordReference(self.code2, word)
 
     def generateTextGPTSpanish(self, textSeed, textSize=80):
         """

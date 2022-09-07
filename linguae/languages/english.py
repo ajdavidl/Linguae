@@ -3,7 +3,7 @@ English Class language
 """
 
 from .language import Language
-from ..dictionary.dictionaries import dictionary_com, thesaurus
+from ..dictionary.dictionaries import dictionary_com, thesaurus, wordReference
 from ..fillMask.fillMask import fillMaskBert, loadBertEnglish
 from ..textGeneration.textGeneration import loadGPTEnglish, generateText
 
@@ -41,6 +41,18 @@ class English(Language):
 
         """
         return thesaurus(word)
+
+    def wordReference(self, word):
+        """
+        Open browser and query the WordReference dictionary
+
+        Parameters
+        ----------
+        word : str
+            word
+
+        """
+        return wordReference(self.code2, word)
 
     def fillMaskBert(self, maskedSentence):
         """

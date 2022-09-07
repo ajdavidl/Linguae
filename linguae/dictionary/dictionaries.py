@@ -166,3 +166,32 @@ def dlerae(word):
     url = 'https://dle.rae.es/%s?m=form' % word
     print(url)
     webbrowser.open_new_tab(url)
+
+
+def wordReference(language, word):
+    """
+        Open browser and query the WordReference dictionary
+
+        Parameters
+        ----------
+        language : str
+            Language of the word.
+            examples: 'en', 'es', 'ca', 'it'
+
+        word : str
+            word
+
+        """
+    if language == 'es':
+        url = 'https://www.wordreference.com/definicion/%s' % word
+    elif language == 'en':
+        url = 'https://www.wordreference.com/definition/%s' % word
+    elif language == 'it':
+        url = 'https://www.wordreference.com/definizione/%s' % word
+    elif language == 'ca':
+        url = 'https://www.wordreference.com/definicio/%s' % word
+    else:
+        print('%s language is not supported' % language)
+        return
+    print(url)
+    webbrowser.open_new_tab(url)
