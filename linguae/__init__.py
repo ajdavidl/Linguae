@@ -20,6 +20,7 @@ from .languages.language import Language
 from .languages.portuguese import Portuguese
 from .languages.english import English
 from .languages.spanish import Spanish
+from .languages.italian import Italian
 from .syllables.syllables import *
 from .image.image import *
 from .audioSamples.audioSamples import forvo
