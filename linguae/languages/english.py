@@ -6,6 +6,7 @@ from .language import Language
 from ..dictionary.dictionaries import dictionary_com, thesaurus, wordReference
 from ..fillMask.fillMask import fillMaskBert, loadBertEnglish
 from ..textGeneration.textGeneration import loadGPTEnglish, generateText
+from ..sentiment.sentiment import *
 
 
 class English(Language):
@@ -17,6 +18,7 @@ class English(Language):
         Language.__init__(self, name='English', code2='en', code3='emg')
         self.BertEnglish = None
         self.GPTEnglish = None
+        self.Sentiment_ = None
 
     def dictionary_com(self, word):
         """
@@ -106,3 +108,20 @@ class English(Language):
         """
         del self.GPTEnglish
         self.GPTEnglish = None
+
+    def sentiment(self, word):
+        """
+        Get the sentiment associated to a word.
+
+        Parameters
+        ----------
+        word : string
+            String with the word to be queried.
+
+        Returns
+        -------
+        Print the polarity of a word.
+        """
+        if self.Sentiment_ == None:
+            self.Sentiment_ = loadSentiment(self.code2)
+        return polarity(self.Sentiment_, word)

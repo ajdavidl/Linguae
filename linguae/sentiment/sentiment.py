@@ -30,7 +30,7 @@ def loadSentiment(language):
 
         None if language not supported
         """
-    if language == 'pt':
+    if language in ['pt', 'en', 'it', 'fr']:
         nameFile = '%s-sentiment.xml' % language
     else:
         print("Language not supported!")
