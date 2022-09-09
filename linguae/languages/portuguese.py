@@ -6,6 +6,7 @@ from .language import Language
 from ..dictionary.dictionaries import sinomimos, priberam
 from ..fillMask.fillMask import fillMaskBert, loadBertPortuguese
 from ..textGeneration.textGeneration import loadGPTPortuguese, generateText
+from ..sentiment.sentiment import *
 
 
 class Portuguese(Language):
@@ -17,6 +18,7 @@ class Portuguese(Language):
         Language.__init__(self, name='Portuguese', code2='pt', code3='por')
         self.BertPortuguese = None
         self.GPTPortuguese = None
+        self.Sentiment_ = None
 
     def priberam(self, word):
         """
@@ -94,3 +96,20 @@ class Portuguese(Language):
         """
         del self.GPTPortuguese
         self.GPTPortuguese = None
+
+    def sentiment(self, word):
+        """
+        Get the sentiment associated to a word.
+
+        Parameters
+        ----------
+        word : string
+            String with the word to be queried.
+
+        Returns
+        -------
+        Print the polarity of a word.
+        """
+        if self.Sentiment_ == None:
+            self.Sentiment_ = loadSentiment(self.code2)
+        return polarity(self.Sentiment_, word)
