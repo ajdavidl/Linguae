@@ -2,7 +2,7 @@
 Class Language
 """
 
-from ..translation.translate import translate
+from ..translation.translate import *
 from ..parsing.parse import loadSpacyModel, parseSpacy
 from ..wordFrequency.wordFrequency import wordFreq
 from ..wordVector.wordVector import *
@@ -67,6 +67,9 @@ class Language:
             Language that the text will be translated
             example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
 
+        text : str
+            Text to be translated
+
         Returns
         -------
         str
@@ -84,12 +87,45 @@ class Language:
             Language that the text will be translated
             example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
 
+        text : str
+            Text to be translated
+
         Returns
         -------
         str
             String with the text translated in the language of the class.
         """
         return translate(from_language, self.code2, text)
+
+    def googleTranslateTo(self, to_language, text):
+        """
+        Open browser and query Google translate site
+
+        Parameters
+        ----------
+        to_language : str
+            Language that the text will be translated
+            example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
+
+        text : str
+            Text to be translated
+        """
+        return googleTranslate(self.code2, to_language, text)
+
+    def googleTranslateFrom(self, from_language, text):
+        """
+        Open browser and query Google translate site
+
+        Parameters
+        ----------
+        from_language : str
+            Language that the text will be translated
+            example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
+
+        text : str
+            Text to be translated
+        """
+        return googleTranslate(from_language, self.code2, text)
 
     def parse(self, text):
         """

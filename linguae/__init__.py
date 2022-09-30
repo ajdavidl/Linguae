@@ -1,7 +1,7 @@
 """
 Personal package to explore languages and learn about them.
 """
-from .translation.translate import translate
+from .translation.translate import *
 from .parsing.parse import parse, loadSpacyModel, parseSpacy
 from .wordFrequency.wordFrequency import wordFreq
 from .wordVector.wordVector import *
