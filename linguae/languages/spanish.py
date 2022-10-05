@@ -6,6 +6,7 @@ from .language import Language
 from ..dictionary.dictionaries import dlerae, wordReference
 from ..fillMask.fillMask import fillMaskBert, loadBertSpanish
 from ..textGeneration.textGeneration import loadGPTSpanish, generateText
+from ..sentiment.sentiment import *
 
 
 class Spanish(Language):
@@ -17,6 +18,7 @@ class Spanish(Language):
         Language.__init__(self, name='Spanish', code2='es', code3='spa')
         self.BertSpanish = None
         self.GPTSpanish = None
+        self.Sentiment_ = None
 
     def dlerae(self, word):
         """
@@ -93,3 +95,20 @@ class Spanish(Language):
         """
         del self.BertSpanish
         self.BertSpanish = None
+
+    def sentiment(self, word):
+        """
+        Get the sentiment associated to a word.
+
+        Parameters
+        ----------
+        word : string
+            String with the word to be queried.
+
+        Returns
+        -------
+        Print the polarity of a word.
+        """
+        if self.Sentiment_ == None:
+            self.Sentiment_ = loadSentiment(self.code2)
+        return polarity(self.Sentiment_, word)

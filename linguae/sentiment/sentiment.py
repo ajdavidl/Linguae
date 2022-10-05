@@ -13,15 +13,15 @@ from .. import data
 
 def loadSentiment(language):
     """
-        Load portuguese sentiments
+        Load sentiments lexicon of different languages
 
-        It reads the xml file with the portuguese sentiments of a word.
+        It reads the xml file with the sentiments of a word.
 
         Parameters
         ----------
         language : str
             Language to be loaded.
-            examples: 'en', 'fr', 'pt', 'it'
+            examples: 'en', 'fr', 'pt', 'it', 'es'
 
         Returns
         -------
@@ -30,7 +30,7 @@ def loadSentiment(language):
 
         None if language not supported
         """
-    if language in ['pt', 'en', 'it', 'fr']:
+    if language in ['pt', 'en', 'it', 'fr', 'es']:
         nameFile = '%s-sentiment.xml' % language
     else:
         print("Language not supported!")
