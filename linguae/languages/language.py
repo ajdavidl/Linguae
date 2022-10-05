@@ -15,7 +15,7 @@ from ..conceptnet.conceptnet import conceptnetQuery
 from ..news.news import googleNews
 from ..fillMask.fillMask import loadBertMultilingual, loadXLMRoberta, fillMaskBert, fillMaskXLMRoberta
 from ..textSamples.textSamples import textSamples
-from ..tatoeba.tatoeba import loadLanguageTatoeba
+from ..tatoeba.tatoeba import loadLanguageTatoeba, tatoebaSite
 from ..wikipediaQuery.wikipediaQuery import wikipediaQuery
 from ..syllables.syllables import *
 from ..image.image import *
@@ -601,3 +601,19 @@ class Language:
 
         """
         return pons(from_language, self.name.lower(), word)
+
+    def tatoebaSite(self, text, languageTo=None):
+        """
+        Open browser and query tatoeba site
+
+        Parameters
+        ----------
+        text : str
+            Text to be queried
+
+        languageTo : str (optional)
+            Language that the text will be translated
+            example: 'eng', 'por', 'spa', 'fre', 'deu' 
+
+        """
+        return tatoebaSite(text, self.code3, to_language=languageTo)
