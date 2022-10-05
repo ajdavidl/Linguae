@@ -15,7 +15,7 @@ class English(Language):
     """
 
     def __init__(self):
-        Language.__init__(self, name='English', code2='en', code3='emg')
+        Language.__init__(self, name='English', code2='en', code3='eng')
         self.BertEnglish = None
         self.GPTEnglish = None
         self.Sentiment_ = None
