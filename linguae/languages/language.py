@@ -57,6 +57,12 @@ class Language:
         self.XLMRoberta = None
         self.hyphenatorModel = None
 
+    def __repr__(self):
+        return "{self.__class__.__name__}({self.name}, {self.code2}, {self.code3})".format(self=self)
+
+    def __str__(self):
+        return "Object of class {self.__class__.__name__} with parameters: {self.name}, {self.code2}, {self.code3}".format(self=self)
+
     def translateTo(self, to_language, text):
         """
         Translate text to the informed language
