@@ -21,7 +21,7 @@ def loadSentiment(language):
         ----------
         language : str
             Language to be loaded.
-            examples: 'en', 'fr', 'pt', 'it', 'es'
+            examples: 'en', 'fr', 'pt', 'it', 'es', 'de'
 
         Returns
         -------
@@ -30,7 +30,7 @@ def loadSentiment(language):
 
         None if language not supported
         """
-    if language in ['pt', 'en', 'it', 'fr', 'es']:
+    if language in ['pt', 'en', 'it', 'fr', 'es', 'de']:
         nameFile = '%s-sentiment.xml' % language
     else:
         print("Language not supported!")
