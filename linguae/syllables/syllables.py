@@ -28,7 +28,7 @@ def loadHyphenator(language):
     elif language == 'it':
         return Hyphenator('it_IT')
     elif language == 'fr':
-        return Hyphenator('fr')
+        return Hyphenator('fr_FR')
     elif language == 'de':
         return Hyphenator('de_DE')
     elif language == 'ro':
