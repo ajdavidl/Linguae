@@ -22,6 +22,7 @@ from .languages.english import English
 from .languages.spanish import Spanish
 from .languages.italian import Italian
 from .languages.french import French
+from .languages.german import German
 from .syllables.syllables import *
 from .image.image import *
 from .audioSamples.audioSamples import forvo
