@@ -11,7 +11,7 @@ from .verbConjugation.verbConjugation import *
 from .dictionary.wiktionary import wiktionaryQuery
 from .dictionary.dictionaries import *
 from .conceptnet.conceptnet import conceptnetQuery
-from .news.news import googleNews
+from .news.news import googleNews, emmNewsBrief
 from .fillMask.fillMask import *
 from .textSamples.textSamples import textSamples
 from .tatoeba.tatoeba import *

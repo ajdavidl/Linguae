@@ -12,7 +12,7 @@ from ..verbConjugation.verbConjugation import *
 from ..dictionary.wiktionary import wiktionaryQuery
 from ..dictionary.dictionaries import linguee, glosbe, pons
 from ..conceptnet.conceptnet import conceptnetQuery
-from ..news.news import googleNews
+from ..news.news import googleNews, emmNewsBrief
 from ..fillMask.fillMask import loadBertMultilingual, loadXLMRoberta, fillMaskBert, fillMaskXLMRoberta
 from ..textSamples.textSamples import textSamples
 from ..tatoeba.tatoeba import loadLanguageTatoeba, tatoebaSite
@@ -373,6 +373,22 @@ class Language:
             String with the titles of the news.
         """
         return googleNews(self.code2, num)
+
+    def emmNewsBrief(self, num=None):
+        """
+        Return the news' title from emm.newsbrief.eu using RSS feeds.
+
+        Parameters
+        ----------
+        num : integer
+            Maximum number of news to be returned.
+
+        Returns
+        -------
+        str
+            String with the titles of the news.
+        """
+        return emmNewsBrief(self.code2, num)
 
     def fillMaskmBert(self, maskedSentence):
         """
