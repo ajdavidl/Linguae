@@ -3,6 +3,7 @@ gensim
 nltk
 pandas
 pyhyphen
+sentence_transformers
 spacy
 textblob
 transformers

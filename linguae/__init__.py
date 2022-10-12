@@ -27,3 +27,4 @@ from .syllables.syllables import *
 from .image.image import *
 from .audioSamples.audioSamples import forvo
 from .sentiment.sentiment import *
+from .sentenceVector.sentenceVector import *
