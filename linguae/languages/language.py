@@ -1,7 +1,7 @@
 """
 Class Language
 """
-
+from random import sample
 from ..translation.translate import *
 from ..parsing.parse import loadSpacyModel, parseSpacy
 from ..wordFrequency.wordFrequency import wordFreq
@@ -20,6 +20,7 @@ from ..wikipediaQuery.wikipediaQuery import wikipediaQuery
 from ..syllables.syllables import *
 from ..image.image import *
 from ..audioSamples.audioSamples import forvo
+from ..sentenceVector.sentenceVector import *
 
 
 class Language:
@@ -56,6 +57,8 @@ class Language:
         self.BertMultilingual = None
         self.XLMRoberta = None
         self.hyphenatorModel = None
+        self.sentenceVectorModel = None
+        self.tatoebaTensorsEmbeddings = None
 
     def __repr__(self):
         return "{self.__class__.__name__}({self.name}, {self.code2}, {self.code3})".format(self=self)
@@ -269,6 +272,29 @@ class Language:
         if self.tatoeba == None:
             self.tatoeba = loadLanguageTatoeba(self.code3)
         return concordance(self.tatoeba, word)
+
+    def loadTatoebaList(self):
+        """
+        Load the tatoeba word list
+        """
+        self.tatoeba = loadLanguageTatoeba(self.code3)
+
+    def trimTatoebaList(self, NrSentences):
+        """
+            Trim the tatoeba list sentences
+
+            Parameters
+            __________
+            NrSentences : int
+                the new list's number of sentences
+        """
+        if (self.tatoeba != None) & (len(self.tatoeba) > NrSentences):
+            index = [i for i in range(len(self.tatoeba))]
+            index = sample(index, NrSentences)
+            self.tatoeba = [self.tatoeba[i] for i in index]
+            if not (self.tatoebaTensorsEmbeddings is None):
+                del self.tatoebaTensorsEmbeddings
+                self.tatoebaTensorsEmbeddings = None
 
     def deleteTatoebaList(self):
         """
@@ -639,3 +665,47 @@ class Language:
 
         """
         return tatoebaSite(text, self.code3, to_language=languageTo)
+
+    def similarSentences(self, querySentence, nrSentencesReturned=10):
+        """
+        Gives the most similar sentences from a query sentence using the sentence transformer model.
+
+        Parameters
+        ----------
+        querySentence : str
+            sentence to be queried
+
+        nrSentencesReturned : int
+            number of sentences to be returned
+
+        Returns 
+        _______
+        str
+            String with the most similar sentences.
+    """
+        if self.sentenceVectorModel == None:
+            self.sentenceVectorModel = loadSentenceTransformerModel()
+        if self.tatoeba == None:
+            self.tatoeba = loadLanguageTatoeba(self.code3)
+        if self.tatoebaTensorsEmbeddings is None:
+            self.tatoebaTensorsEmbeddings = encodeSentence(
+                self.sentenceVectorModel, self.tatoeba)
+        return similarSentences(self.sentenceVectorModel, querySentence, self.tatoeba, None, self.tatoebaTensorsEmbeddings, nrSentencesReturned)
+
+    def deleteSentenceVectorModel(self):
+        """
+        Delete the Sentence Vector Model
+        """
+        del self.sentenceVectorModel
+        self.sentenceVectorModel = None
+
+    def encodeSentences(self):
+        """
+        Computes sentence embeddings using of the tatoeba list of sentences.
+        """
+        if self.sentenceVectorModel == None:
+            self.sentenceVectorModel = loadSentenceTransformerModel()
+        if self.tatoeba == None:
+            self.tatoeba = loadLanguageTatoeba(self.code3)
+        self.tatoebaTensorsEmbeddings = encodeSentence(
+            self.sentenceVectorModel, self.tatoeba)
