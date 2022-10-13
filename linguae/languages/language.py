@@ -181,7 +181,7 @@ class Language:
             word to be queried.
 
         otherLanguages : list of gensim KeyedVectors models in other languages
-            MUSE models from other languages loaded by the function loadVectors.
+            MUSE models from other languages loaded by the function loadWordVectors.
 
         Returns
         -------
@@ -189,8 +189,14 @@ class Language:
             String with the similar words and their scores.
         """
         if self.wordVectorModel == None:
-            self.wordVectorModel = loadVectors(self.code2)
-        return similar(self.wordVectorModel, word, otherLanguages)
+            self.wordVectorModel = loadWordVectors(self.code2)
+        return similarWords(self.wordVectorModel, word, otherLanguages)
+
+    def loadWordVectorsModel(self):
+        """
+        Load the MUSE word vectors model
+        """
+        self.wordVectorModel = loadWordVectors(self.code2)
 
     def deleteWordVectorsModel(self):
         """
