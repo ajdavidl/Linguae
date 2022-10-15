@@ -491,7 +491,7 @@ class Language:
         """
         if self.tatoeba == None:
             self.tatoeba = loadLanguageTatoeba(self.code3)
-        return textSamples(self.tatoeba, expression, num=20)
+        return textSamples(self.tatoeba, expression, num=num)
 
     def wikipedia(self, query):
         """
