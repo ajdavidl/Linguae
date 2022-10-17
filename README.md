@@ -45,6 +45,14 @@ import linguae
 text_en = 'This is an example sentence.'
 text_pt = linguae.translate(from_language='en',to_language='pt',text=text_en)
 print(text_pt)
+
+# parsing
+nlp_en = linguae.loadSpacyModel('en')
+pos_en = linguae.parseSpacy(nlp_en,text_en)
+print(pos_en)
+nlp_pt = linguae.loadSpacyModel('pt')
+pos_pt = linguae.parseSpacy(nlp_pt,text_pt)
+print(pos_pt)
 ```
 
 See the `example.py` file for more examples.
