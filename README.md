@@ -53,9 +53,15 @@ print(pos_en)
 nlp_pt = linguae.loadSpacyModel('pt')
 pos_pt = linguae.parseSpacy(nlp_pt,text_pt)
 print(pos_pt)
+
+# get real text examples from news
+print(linguae.googleNews('en', 10)) # news in English language
+print(linguae.googleNews('pt', 10)) # news in Portuguese language
+print(linguae.googleNews('es', 10)) # news in Spanish language
+
 ```
 
-See the `example.py` file for more examples.
+See the [`examples.py`](examples.py) and [`Use_case.md`](Use_case.md) files for more examples.
 
 ## Contributing
 
