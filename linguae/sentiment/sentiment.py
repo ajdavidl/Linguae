@@ -3,6 +3,7 @@ Module to get the sentiment/polarity of a word.
 """
 
 import pandas as pd
+from textblob import TextBlob
 try:
     import importlib.resources as pkg_resources
 except ImportError:
@@ -66,4 +67,26 @@ def polarity(dictionary, word):
         print(dictionary[word])
     else:
         print('word not in dictionary')
+    return
+
+
+def sentenceSentiment(sentence):
+    """
+        Get the sentiment associated to a sentence.
+
+        Only English language.
+
+        It loads TextBlob sentiment analysis model and prints the polarity and subjectivity of a sentence.
+
+        Parameters
+        ----------
+        sentence : str
+            String with a sentence to be analysed.
+
+        Returns
+        -------
+        Prints the polarity and subjectivity of a word.
+        """
+    text = TextBlob(sentence)
+    print(text.sentiment)
     return

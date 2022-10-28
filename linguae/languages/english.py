@@ -109,7 +109,7 @@ class English(Language):
         del self.GPTEnglish
         self.GPTEnglish = None
 
-    def sentiment(self, word):
+    def wordSentiment(self, word):
         """
         Get the sentiment associated to a word.
 
@@ -125,3 +125,20 @@ class English(Language):
         if self.Sentiment_ == None:
             self.Sentiment_ = loadSentiment(self.code2)
         return polarity(self.Sentiment_, word)
+
+    def sentenceSentiment(self, sentence):
+        """
+        Get the sentiment associated to a sentence.
+
+        It loads TextBlob sentiment analysis model and prints the polarity and subjectivity of a sentence.
+
+        Parameters
+        ----------
+        sentence : str
+            String with a sentence to be analysed.
+
+        Returns
+        -------
+        Prints the polarity and subjectivity of a word.
+        """
+        sentenceSentiment(sentence)
