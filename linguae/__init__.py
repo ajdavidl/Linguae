@@ -28,3 +28,4 @@ from .image.image import *
 from .audioSamples.audioSamples import forvo
 from .sentiment.sentiment import *
 from .sentenceVector.sentenceVector import *
+from .ner.ner import *

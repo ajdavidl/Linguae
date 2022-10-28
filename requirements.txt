@@ -5,6 +5,7 @@ pandas
 pyhyphen
 sentence_transformers
 spacy
+spacy_dbpedia_spotlight
 textblob
 transformers
 verbecc

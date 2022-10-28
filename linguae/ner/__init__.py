@@ -1,0 +1,3 @@
+"""
+Named Entity Recognition module
+"""
