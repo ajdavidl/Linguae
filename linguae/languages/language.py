@@ -21,6 +21,7 @@ from ..syllables.syllables import *
 from ..image.image import *
 from ..audioSamples.audioSamples import forvo
 from ..sentenceVector.sentenceVector import *
+from ..ner.ner import *
 
 
 class Language:
@@ -715,3 +716,42 @@ class Language:
             self.tatoeba = loadLanguageTatoeba(self.code3)
         self.tatoebaTensorsEmbeddings = encodeSentence(
             self.sentenceVectorModel, self.tatoeba)
+
+    def nerSpacy(self, sentence):
+        """
+        Get entities from text using spaCy model
+
+        Parameters
+        ----------
+        model : spacy.lang
+            SpaCy Language model. Load from linguae.parsing.parse.loadSpacyModel function
+
+        sentence : str
+            Text to be parsed
+
+        Returns
+        -------
+        str
+            String with the entities.
+        """
+        if self.spaCyModel == None:
+            self.spaCyModel = loadSpacyModel(self.code2)
+        return nerSpacy(self.spaCyModel, sentence)
+
+    def dbpediaEntityLink(self, sentence):
+        """
+        Link entities from sentence to dbpedia knowledge base
+
+        Parameters
+        __________
+
+        sentence : str
+            Sentence to be queried
+
+        Returns
+        _______
+        str
+            string with the entities extracted from the sentence.
+
+        """
+        return dbpediaEntityLink(self.code2, sentence)
