@@ -1,11 +1,13 @@
 # How I use this package
 
-When I'm studying German and I want to explore some new words I start the package:
+When I'm studying German and I want to explore some new words I start the package opening python in the Linguae directory:
 
 ```python
 >>> import linguae
 >>> ger = linguae.German()
 ```
+The commands above create a object from the German language class called `ger`.
+
 In this example, let's explore the word _"Frieden"_.
 
 I can search definitions for that word.
@@ -62,7 +64,7 @@ friedensvertrages - 0.6722211837768555
 
 ```
 
-We can put other languages word embedding models to compare:
+We can put other languages' word embedding models to compare:
 
 ```python
 >>> en = linguae.loadWordVectors('en')
