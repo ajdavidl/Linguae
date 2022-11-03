@@ -9,6 +9,11 @@ from ..sentiment.sentiment import *
 class French(Language):
     """
     Class French Language to centralize functions
+
+    Attributes
+    ----------
+        Sentiment_ : dict
+            python dictionary with the French Lexicon
     """
 
     def __init__(self):

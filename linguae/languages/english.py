@@ -12,6 +12,13 @@ from ..sentiment.sentiment import *
 class English(Language):
     """
     Class English Language to centralize functions
+
+    Attributes
+    ----------
+        BertEnglish : a Pipeline object from the transformers package with the Bloom model loaded
+        GPTEnglish : a Pipeline object from the transformers package with the Bloom model loaded
+        Sentiment_ : dict
+            python dictionary with the English Lexicon
     """
 
     def __init__(self):

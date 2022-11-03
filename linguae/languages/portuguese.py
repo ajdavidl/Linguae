@@ -12,6 +12,13 @@ from ..sentiment.sentiment import *
 class Portuguese(Language):
     """
     Class Portuguese Language to centralize functions
+
+    Attributes
+    ----------
+        BertPortuguese : a Pipeline object from the transformers package with the Bloom model loaded
+        GPTPortuguese : a Pipeline object from the transformers package with the Bloom model loaded
+        Sentiment_ : dict
+            python dictionary with the Portuguese Lexicon
     """
 
     def __init__(self):

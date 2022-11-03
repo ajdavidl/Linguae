@@ -27,6 +27,44 @@ from ..ner.ner import *
 class Language:
     """
     Class Language to centralize functions
+
+    Parameters
+    ----------
+        name : str
+            Name of the Language
+            example: 'English', 'Portuguese', 'Spanish', 'French'
+
+        code2 : str
+            code of the language with 2 letters
+            example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
+
+        code3 : str
+            code of the language with 3 letters
+            example: 'eng', 'por', 'esp', 'fra', 'deu'
+
+    Attributes
+    ----------
+        name : str
+            name of the language
+        code2 : str
+            2 letters abbreviation of the language
+        code3 : str
+            3 letters abbreviation of the language
+        spacyModel : class spacy.lang
+            SpaCy model for the language selected.
+        wordVectorModel : gensim KeyedVectors model
+            A gensim model with the word vectors loaded.
+        Bloom : a Pipeline object from the transformers package with the Bloom model loaded
+        mGPT : a Pipeline object from the transformers package with the Bloom model loaded
+        tatoeba : list
+            list of sentences from tatoeba site
+        BertMultilingual : a Pipeline object from the transformers package with the Bloom model loaded
+        XLMRoberta : a Pipeline object from the transformers package with the Bloom model loaded
+        hyphenatorModel : class hyphen.hyphenator.Hyphenator
+            Hyphenator model.
+        sentenceVectorModel : 'sentence_transformers.SentenceTransformer.SentenceTransformer' model.
+            Sentence transformer model
+        tatoebaTensorsEmbeddings : tensor encoded by sentence_transformers.SentenceTransformer.SentenceTransformer model.
     """
 
     def __init__(self, name, code2, code3):
@@ -46,6 +84,7 @@ class Language:
         code3 : str
             code of the language with 3 letters
             example: 'eng', 'por', 'esp', 'fra', 'deu'
+
         """
         self.name = name
         self.code2 = code2

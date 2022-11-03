@@ -12,6 +12,13 @@ from ..sentiment.sentiment import *
 class Spanish(Language):
     """
     Class Spanish Language to centralize functions
+
+    Attributes
+    ----------
+        BertSpanish : a Pipeline object from the transformers package with the Bloom model loaded
+        GPTSpanish : a Pipeline object from the transformers package with the Bloom model loaded
+        Sentiment_ : dict
+            python dictionary with the Spanish Lexicon
     """
 
     def __init__(self):

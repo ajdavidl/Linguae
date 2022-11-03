@@ -10,6 +10,11 @@ from ..sentiment.sentiment import *
 class Italian(Language):
     """
     Class Italian Language to centralize functions
+
+    Attributes
+    ----------
+        Sentiment_ : dict
+            python dictionary with the Italian Lexicon
     """
 
     def __init__(self):

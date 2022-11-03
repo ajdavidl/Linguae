@@ -9,6 +9,11 @@ from ..sentiment.sentiment import *
 class German(Language):
     """
     Class German Language to centralize functions
+
+    Attributes
+    ----------
+        Sentiment_ : dict
+            python dictionary with the German Lexicon
     """
 
     def __init__(self):
