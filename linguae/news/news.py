@@ -8,40 +8,54 @@ import re
 
 def strip_html_tags(text):
     """
-        Strip html tags in a given text
+    Strip html tags in a given text.
 
-        Parameters
-        ----------
-        text : str
-            Text to be cleaned.
+    It removes html tags like <p> and <a>.
 
-        Returns
-        -------
-        str
-            String with the text cleaned.
-        """
+    Parameters
+    ----------
+    text : str
+        Text to be cleaned.
+
+    Returns
+    -------
+    str
+        String with the text cleaned.
+    """
     p = re.compile(r'<.*?>')
     return p.sub('', text)
 
 
 def googleNews(language, num=None):
     """
-        Return the news' title from Google news using RSS feeds.
+    Return the news' title from Google news using RSS feeds.
 
-        Parameters
-        ----------
-        language : str
-            Language of the news.
-            example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
+    Parameters
+    ----------
+    language : str
+        Language of the news.
+        example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
 
-        num : integer
-            Maximum number of news to be returned.
+    num : integer
+        Maximum number of news to be returned.
 
-        Returns
-        -------
-        str
-            String with the titles of the news.
-        """
+    Returns
+    -------
+    str
+        String with the titles of the news.
+
+    See Also
+    --------
+    linguae.emmNewsBrief : Return the news' title from emm.newsbrief.eu using RSS feeds.
+
+    Examples
+    --------
+    >>> linguae.googleNews('en')
+
+    It's possible to define the number of news
+
+    >>> linguae.googleNews('en', 20)
+    """
     if language == 'pt':
         url = "https://news.google.com/rss/topics/CAAqKggKIiRDQkFTRlFvSUwyMHZNRGx1YlY4U0JYQjBMVUpTR2dKQ1VpZ0FQAQ?hl=pt-BR&gl=BR&ceid=BR%3Apt-419"
     elif language == 'en':
@@ -79,22 +93,34 @@ def googleNews(language, num=None):
 
 def emmNewsBrief(language, num=None):
     """
-        Return the news' title from emm.newsbrief.eu using RSS feeds.
+    Return the news' title from emm.newsbrief.eu using RSS feeds.
 
-        Parameters
-        ----------
-        language : str
-            Language of the news.
-            example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
+    Parameters
+    ----------
+    language : str
+        Language of the news.
+        example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
 
-        num : integer
-            Maximum number of news to be returned.
+    num : integer
+        Maximum number of news to be returned.
 
-        Returns
-        -------
-        str
-            String with the titles of the news.
-        """
+    Returns
+    -------
+    str
+        String with the titles of the news.
+
+    See Also
+    --------
+    linguae.googleNews : Return the news' title from Google news using RSS feeds.
+
+    Examples
+    --------
+    >>> linguae.emmNewsBrief('en')
+
+    It's possible to define the number of news
+
+    >>> linguae.emmNewsBrief('en', 20)
+    """
     if language in ['pt', 'en', 'es', 'it', 'fr', 'de', 'ro', 'ca', 'nl', 'cs', 'da', 'ru', 'sv']:
         url = "https://emm.newsbrief.eu/rss/rss?type=rtn&language=%s&duplicates=false" % language
     else:
