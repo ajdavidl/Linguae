@@ -120,7 +120,7 @@ def generateText(modelPipeline, textSeed, textSize=80, numberSentences=1):
         str
             String with the seed text and all text generated.
         """
-    result = modelPipeline(textSeed, max_length=textSize,
+    result = modelPipeline(textSeed, max_length=textSize, temperature=0.8, top_p=0.92,
                            num_return_sequences=numberSentences)
     textOutput = []
     for i in range(len(result)):
