@@ -25,6 +25,7 @@ def priberam(word):
     linguae.pons : Open browser and query the multilingual Pons dictionary.
     linguae.dlerae : Open browser and query the Diccionario de la lengua española.
     linguae.wordReference : Open browser and query the WordReference dictionary.
+    linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
 
     Examples
     --------
@@ -57,6 +58,7 @@ def sinomimos(word):
     linguae.pons : Open browser and query the multilingual Pons dictionary.
     linguae.dlerae : Open browser and query the Diccionario de la lengua española.
     linguae.wordReference : Open browser and query the WordReference dictionary.
+    linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
 
     Examples
     --------
@@ -107,6 +109,7 @@ def linguee(from_language, to_language, word):
     linguae.pons : Open browser and query the multilingual Pons dictionary.
     linguae.dlerae : Open browser and query the Diccionario de la lengua española.
     linguae.wordReference : Open browser and query the WordReference dictionary.
+    linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
 
     Examples
     --------
@@ -148,6 +151,7 @@ def glosbe(from_language, to_language, word):
     linguae.pons : Open browser and query the multilingual Pons dictionary.
     linguae.dlerae : Open browser and query the Diccionario de la lengua española.
     linguae.wordReference : Open browser and query the WordReference dictionary.
+    linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
 
     Examples
     --------
@@ -180,6 +184,7 @@ def dictionary_com(word):
     linguae.pons : Open browser and query the multilingual Pons dictionary.
     linguae.dlerae : Open browser and query the Diccionario de la lengua española.
     linguae.wordReference : Open browser and query the WordReference dictionary.
+    linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
 
     Examples
     --------
@@ -210,6 +215,7 @@ def thesaurus(word):
     linguae.pons : Open browser and query the multilingual Pons dictionary.
     linguae.dlerae : Open browser and query the Diccionario de la lengua española.
     linguae.wordReference : Open browser and query the WordReference dictionary.
+    linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
 
     Examples
     --------
@@ -248,6 +254,7 @@ def pons(from_language, to_language, word):
     linguae.thesaurus : Open browser and query the English thesaurus dictionary.
     linguae.dlerae : Open browser and query the Diccionario de la lengua española.
     linguae.wordReference : Open browser and query the WordReference dictionary.
+    linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
 
     Examples
     --------
@@ -281,6 +288,7 @@ def dlerae(word):
     linguae.thesaurus : Open browser and query the English thesaurus dictionary.
     linguae.pons : Open browser and query the multilingual Pons dictionary.
     linguae.wordReference : Open browser and query the WordReference dictionary.
+    linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
 
     Examples
     --------
@@ -317,6 +325,7 @@ def wordReference(language, word):
     linguae.thesaurus : Open browser and query the English thesaurus dictionary.
     linguae.pons : Open browser and query the multilingual Pons dictionary.
     linguae.dlerae : Open browser and query the Diccionario de la lengua española.
+    linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
 
     Examples
     --------
