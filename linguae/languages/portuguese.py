@@ -7,6 +7,7 @@ from ..dictionary.dictionaries import sinomimos, priberam
 from ..fillMask.fillMask import fillMaskBert, loadBertPortuguese
 from ..textGeneration.textGeneration import loadGPTPortuguese, generateText
 from ..sentiment.sentiment import *
+from ..stemming.stemming import stem
 
 
 class Portuguese(Language):
@@ -120,3 +121,19 @@ class Portuguese(Language):
         if self.Sentiment_ == None:
             self.Sentiment_ = loadSentiment(self.code2)
         return polarity(self.Sentiment_, word)
+
+    def stem(self, token):
+        """
+        Stem a given token.
+
+        Parameters
+        ----------
+        token : str
+            The word to be used in the task.
+
+        Returns
+        -------
+        str
+            String with the root of the token.
+        """
+        return stem(self.code2, token)

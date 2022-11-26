@@ -7,6 +7,7 @@ from ..dictionary.dictionaries import dictionary_com, thesaurus, wordReference
 from ..fillMask.fillMask import fillMaskBert, loadBertEnglish
 from ..textGeneration.textGeneration import loadGPTEnglish, generateText
 from ..sentiment.sentiment import *
+from ..stemming.stemming import stem
 
 
 class English(Language):
@@ -149,3 +150,19 @@ class English(Language):
         Prints the polarity and subjectivity of a word.
         """
         sentenceSentiment(sentence)
+
+    def stem(self, token):
+        """
+        Stem a given token.
+
+        Parameters
+        ----------
+        token : str
+            The word to be used in the task.
+
+        Returns
+        -------
+        str
+            String with the root of the token.
+        """
+        return stem(self.code2, token)
