@@ -15,41 +15,61 @@ from .. import data
 
 def loadTatoeba():
     """
-        Load tatoeba sentences
+    Load tatoeba sentences.
 
-        It reads the csv file from Tatoeba and returns a Pandas dataframe with the sentences.
+    It reads the csv file from Tatoeba and returns a Pandas dataframe with the sentences.
 
-        Parameters
-        ----------
-        No parameters
+    Parameters
+    ----------
+    No parameters
 
-        Returns
-        -------
-        Pandas data frame with 3 columns: "index", "language", "sentence"
+    Returns
+    -------
+    Pandas data frame with 3 columns: "index", "language", "sentence"
 
-        """
+    See Also
+    --------
+    linguae.loadLanguageTatoeba : Read the csv file from Tatoeba and returns a list with the sentences.
+    linguae.tatoebaSite : Open browser and query tatoeba site.
+
+    Examples
+    --------
+    >>> dfTatoeba = linguae.loadTatoeba()
+    >>> dfTatoeba.info()
+    """
     tatoebaFile = pkg_resources.open_text(data, "sentences.csv")
     return pd.read_csv(tatoebaFile, sep="\t", header=None, names=["index", "language", "sentence"])
 
 
 def loadLanguageTatoeba(language):
     """
-        Load tatoeba sentences
+    Load tatoeba sentences.
 
-        It reads the csv file from Tatoeba and returns a list with the sentences.
+    It reads the csv file from Tatoeba and returns a list with the sentences.
 
-        Parameters
-        ----------
-        language : str
-            Language desired.
-            example: 'eng', 'por', 'spa', 'fra', 'deu', 'ron', 'ita'
+    Parameters
+    ----------
+    language : str
+        Language desired.
+        example: 'eng', 'por', 'spa', 'fra', 'deu', 'ron', 'ita'
 
-        Returns
-        -------
-        list
-            List of sentences from the desired language
+    Returns
+    -------
+    list
+        List of sentences from the desired language.
 
-        """
+    See Also
+    --------
+    linguae.loadTatoeba : Read the csv file from Tatoeba and returns a Pandas dataframe with the sentences.
+    linguae.tatoebaSite : Open browser and query tatoeba site.
+
+    Examples
+    --------
+    >>> engList = linguae.loadLanguageTatoeba('eng')
+    >>> print(engList[:5])
+    >>> porList = linguae.loadLanguageTatoeba('por')
+    >>> print(porList[:5])
+    """
     tatoebaFile = pkg_resources.open_text(data, "sentences.csv")
     tatoeba = pd.read_csv(tatoebaFile, sep="\t", header=None, names=[
                           "index", "language", "sentence"])
@@ -58,21 +78,33 @@ def loadLanguageTatoeba(language):
 
 def tatoebaSite(text, from_language, to_language=None):
     """
-        Open browser and query tatoeba site
-        Parameters
-        ----------
-        text : str
-            Text to be queried
+    Open browser and query tatoeba site.
 
-        from_language : str
-            Language of the text.
-            example: 'eng', 'por', 'spa', 'fre', 'deu' 
+    Parameters
+    ----------
+    text : str
+        Text to be queried
 
-        to_language : str (optional)
-            Language that the text will be translated
-            example: 'eng', 'por', 'spa', 'fre', 'deu' 
+    from_language : str
+        Language of the text.
+        example: 'eng', 'por', 'spa', 'fre', 'deu' 
 
-        """
+    to_language : str (optional)
+        Language that the text will be translated
+        example: 'eng', 'por', 'spa', 'fre', 'deu' 
+
+    See Also
+    --------
+    linguae.loadTatoeba : Read the csv file from Tatoeba and returns a Pandas dataframe with the sentences.
+    linguae.loadLanguageTatoeba : Read the csv file from Tatoeba and returns a list with the sentences.
+
+    Examples
+    --------
+    >>> linguae.tatoebaSite('language','eng')
+    https://tatoeba.org/en/sentences/search?from=eng&query=language
+    >>> linguae.tatoebaSite('idioma','por','eng')
+    https://tatoeba.org/en/sentences/search?from=por&query=idioma&to=eng
+    """
     if ' ' in text:
         text = re.sub(' ', '%20', text)
     url = 'https://tatoeba.org/en/sentences/search?from=%s&query=%s' % (
