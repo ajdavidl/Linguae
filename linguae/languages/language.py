@@ -26,50 +26,35 @@ from ..ner.ner import *
 
 class Language:
     """
-    Class Language to centralize functions
-
-    Parameters
-    ----------
-        name : str
-            Name of the Language
-            example: 'English', 'Portuguese', 'Spanish', 'French'
-
-        code2 : str
-            code of the language with 2 letters
-            example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
-
-        code3 : str
-            code of the language with 3 letters
-            example: 'eng', 'por', 'esp', 'fra', 'deu'
+    Class Language to centralize functions.
 
     Attributes
     ----------
         name : str
-            name of the language
+            Name of the language.
         code2 : str
-            2 letters abbreviation of the language
+            2 letters abbreviation of the language.
         code3 : str
-            3 letters abbreviation of the language
+            3 letters abbreviation of the language.
         spacyModel : class spacy.lang
             SpaCy model for the language selected.
         wordVectorModel : gensim KeyedVectors model
             A gensim model with the word vectors loaded.
-        Bloom : a Pipeline object from the transformers package with the Bloom model loaded
-        mGPT : a Pipeline object from the transformers package with the Bloom model loaded
+        Bloom : a Pipeline object from the transformers package with the Bloom model loaded.
+        mGPT : a Pipeline object from the transformers package with the Bloom model loaded.
         tatoeba : list
-            list of sentences from tatoeba site
-        BertMultilingual : a Pipeline object from the transformers package with the Bloom model loaded
-        XLMRoberta : a Pipeline object from the transformers package with the Bloom model loaded
+            list of sentences from tatoeba site.
+        BertMultilingual : a Pipeline object from the transformers package with the Bloom model loaded.
+        XLMRoberta : a Pipeline object from the transformers package with the Bloom model loaded.
         hyphenatorModel : class hyphen.hyphenator.Hyphenator
             Hyphenator model.
         sentenceVectorModel : 'sentence_transformers.SentenceTransformer.SentenceTransformer' model.
             Sentence transformer model
         tatoebaTensorsEmbeddings : tensor encoded by sentence_transformers.SentenceTransformer.SentenceTransformer model.
     """
-
     def __init__(self, name, code2, code3):
         """
-        Constructor of the class
+        Constructor of the class.
 
         Parameters
         ----------
@@ -84,7 +69,6 @@ class Language:
         code3 : str
             code of the language with 3 letters
             example: 'eng', 'por', 'esp', 'fra', 'deu'
-
         """
         self.name = name
         self.code2 = code2
@@ -108,7 +92,7 @@ class Language:
 
     def translateTo(self, to_language, text):
         """
-        Translate text to the informed language
+        Translate text to the informed language.
 
         Parameters
         ----------
@@ -128,7 +112,7 @@ class Language:
 
     def translateFrom(self, from_language, text):
         """
-        Translate text from the informed language
+        Translate text from the informed language.
 
         Parameters
         ----------
@@ -148,7 +132,7 @@ class Language:
 
     def googleTranslateTo(self, to_language, text):
         """
-        Open browser and query Google translate site
+        Open browser and query Google translate site.
 
         Parameters
         ----------
@@ -163,7 +147,7 @@ class Language:
 
     def googleTranslateFrom(self, from_language, text):
         """
-        Open browser and query Google translate site
+        Open browser and query Google translate site.
 
         Parameters
         ----------
@@ -178,7 +162,7 @@ class Language:
 
     def parse(self, text):
         """
-        Parse text using spaCy model
+        Parse text using spaCy model.
 
         Parameters
         ----------
@@ -196,7 +180,7 @@ class Language:
 
     def wordFreq(self, word):
         """
-        Get the frequency of `word`
+        Get the frequency of `word`.
 
         Parameters
         ----------
@@ -234,13 +218,13 @@ class Language:
 
     def loadWordVectorsModel(self):
         """
-        Load the MUSE word vectors model
+        Load the MUSE word vectors model.
         """
         self.wordVectorModel = loadWordVectors(self.code2)
 
     def deleteWordVectorsModel(self):
         """
-        Delete the word vectors model
+        Delete the word vectors model.
         """
         del self.wordVectorModel
         self.wordVectorModel = None
@@ -268,7 +252,7 @@ class Language:
 
     def deleteBloomModel(self):
         """
-        Delete the Bloom Language model
+        Delete the Bloom Language model.
         """
         del self.Bloom
         self.Bloom = None
@@ -296,7 +280,7 @@ class Language:
 
     def deleteMGPTModel(self):
         """
-        Delete the mGPT Language model
+        Delete the mGPT Language model.
         """
         del self.mGPT
         self.mGPT = None
@@ -321,7 +305,7 @@ class Language:
 
     def loadTatoebaList(self):
         """
-        Load the tatoeba word list
+        Load the tatoeba word list.
         """
         self.tatoeba = loadLanguageTatoeba(self.code3)
 
@@ -344,14 +328,14 @@ class Language:
 
     def deleteTatoebaList(self):
         """
-        Delete the tatoeba word list
+        Delete the tatoeba word list.
         """
         del self.tatoeba
         self.tatoeba = None
 
     def conjugation(self, verb):
         """
-        Conjugate a verb
+        Conjugate a verb.
 
         Parameters
         ----------
@@ -367,7 +351,7 @@ class Language:
 
     def verbix(self, verb):
         """
-        Open browser and query the Verbix site
+        Open browser and query the Verbix site.
 
         Parameters
         ----------
@@ -413,7 +397,7 @@ class Language:
 
     def conceptnet(self, word, num=20):
         """
-        Query Conceptnet multilingual knowledge graph
+        Query Conceptnet multilingual knowledge graph.
 
         Parameters
         ----------
@@ -464,7 +448,7 @@ class Language:
 
     def fillMaskmBert(self, maskedSentence):
         """
-        Fill the mask tag on the masked Sentence
+        Fill the mask tag on the masked Sentence.
 
         Parameters
         ----------
@@ -482,14 +466,14 @@ class Language:
 
     def deleteBertMultilingual(self):
         """
-        Delete the Bert Multilingual Language model
+        Delete the Bert Multilingual Language model.
         """
         del self.BertMultilingual
         self.BertMultilingual = None
 
     def fillMaskXLMRoberta(self, maskedSentence):
         """
-        Fill the mask tag on the masked Sentence
+        Fill the mask tag on the masked Sentence.
 
         Parameters
         ----------
@@ -507,14 +491,14 @@ class Language:
 
     def deleteXLMRoberta(self):
         """
-        Delete the XLM Roberta Language model
+        Delete the XLM Roberta Language model.
         """
         del self.XLMRoberta
         self.XLMRoberta = None
 
     def textSamples(self, expression, num=20):
         """
-        Return the text samples of an expression
+        Return the text samples of an expression.
 
         Parameters
         ----------
@@ -535,7 +519,7 @@ class Language:
 
     def wikipedia(self, query):
         """
-        Query Wikipedia
+        Query Wikipedia.
 
         Parameters
         ----------
@@ -551,7 +535,7 @@ class Language:
 
     def syllables(self, word):
         """
-        Split the given word in syllables
+        Split the given word in syllables.
 
         Parameters
         ----------
@@ -569,7 +553,7 @@ class Language:
 
     def image(self, query, websearch='google'):
         """
-        Open browser and query Images from Internet
+        Open browser and query Images from Internet.
 
         Parameters
         ----------
@@ -590,7 +574,7 @@ class Language:
 
     def audio(self, word):
         """
-        Open browser and query Forvo audios
+        Open browser and query Forvo audios.
 
         Parameters
         ----------
@@ -602,7 +586,7 @@ class Language:
 
     def glosbeTo(self, to_language, word):
         """
-        Open browser and query word to the informed language using Glosbe dictionary
+        Open browser and query word to the informed language using Glosbe dictionary.
 
         Parameters
         ----------
@@ -618,7 +602,7 @@ class Language:
 
     def glosbeFrom(self, from_language, word):
         """
-        Open browser and query word from the informed language using Glosbe dictionary
+        Open browser and query word from the informed language using Glosbe dictionary.
 
         Parameters
         ----------
@@ -634,7 +618,7 @@ class Language:
 
     def lingueeTo(self, to_language, word):
         """
-        Open browser and query word to the informed language using Linguee dictionary
+        Open browser and query word to the informed language using Linguee dictionary.
 
         Parameters
         ----------
@@ -650,7 +634,7 @@ class Language:
 
     def lingueeFrom(self, from_language, word):
         """
-        Open browser and query word from the informed language using Linguee dictionary
+        Open browser and query word from the informed language using Linguee dictionary.
 
         Parameters
         ----------
@@ -666,7 +650,7 @@ class Language:
 
     def ponsTo(self, to_language, word):
         """
-        Open browser and query word to the informed language using Pons dictionary
+        Open browser and query word to the informed language using Pons dictionary.
 
         Parameters
         ----------
@@ -682,7 +666,7 @@ class Language:
 
     def ponsFrom(self, from_language, word):
         """
-        Open browser and query word from the informed language using Pons dictionary
+        Open browser and query word from the informed language using Pons dictionary.
 
         Parameters
         ----------
@@ -698,7 +682,7 @@ class Language:
 
     def tatoebaSite(self, text, languageTo=None):
         """
-        Open browser and query tatoeba site
+        Open browser and query tatoeba site.
 
         Parameters
         ----------
@@ -740,7 +724,7 @@ class Language:
 
     def deleteSentenceVectorModel(self):
         """
-        Delete the Sentence Vector Model
+        Delete the Sentence Vector Model.
         """
         del self.sentenceVectorModel
         self.sentenceVectorModel = None
@@ -758,7 +742,7 @@ class Language:
 
     def nerSpacy(self, sentence):
         """
-        Get entities from text using spaCy model
+        Get entities from text using spaCy model.
 
         Parameters
         ----------
@@ -779,13 +763,13 @@ class Language:
 
     def dbpediaEntityLink(self, sentence):
         """
-        Link entities from sentence to dbpedia knowledge base
+        Link entities from sentence to dbpedia knowledge base.
 
         Parameters
         __________
 
         sentence : str
-            Sentence to be queried
+            Sentence to be queried.
 
         Returns
         _______
