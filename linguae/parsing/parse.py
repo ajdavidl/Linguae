@@ -14,19 +14,29 @@ SPACY_MODEL_RO = "ro_core_news_sm"
 
 def loadSpacyModel(language):
     """
-        Load the Spacy Model for one language
+	Load the Spacy Model for one language.
 
-        Parameters
-        ----------
-        language : str
-            Language of the text.
-            example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'it'
+	Parameters
+	----------
+	language : str
+		Language of the text.
+		example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'it'
 
-        Returns
-        -------
-        class spacy.lang
-            SpaCy model for the language selected.
-        """
+	Returns
+	-------
+	class spacy.lang
+		SpaCy model for the language selected.
+
+	See Also
+	--------
+	linguae.parseSpacy : Parse text using spaCy model.
+	linguae.parse : Parse text from given language.
+
+	Examples
+	--------
+	>>> eng = linguae.loadSpacyModel('en')
+	>>> por = linguae.loadSpacyModel('pt')
+	"""
     if language == 'pt':
         nlp = load(SPACY_MODEL_PT)
     elif language == 'en':
@@ -49,21 +59,32 @@ def loadSpacyModel(language):
 
 def parseSpacy(model, sentence):
     """
-        Parse text using spaCy model
+	Parse text using spaCy model.
 
-        Parameters
-        ----------
-        model : spacy.lang
-            SpaCy Language model.
+	Parameters
+	----------
+	model : spacy.lang
+		SpaCy Language model.
 
-        sentence : str
-            Text to be parsed
+	sentence : str
+		Text to be parsed.
 
-        Returns
-        -------
-        str
-            String with the token, pos, tags and dependencies in a table format.
-        """
+	Returns
+	-------
+	str
+		String with the token, pos, tags and dependencies in a table format.
+	See Also
+	--------
+	linguae.loadSpacyModel : Load the Spacy Model for one language.
+	linguae.parse : Parse text from given language.
+
+	Examples
+	--------
+	>>> eng = linguae.loadSpacyModel('en')
+	>>> print(linguae.parseSpacy(eng,'I love languages.'))
+	>>> por = linguae.loadSpacyModel('pt')
+	>>> print(linguae.parseSpacy(por,'Eu amo idiomas.'))
+	"""
     doc = model(sentence)
     text = "Token → POS → Tag → Dep\n"
     for token in doc:
@@ -74,24 +95,34 @@ def parseSpacy(model, sentence):
 
 def parse(language, sentence):
     """
-        Parse text from in one language
+	Parse text from given language.
 
-        It uses the SpaCy package under the hood.
+	It uses the SpaCy package under the hood.
 
-        Parameters
-        ----------
-        language : str
-            Language of the text.
-            example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'it'
+	Parameters
+	----------
+	language : str
+		Language of the text.
+		example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'it'
 
-        sentence : str
-            Text to be parsed
+	sentence : str
+		Text to be parsed
 
-        Returns
-        -------
-        str
-            String with the token, pos, tags and dependencies in a table format.
-        """
+	Returns
+	-------
+	str
+		String with the token, pos, tags and dependencies in a table format.
+	
+	See Also
+	--------
+	linguae.loadSpacyModel : Load the Spacy Model for one language.
+	linguae.parseSpacy : Parse text using spaCy model.
+
+	Examples
+	--------
+	>>> print(linguae.parse('en','I love languages.'))
+	>>> print(linguae.parse('pt','Eu amo idiomas.'))
+	"""
     if language == 'pt':
         nlp = load(SPACY_MODEL_PT)
     elif language == 'en':
