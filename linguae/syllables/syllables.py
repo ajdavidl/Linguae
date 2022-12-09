@@ -6,21 +6,32 @@ from hyphen import Hyphenator
 
 def loadHyphenator(language):
     """
-        Load the Hyphenator Model for one language
+    Load the Hyphenator Model for one language.
 
-        Parameters
-        ----------
-        language : str
-            Language of the text.
-            example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'it'
+    It uses the Hyphenator package under the hood.
 
-        Returns
-        -------
-        class hyphen.hyphenator.Hyphenator
-            Hyphenator model for the language selected.
-        """
+    Parameters
+    ----------
+    language : str
+        Language of the text.
+        example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'it'
+
+    Returns
+    -------
+    class hyphen.hyphenator.Hyphenator.
+        Hyphenator model for the language selected.
+
+    See also
+	--------
+    linguae.syllables : Split the given word in syllables.
+
+	Examples
+	--------
+    >>> eng = linguae.loadHyphenator('en')
+    >>> por = linguae.loadHyphenator('pt')
+    """ 
     if language == 'pt':
-        return Hyphenator('pt_BR')
+        return Hyphenator('pt_BR') 
     elif language == 'en':
         return Hyphenator('en_US')
     elif language == 'es':
@@ -40,21 +51,36 @@ def loadHyphenator(language):
 
 def syllables(model, word):
     """
-        Split the given word in syllables
+    Split the given word in syllables.
 
-        Parameters
-        ----------
-        model : class hyphen.hyphenator.Hyphenator
-            Hyphenator model.
+    It uses the Hyphenator package under the hood.
 
-        word : str
-            word to be split
+    Parameters
+    ----------
+    model : class hyphen.hyphenator.Hyphenator.
+        Hyphenator model.
 
-        Returns
-        -------
-        str
-            String with word's syllables
-        """
+    word : str
+        word to be split
+
+    Returns
+    -------
+    str
+        String with word's syllables.
+
+    See also
+	--------
+    linguae.loadHyphenator : Load the Hyphenator Model for one language.
+
+	Examples
+	--------
+    >>> eng = linguae.loadHyphenator('en')
+    >>> linguae.syllables(eng, 'language')
+    'lan-guage'
+    >>> por = linguae.loadHyphenator('pt')
+    >>> linguae.syllables(por, 'idioma')
+    'idi-o-ma'
+    """
     listSyllables = model.syllables(word)
     if len(listSyllables) == 0:
         return word
