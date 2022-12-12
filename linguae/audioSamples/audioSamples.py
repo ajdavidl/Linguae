@@ -8,7 +8,7 @@ import re
 
 def forvo(language, word):
     """
-    Open browser and query audio samples from Forvo site.
+    Open browser and query audio samples from Forvo site (https://forvo.com).
 
     Parameters
     ----------
