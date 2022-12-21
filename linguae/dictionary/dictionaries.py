@@ -1,5 +1,5 @@
 """
-Module with functions that queries dictionaries
+Module with functions that query dictionaries
 """
 
 import webbrowser

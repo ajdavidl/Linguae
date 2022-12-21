@@ -39,8 +39,22 @@ def wiktionaryQuery(language, word):
 
     Examples
     --------
-    >>> linguae.wiktionaryQuery('en', 'language')
-    >>> linguae.wiktionaryQuery('pt', 'idioma')
+    >>> s = linguae.wiktionaryQuery('en', 'language')
+    >>> print(s)
+    Definitions: language (countable and uncountable, plural languages)
+    (countable) A body of words, and set of methods of combining them (called a grammar), understood by a community and used as a form of communication.
+    (uncountable) The ability to communicate using words.
+    (uncountable) A sublanguage: the slang of a particular community or jargon of a particular specialist field.
+    (countable, uncountable, figuratively) The expression of thought (the communication of meaning) in a specified way; that which communicates something, as language does.
+    (countable, uncountable) A body of sounds, signs and/or signals by which animals communicate, and by which plants are sometimes also thought to communicate.
+    (computing, countable) A computer language; a machine language.
+    (uncountable) Manner of expression.
+    (uncountable) The particular words used in a speech or a passage of text.
+    (uncountable) Profanity.
+    >>> s = linguae.wiktionaryQuery('pt', 'idioma')
+    >>> print(s)
+    Definitions: idioma m (plural idiomas)
+    language (form of communication using words and structured with grammar)
     """
     if language == 'pt':
         language = 'portuguese'
