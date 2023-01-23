@@ -32,12 +32,12 @@ def loadSentiment(language):
     None if language not supported.
 	
     See also
-	--------
-	linguae.polarity : Get the sentiment associated to a word.
-	linguae.sentenceSentiment : Get the sentiment associated to a sentence.
+    --------
+    linguae.polarity : Get the sentiment associated to a word.
+    linguae.sentenceSentiment : Get the sentiment associated to a sentence.
 
-	Examples
-	--------
+    Examples
+    --------
     >>> engLex = linguae.loadSentiment('en')
     >>> porLex = linguae.loadSentiment('pt')
     """
@@ -74,12 +74,12 @@ def polarity(dictionary, word):
     Prints the polarity of a word.
 
     See also
-	--------
-	linguae.loadSentiment : Load sentiments lexicon of different languages.
-	linguae.sentenceSentiment : Get the sentiment associated to a sentence.
+    --------
+    linguae.loadSentiment : Load sentiments lexicon of different languages.
+    linguae.sentenceSentiment : Get the sentiment associated to a sentence.
 
-	Examples
-	--------
+    Examples
+    --------
     >>> engLex = linguae.loadSentiment('en')
     >>> linguae.polarity(engLex, 'good')
     0.7
@@ -116,12 +116,12 @@ def sentenceSentiment(sentence):
     Prints the polarity and subjectivity of a word.
 
     See also
-	--------
-	linguae.loadSentiment : Load sentiments lexicon of different languages.
-	linguae.polarity : Get the sentiment associated to a word.
+    --------
+    linguae.loadSentiment : Load sentiments lexicon of different languages.
+    linguae.polarity : Get the sentiment associated to a word.
 
-	Examples
-	--------
+    Examples
+    --------
     >>> linguae.sentenceSentiment('Learning languages is good.')
     Sentiment(polarity=0.7, subjectivity=0.6000000000000001)
     """
