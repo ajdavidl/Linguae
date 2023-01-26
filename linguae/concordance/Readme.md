@@ -1,6 +1,6 @@
 # Concordance module
 
-Module to create concordance views for a given word. It uses NLTK under the hood.
+Module to create concordance views for a given word. It uses [NLTK](https://github.com/nltk/nltk) under the hood.
 
 The main function is `concordance` that receives a word and a list of text and create the concordance view.
 
