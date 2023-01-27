@@ -7,65 +7,113 @@ from sentence_transformers import SentenceTransformer, util
 
 def loadSentenceTransformerModel():
     """
-        Load a SentenceTransformer model
+    Load a SentenceTransformer model.
 
-        It uses the sentence_transformers package to load a multilingual model.
+    It uses the sentence_transformers package to load a multilingual model.
 
-        Returns
-        -------
-        SentenceTransformer model
-            A 'sentence_transformers.SentenceTransformer.SentenceTransformer' model.
-        """
+    Returns
+    -------
+    SentenceTransformer model
+        A 'sentence_transformers.SentenceTransformer.SentenceTransformer' model.
+
+    See Also
+    --------
+    linguae.encodeSentence : Computes sentence embeddings using sentence_transformers package.
+    linguae.similarSentences : Gives the most similar sentences from a query sentence using the sentence transformer model.
+
+    Examples
+    --------
+    >>> sentTransfModel = linguae.loadSentenceTransformerModel()
+    >>> linguae.encodeSentence(sentTransfModel, 'Learn languages is good.')
+
+    """
     return SentenceTransformer('paraphrase-multilingual-mpnet-base-v2')
 
 
 def encodeSentence(model, sentences):
     """
-        Computes sentence embeddings using sentence_transformers package.
+    Computes sentence embeddings using sentence_transformers package.
 
-        Parameters
-        ----------
-        model : 'sentence_transformers.SentenceTransformer.SentenceTransformer' model.
-            Sentence transformer model
+    Parameters
+    ----------
+    model : 'sentence_transformers.SentenceTransformer.SentenceTransformer' model.
+        Sentence transformer model
 
-        sentences : Union[str, List[str]]
-            the sentences to embed
+    sentences : Union[str, List[str]]
+        the sentences to embed
 
-        Returns
-        _______
-            a list of tensors is returned
-        """
+    Returns
+    -------
+        A list of tensors is returned.
+
+    See Also
+    --------
+    linguae.loadSentenceTransformerModel : Load a SentenceTransformer model.
+    linguae.similarSentences : Gives the most similar sentences from a query sentence using the sentence transformer model.
+
+    Examples
+    --------
+    >>> sentTransfModel = linguae.loadSentenceTransformerModel()
+    >>> linguae.encodeSentence(sentTransfModel, 'Learn languages is good.')
+
+    It's also possible to encode a list o sentences.
+
+    >>> sentTransfModel = linguae.loadSentenceTransformerModel()
+    >>> linguae.encodeSentence(sentTransfModel, ['Learn languages is good.', 'I like to learn languages.'])
+    """
     return model.encode(sentences)
 
 
 def similarSentences(model, querySentence, listSentences, querySentenceTensor=None, listSentencesTensors=None, nrSentencesReturned=10):
     """
-        Gives the most similar sentences from a query sentence using the sentence transformer model.
+    Gives the most similar sentences from a query sentence using the sentence transformer model.
 
-        Parameters
-        ----------
-        model : 'sentence_transformers.SentenceTransformer.SentenceTransformer' model.
-            Sentence transformer model
+    Parameters
+    ----------
+    model : 'sentence_transformers.SentenceTransformer.SentenceTransformer' model.
+        Sentence transformer model.
 
-        querySentence : str
-            sentence to be queried
+    querySentence : str
+        sentence to be queried.
 
-        listSentences : List[str]
-            sentences to be searched
+    listSentences : List[str]
+        sentences to be searched.
 
-        querySentenceTensor : torch.Tensor
-            The query sentence embedding. If None, the tensor is calculated.
+    querySentenceTensor : torch.Tensor
+        The query sentence embedding. If None, the tensor is calculated.
 
-        listSentencesTensors : torch.Tensor
-            The list sentences' tensors. If None, the tensor is calculated.
+    listSentencesTensors : torch.Tensor
+        The list sentences' tensors. If None, the tensor is calculated.
 
-        nrSentencesReturned : int
-            number of sentences to be returned
+    nrSentencesReturned : int (default=10)
+        number of sentences to be returned.
 
-        Returns 
-        _______
-        str
-            String with the most similar sentences.
+    Returns 
+    -------
+    str
+        String with the most similar sentences.
+
+    See Also
+    --------
+    linguae.loadSentenceTransformerModel : Load a SentenceTransformer model.
+    linguae.encodeSentence : Computes sentence embeddings using sentence_transformers package.
+
+    Examples
+    --------
+    >>> sentTransfModel = linguae.loadSentenceTransformerModel()
+    >>> listEnglishSentences = linguae.loadLanguageTatoeba('eng')
+    >>> listEnglishSentencesSample = listEnglishSentences[:10000]
+    >>> print(linguae.similarSentences(sentTransfModel, 'Learn languages is good', listEnglishSentencesSample))
+
+    You can pass the tensors of the query sentence and the tensors of the sentences in the list.
+
+    >>> sentTransfModel = linguae.loadSentenceTransformerModel()
+    >>> listEnglishSentences = linguae.loadLanguageTatoeba('eng')
+    >>> myListOfSentences = listEnglishSentences[:10000]
+    >>> myListOfSentencesTensors = linguae.encodeSentence(sentTransfModel, myListOfSentences)
+    >>> mySentenceQuery = 'Learning languages is good.'
+    >>> mySentenceQueryTensor = linguae.encodeSentence(sentTransfModel, mySentenceQuery)
+    >>> print(linguae.similarSentences(sentTransfModel, mySentenceQuery, myListOfSentences, mySentenceQueryTensor, myListOfSentencesTensors))
     """
     if querySentenceTensor is None:
         querySentenceTensor = model.encode(querySentence)
