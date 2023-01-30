@@ -198,6 +198,6 @@ def generateText(modelPipeline, textSeed, textSize=80, numberSentences=1):
     textOutput = []
     for i in range(len(result)):
         textOutput.append(str(i+1)+":\n")
-        textOutput.append(result[0]['generated_text'])
+        textOutput.append(result[i]['generated_text'])
         textOutput.append("\n")
     return ' '.join(textOutput)
