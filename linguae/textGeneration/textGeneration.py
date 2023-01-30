@@ -194,7 +194,7 @@ def generateText(modelPipeline, textSeed, textSize=80, numberSentences=1):
     >>> linguae.generateText(pipelineBloom, "Learning languages is very important to ")
     """
     result = modelPipeline(textSeed, max_length=textSize, temperature=0.8, top_p=0.92,
-                           num_return_sequences=numberSentences)
+                           repetition_penalty=2.0, num_return_sequences=numberSentences)
     textOutput = []
     for i in range(len(result)):
         textOutput.append(str(i+1)+":\n")
