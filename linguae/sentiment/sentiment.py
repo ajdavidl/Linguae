@@ -1,5 +1,5 @@
 """
-Module to get the sentiment/polarity of a word.
+Module to get the sentiment/polarity of words and sentences.
 """
 
 import pandas as pd
@@ -30,7 +30,7 @@ def loadSentiment(language):
     Dictionary with the word on keys and polarities on values
 
     None if language not supported.
-	
+
     See also
     --------
     linguae.polarity : Get the sentiment associated to a word.
