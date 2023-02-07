@@ -36,6 +36,7 @@ def wiktionaryQuery(language, word):
     linguae.pons : Open browser and query the multilingual Pons dictionary.
     linguae.dlerae : Open browser and query the Diccionario de la lengua española.
     linguae.wordReference : Open browser and query the WordReference dictionary.
+    linguae.wikipediaQuery : Query Wikipedia. 
 
     Examples
     --------
