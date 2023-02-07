@@ -7,22 +7,32 @@ import wikipediaapi
 
 def wikipediaQuery(language, query):
     """
-        Query Wikipedia
+    Query Wikipedia.
 
-        Parameters
-        ----------
-        language : str
-            Language of the wikipedia.
-            example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
+    Parameters
+    ----------
+    language : str
+        Language of the wikipedia.
+        example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
 
-        query : str
-            words to be queried.
+    query : str
+        words to be queried.
 
-        Returns
-        -------
-        str
-            String with the wikipedia page summary.
-        """
+    Returns
+    -------
+    str
+        String with the wikipedia page summary.
+
+    See Also
+    --------
+    linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
+
+    Examples
+    --------
+    >>> linguae.wikipediaQuery('en','English language')
+    >>> linguae.wikipediaQuery('pt','Língua portuguesa')
+    >>> linguae.wikipediaQuery('es','Idioma español')
+    """
     wikipedia.set_lang(language)
     results = wikipedia.search(query)
     if len(results) == 0:
