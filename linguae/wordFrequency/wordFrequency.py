@@ -1,12 +1,12 @@
 """
-Module to give the word frequency of a word.
+Module to give the frequency of a word.
 """
 from wordfreq import word_frequency
 
 
 def wordFreq(language, word):
     """
-    Get the frequency of word in the language with code language.
+    Get the frequency of word in a given language.
 
     It uses the wordfreq package under the hood.
 

@@ -1,3 +1,3 @@
 """
-Module to give the word frequency of a word.
+Module to give the frequency of a word.
 """
