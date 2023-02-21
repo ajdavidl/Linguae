@@ -20,6 +20,8 @@ def loadSentenceTransformerModel():
     --------
     linguae.encodeSentence : Computes sentence embeddings using sentence_transformers package.
     linguae.similarSentences : Gives the most similar sentences from a query sentence using the sentence transformer model.
+    linguae.loadWordVectors : Load word vectors from the desired language.
+    linguae.similarWords : Get similar words with word embeddings.
 
     Examples
     --------
@@ -40,7 +42,7 @@ def encodeSentence(model, sentences):
         Sentence transformer model
 
     sentences : Union[str, List[str]]
-        the sentences to embed
+        The sentences to embed.
 
     Returns
     -------
@@ -50,13 +52,15 @@ def encodeSentence(model, sentences):
     --------
     linguae.loadSentenceTransformerModel : Load a SentenceTransformer model.
     linguae.similarSentences : Gives the most similar sentences from a query sentence using the sentence transformer model.
+    linguae.loadWordVectors : Load word vectors from the desired language.
+    linguae.similarWords : Get similar words with word embeddings.
 
     Examples
     --------
     >>> sentTransfModel = linguae.loadSentenceTransformerModel()
     >>> linguae.encodeSentence(sentTransfModel, 'Learn languages is good.')
 
-    It's also possible to encode a list o sentences.
+    It's also possible to encode a list of sentences.
 
     >>> sentTransfModel = linguae.loadSentenceTransformerModel()
     >>> linguae.encodeSentence(sentTransfModel, ['Learn languages is good.', 'I like to learn languages.'])
@@ -74,10 +78,10 @@ def similarSentences(model, querySentence, listSentences, querySentenceTensor=No
         Sentence transformer model.
 
     querySentence : str
-        sentence to be queried.
+        Sentence to be queried.
 
     listSentences : List[str]
-        sentences to be searched.
+        Sentences to be searched.
 
     querySentenceTensor : torch.Tensor
         The query sentence embedding. If None, the tensor is calculated.
@@ -97,6 +101,8 @@ def similarSentences(model, querySentence, listSentences, querySentenceTensor=No
     --------
     linguae.loadSentenceTransformerModel : Load a SentenceTransformer model.
     linguae.encodeSentence : Computes sentence embeddings using sentence_transformers package.
+    linguae.loadWordVectors : Load word vectors from the desired language.
+    linguae.similarWords : Get similar words with word embeddings.
 
     Examples
     --------
