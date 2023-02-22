@@ -10,6 +10,6 @@ textblob
 transformers
 verbecc
 wikipedia
-wikipediaapi
+Wikipedia-API
 WiktionaryParser
 wordfreq
