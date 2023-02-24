@@ -18,3 +18,14 @@ hyphenatorModel : Hyphenator model.
 sentenceVectorModel : Sentence transformer model.
 tatoebaTensorsEmbeddings : tensor encoded by Sentence Transformer model.
 ```
+
+# Class English
+
+Class English Language to centralize functions.
+
+I has the same attributes of the Class Language plus:
+```
+BertEnglish : a Pipeline object from the transformers package with the Bloom model loaded.
+GPTEnglish : a Pipeline object from the transformers package with the GPT model loaded.
+Sentiment_ : a python dictionary with the English Lexicon.
+```
