@@ -16,10 +16,9 @@ class English(Language):
 
     Attributes
     ----------
-        BertEnglish : a Pipeline object from the transformers package with the Bloom model loaded
-        GPTEnglish : a Pipeline object from the transformers package with the Bloom model loaded
-        Sentiment_ : dict
-            python dictionary with the English Lexicon
+        BertEnglish : a Pipeline object from the transformers package with the Bloom model loaded.
+        GPTEnglish : a Pipeline object from the transformers package with the GPT-2 model loaded.
+        Sentiment_ : a python dictionary with the English Lexicon.
     """
 
     def __init__(self):
@@ -30,7 +29,7 @@ class English(Language):
 
     def dictionary_com(self, word):
         """
-        Open browser and query the English dictionary.com
+        Open browser and query the English dictionary.com.
 
         Parameters
         ----------
@@ -42,7 +41,7 @@ class English(Language):
 
     def thesaurus(self, word):
         """
-        Open browser and query the English Thesaurus dictionary
+        Open browser and query the English Thesaurus dictionary.
 
         Parameters
         ----------
@@ -54,7 +53,7 @@ class English(Language):
 
     def wordReference(self, word):
         """
-        Open browser and query the WordReference dictionary
+        Open browser and query the WordReference dictionary.
 
         Parameters
         ----------
@@ -66,7 +65,7 @@ class English(Language):
 
     def fillMaskBert(self, maskedSentence):
         """
-        Fill the mask tag on the masked Sentence
+        Fill the mask tag on the masked Sentence.
 
         Parameters
         ----------
@@ -112,7 +111,7 @@ class English(Language):
 
     def deleteGPTEnglishModel(self):
         """
-        Delete the English GPT Language model
+        Delete the English GPT Language model.
         """
         del self.GPTEnglish
         self.GPTEnglish = None
