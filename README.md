@@ -18,7 +18,7 @@ cd Linguae
 pip install -r requirements.txt
 ```
 
-After that you need some SpaCy models to use the parse function.
+After that you need some SpaCy models to use the parse function. You can use the shell script [`InstallSpacyModels.sh`](InstallSpacyModels.sh) to install the models or type the following commands on the terminal.
 
 ```bash
 python -m spacy download en_core_web_sm
@@ -29,11 +29,11 @@ python -m spacy download fr_core_news_sm
 ```
 
 If you want to play with word embeddings, you need the MUSE word vectors. The links are in [MUSE](https://github.com/facebookresearch/MUSE#download) repository.
-Download some of it and put the files on `Linguae/linguae/data` folder.
+Download some of it and put the files on `Linguae/linguae/data` folder. You can use the shell script [`DownloadMUSEWordEmbeddings.sh`](DownloadMUSEWordEmbeddings.sh) to download the data.
 
 To use the concordance function you need the Tatoeba's sentences.
 Download the sentences in [Tatoeba](https://tatoeba.org/en/downloads).
-Extract the csv file (`sentences.csv`) and put it on `Linguae/linguae/data` folder.
+Extract the csv file (`sentences.csv`) and put it on `Linguae/linguae/data` folder. You can use the shell script [`DownloadTatoebaSentences.sh`](DownloadTatoebaSentences.sh) to download the sentences.
 
 ## Usage
 
