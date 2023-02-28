@@ -115,7 +115,17 @@ Endlich ist Frieden eingekehrt.
 Du wünschst Frieden, lebe friedlich, sei ein Friedfertiger.
 Die Taube ist das Symbol des Friedens.
 Es führt kein Weg zum Frieden, denn Frieden ist der Weg.
-
+>>> print(ger.concordance('frieden'))
+lich , bis es gemacht wurde . Bevor ihr nicht Frieden schließt mit dem , was ihr seid , werdet ihr
+geheiratet . Ich hoffe nicht . Wir hoffen auf Frieden . Das hoffe ich . Er verliert nie die Hoffnun
+! Mögest du lange leben ! Wir sehnen uns nach Frieden . Sie hat langes Haar . Wie lange wird es dau
+e Welt ohne Tee ? Die ganze Welt wünscht sich Frieden . Alle lachten über ihn . Sie wird für alle k
+ würde aufhören . Unser Land wünscht sich nur Frieden . Er ist ein Doktor und ein Universitätsprofe
+zurück nach Japan ? Ich habe mit meiner Tante Frieden geschlossen bevor sie starb . Das ist ein Spr
+tverständlich ist er unschuldig . Es herrscht Frieden zwischen Japan und seinen Nachbarn . Zum Beis
+einer Ausfahrt mit ? Jeder möchte dauerhaften Frieden . Das Rennen entschied sich in letzter Sekund
+ Spiele . Verträge sind einzuhalten . Wenn du Frieden willst , bereite dich zum Krieg . Gesprochene
+ngen spielen ? “ — „ Ja , gerne ! “ Liebe und Frieden . Früher dauerte die Reise nach Amerika viele
 ```
 I can pick one or more sentences to explore the translation and parsing (SpaCy model).
 
