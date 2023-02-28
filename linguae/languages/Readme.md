@@ -21,11 +21,50 @@ tatoebaTensorsEmbeddings : tensor encoded by Sentence Transformer model.
 
 # Class English
 
-Class English Language to centralize functions.
-
-I has the same attributes of the Class Language plus:
+Attributes:
 ```
 BertEnglish : a Pipeline object from the transformers package with the Bloom model loaded.
 GPTEnglish : a Pipeline object from the transformers package with the GPT model loaded.
 Sentiment_ : a python dictionary with the English Lexicon.
 ```
+
+# Class Portuguese
+
+Attributes:
+```
+BertPortuguese : a Pipeline object from the transformers package with the Bloom model loaded.
+GPTPortuguese : a Pipeline object from the transformers package with the Bloom model loaded.
+Sentiment_ : a python dictionary with the Portuguese Lexicon.
+```
+
+# Class Spanish
+
+Attributes:
+```
+BertSpanish : a Pipeline object from the transformers package with the Bloom model loaded.
+GPTSpanish : a Pipeline object from the transformers package with the Bloom model loaded.
+Sentiment_ : a python dictionary with the Spanish Lexicon.
+```
+
+# Class Italian
+
+Attributes:
+```
+Sentiment_ : a python dictionary with the Italian Lexicon.
+```
+
+# Class French
+
+Attributes:
+```
+Sentiment_ : a python dictionary with the Italian Lexicon.
+```
+
+# Class German
+
+Attributes:
+```
+Sentiment_ : a python dictionary with the Italian Lexicon.
+```
+
+
