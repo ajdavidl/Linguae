@@ -1,10 +1,10 @@
 # Linguae
 
-Python package to explore languages and learn about them.
+Python package to explore natural languages.
 
-This is a personal project to learn NLP and study languages.
+This is a hobby project to learn natural language processing and text mining tools exploring natural languages.
 
-The available features are parsing, translation, word embeddings similarities, text generation, concordance, verb conjugation, fill mask, wiktionary queries, wikipedia queries, word frequency queries, conceptnet queries and news from Google.
+The available features are parsing, translation, word embeddings similarities, text generation, concordance, verb conjugation, fill mask, wiktionary queries, wikipedia queries, word frequency queries, conceptnet queries, news from Google, browse images and audio samples, text samples, word sentiment and stemming.
 
 ## Status
 
