@@ -1,5 +1,5 @@
 """
-Personal package to explore languages and learn about them.
+Python package to explore natural languages. 
 """
 from .translation.translate import *
 from .parsing.parse import parse, loadSpacyModel, parseSpacy
@@ -30,3 +30,4 @@ from .sentiment.sentiment import *
 from .sentenceVector.sentenceVector import *
 from .ner.ner import *
 from .stemming.stemming import stem
+
