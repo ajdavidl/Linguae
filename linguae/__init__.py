@@ -31,3 +31,4 @@ from .sentenceVector.sentenceVector import *
 from .ner.ner import *
 from .stemming.stemming import stem
 
+__version__ = '0.1.0'
