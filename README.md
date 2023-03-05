@@ -12,6 +12,8 @@ In construction!!
 
 ## Installation
 
+Create a python enviroment using a tool like conda, pyenv or similar. Then open a terminal and insert the commands.
+
 ```bash
 git clone https://github.com/ajdavidl/Linguae.git
 cd Linguae
@@ -34,6 +36,12 @@ Download some of it and put the files on `Linguae/linguae/data` folder. You can 
 To use the concordance function you need the Tatoeba's sentences.
 Download the sentences in [Tatoeba](https://tatoeba.org/en/downloads).
 Extract the csv file (`sentences.csv`) and put it on `Linguae/linguae/data` folder. You can use the shell script [`DownloadTatoebaSentences.sh`](DownloadTatoebaSentences.sh) to download the sentences.
+
+After the above steps, you already can use the `linguae` package inside the root folder. You can also install the package in your python enviroment with the command:
+
+```bash
+pip install -e .
+```
 
 ## Usage
 
@@ -66,3 +74,7 @@ See the [`examples.py`](examples.py) and [`Use_case.md`](Use_case.md) files for 
 ## Contributing
 
 Pull requests are welcome.
+
+## License
+
+GNU General Public License v3.0
