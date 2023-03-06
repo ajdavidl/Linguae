@@ -1,5 +1,5 @@
 feedparser
-gensim
+gensim>=4.1.0
 nltk
 pandas
 pyhyphen
