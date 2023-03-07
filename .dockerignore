@@ -1,0 +1,7 @@
+__pycache__
+docs
+linguae.egg-info
+.gitignore
+.python-version
+examples.pyc
+Use_case.md
