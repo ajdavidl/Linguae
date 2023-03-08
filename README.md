@@ -6,10 +6,6 @@ This is a hobby project to learn natural language processing and text mining too
 
 The available features are parsing, translation, word embeddings similarities, text generation, concordance, verb conjugation, fill mask, wiktionary queries, wikipedia queries, word frequency queries, conceptnet queries, news from Google, browse images and audio samples, text samples, word sentiment and stemming.
 
-## Status
-
-In construction!!
-
 ## Installation
 
 Create a python enviroment using a tool like conda, pyenv or similar. Then open a terminal and insert the commands.
