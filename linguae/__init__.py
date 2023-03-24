@@ -30,5 +30,6 @@ from .sentiment.sentiment import *
 from .sentenceVector.sentenceVector import *
 from .ner.ner import *
 from .stemming.stemming import stem
+from .chatbot.chatbot import chatbot
 
 __version__ = '0.1.0'
