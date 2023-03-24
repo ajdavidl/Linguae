@@ -8,3 +8,5 @@ docs/_static
 docs/_templates
 *.egg-info/
 *.db
+*.db-shm
+*.db-wal
