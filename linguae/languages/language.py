@@ -22,6 +22,7 @@ from ..image.image import *
 from ..audioSamples.audioSamples import forvo
 from ..sentenceVector.sentenceVector import *
 from ..ner.ner import *
+from ..chatbot.chatbot import chatbot
 
 
 class Language:
@@ -52,6 +53,7 @@ class Language:
             Sentence transformer model
         tatoebaTensorsEmbeddings : tensor encoded by sentence_transformers.SentenceTransformer.SentenceTransformer model.
     """
+
     def __init__(self, name, code2, code3):
         """
         Constructor of the class.
@@ -314,7 +316,7 @@ class Language:
             Trim the tatoeba list sentences
 
             Parameters
-            __________
+            ----------
             NrSentences : int
                 the new list's number of sentences
         """
@@ -709,7 +711,7 @@ class Language:
             number of sentences to be returned
 
         Returns 
-        _______
+        -------
         str
             String with the most similar sentences.
     """
@@ -766,15 +768,37 @@ class Language:
         Link entities from sentence to dbpedia knowledge base.
 
         Parameters
-        __________
+        ----------
 
         sentence : str
             Sentence to be queried.
 
         Returns
-        _______
+        -------
         str
             string with the entities extracted from the sentence.
 
         """
         return dbpediaEntityLink(self.code2, sentence)
+
+    def chatbot(self, train=True, feedback=False, readOnly=False):
+        """
+        Open a command line chatbot.
+
+        It uses the chatterbot package under the hood.
+
+        Press ctrl+c or ctrl+d to exit the function.
+
+        Parameters
+        ----------
+        train : bool (default=True)
+            If True, the chatbot trains with the available data.
+            If False, the chatbot doesn't train.
+        feedback : bool (defaul=False)
+            If True, the chatbot ask you if the answer is coherent.
+            If False, it doesn't get the feedback.
+        readOnly : bool (default=False)
+            If True, it doesn't save the user's answers.
+            If False, it saves the user's answer in a database for future use.
+        """
+        return(chatbot(self.code2, train=True, feedback=False, readOnly=False))
