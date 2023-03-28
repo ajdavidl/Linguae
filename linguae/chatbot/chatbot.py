@@ -47,9 +47,9 @@ def chatbot(language='en', train=True, feedback=False, readOnly=False):
         If False, the chatbot doesn't train.
     feedback : bool (defaul=False)
         If True, the chatbot ask you if the answer is coherent.
-        If False, it doesn´t get the feedback.
+        If False, it doesn't get the feedback.
     readOnly : bool (default=False)
-        If True, it doesn´t save the user's answers.
+        If True, it doesn't save the user's answers.
         If False, it saves the user's answer in a database for future use.
 
     Examples
