@@ -4,7 +4,7 @@ Python package to explore natural languages.
 
 This is a hobby project to learn natural language processing and text mining tools exploring natural languages.
 
-The available features are parsing, translation, word embeddings similarities, text generation, concordance, verb conjugation, fill mask, wiktionary queries, wikipedia queries, word frequency queries, conceptnet queries, news from Google, browse images and audio samples, text samples, word sentiment and stemming.
+The available features are parsing, translation, word embeddings similarities, text generation, concordance, verb conjugation, fill mask, wiktionary queries, wikipedia queries, word frequency queries, conceptnet queries, news from Google, browse images and audio samples, text samples, word sentiment, stemming and chatbot.
 
 ## Installation
 
