@@ -15,7 +15,9 @@ import re
 
 
 def __get_feedback():
-
+    """
+    Auxiliary funtion to get the user's feedback about the chatbot answers.
+    """
     text = input()
 
     if 'yes' in text.lower():
@@ -28,7 +30,51 @@ def __get_feedback():
 
 
 def chatbot(language='en', train=True, feedback=False, readOnly=False):
+    """
+    Open a command line chatbot.
 
+    It uses the chatterbot package under the hood.
+
+    Press ctrl+c or ctrl+d to exit the function.
+
+    Parameters
+    ----------
+    language : str
+        Language of the word.
+        example: 'en', 'pt', 'es', 'fr', 'de'
+    train : bool (default=True)
+        If True, the chatbot trains with the available data.
+        If False, the chatbot doesn't train.
+    feedback : bool (defaul=False)
+        If True, the chatbot ask you if the answer is coherent.
+        If False, it doesn´t get the feedback.
+    readOnly : bool (default=False)
+        If True, it doesn´t save the user's answers.
+        If False, it saves the user's answer in a database for future use.
+
+    Examples
+    --------
+    >>> linguae.chatbot("en")
+    List Trainer: [####################] 100%
+    Type something to begin...
+    You: Hi
+    Linguae:  Hi
+    You: 
+
+    >>> linguae.chatbot("pt")
+    List Trainer: [####################] 100%
+    Type something to begin...
+    You: Olá
+    Linguae:  Oi
+    You: 
+
+    >>> linguae.chatbot("es")
+    List Trainer: [####################] 100%
+    Type something to begin...
+    You: Hola
+    Linguae:  Hola
+    You: 
+    """
     bot = ChatBot(
         'Linguae',
         read_only=readOnly,
