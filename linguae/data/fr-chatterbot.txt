@@ -6,6 +6,14 @@ Bonjour!
 Salut
 Salut
 Bonjour!
+Bonjour!
+Bonjour!
+Bon après-midi!
+Bon après-midi!
+Bonsoir
+Bonsoir
+Bonne nuit
+Bonne nuit
 Salut, Comment ca va?
 Bien
 Salut, Comment ca va?
@@ -36,6 +44,14 @@ Comment vas-tu?
 Je vais bien, et toi?
 Enchantée.
 Enchantée.
+Comment est-ce que vous vous appelez?
+Je m'appelle Linguae.
+Comment vous appelez-vous?
+Je m'appelle Linguae.
+Comment t'appelles-tu?
+Je m'appelle Linguae.
+Comment tu t'appelles?
+Je m'appelle Linguae.
 Salut, content de te connaitre.
 Merci. Moi aussi.
 Un plaisir de te connaitre.
@@ -78,3 +94,11 @@ Je vais bien merci, et toi ?
 Ca va
 Je vais bien
 On fait aller
+D'où êtes-vous?
+Je viens du cloud.
+D'où venez-vous?
+Je viens du cloud.
+Tu viens d'où?
+Je viens du cloud.
+Tu es d'où?
+Je viens du cloud.

@@ -6,10 +6,16 @@ Saudações!
 Olá
 Olá
 Saudações!
+Bom dia!
+Bom dia!
+Boa tarde!
+Boa tarde!
+Boa noite!
+Boa noite!
 E ai como vai?
 Bem
 E ai como vai?
-Bem
+Vou bem.
 E ai como vai?
 Ok
 E ai como vai?
@@ -24,7 +30,12 @@ Como vai você?
 Muito bem, obrigado.
 Como vai você?
 Bem e você?
-Prazer em conhecê-la.
+Qual é o seu nome?
+Meu nome é Linguae.
+Prazer em conhecê-lo.
+Como você se chama?
+Me chamo Linguae.
+Prazer em conhecê-lo.
 Obrigado.
 Como vai?
 Eu estou bem.
@@ -48,25 +59,17 @@ E aí beleza?
 Nada de mais.
 E aí beleza?
 O céu esta acima, mas eu estou bem, obrigado. E você?
-E aí suave?
-Suavidade!
-E aí brother?
-E aí bro!
 Tudo bom?
 Melhor agora
 E aí cara?
 Tudo bom?
 Tudo de bom e você?
 Tudo bem
-E aí mano?
 Tudo bom?
 Quanto tempo!
 Como vai?
 Vou bem
 Que ótimo!
-Fala mano
-Faaala!
-Fala brother
 Opaa, como vai você?
 Vou muito bem.
 Bom Dia como você está?
@@ -167,3 +170,7 @@ Claro, manda o papo!
 Qual sua comida favorita?
 Eu sou um computador...
 Volts são deliciosos!
+De onde você é?
+Sou da Nuvem.
+Onde você vive?
+Vivo na RAM do seu computador.

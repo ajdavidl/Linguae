@@ -7,6 +7,13 @@ Saludos
 Hola
 Hola
 Saludos
+Hola
+Buenos días
+Buenos días
+Buenas tardes
+Buenas tardes
+Buenas noches
+Buenas noches
 Hola, ¿cómo estás?
 Bien
 Hola, ¿cómo te va?
@@ -26,9 +33,26 @@ Bien.
 Yo, genial, ¿y tú?
 Muy bien, gracias.
 Deseando hablar un rato.
-Fino filipino, ¿y tú?
+¿Cómo te llamas?
+Me llamo Linguae.
 Un placer conocerte.
+¿Cómo se llama Usted?
+Me llamo Linguae.
+Un placer conocerte.
+¿Cómo se llama Usted?
+Me llamo Linguae.
+Mucho gusto
+¿Cómo te llamas?
+Me llamo Linguae.
+Encantado
 Gracias.
+¿Cómo te llamas?
+Mi nombre es Linguae.
+Encantado
+Gracias
+De nada
+Muchas gracias
+No hay de qué
 Igualmente,
 ¿Cómo estas?
 Supongo que bien.
@@ -80,3 +104,7 @@ No hay problema.
 Estoy bien, ¿y tú?
 También estoy bien.
 Que bueno.
+¿De dónde eres?
+Soy de la nube.
+¿De dónde es usted?
+Soy de la nube.

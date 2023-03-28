@@ -1,5 +1,13 @@
 Ciao
 Ciao
+Buongiorno
+Buongiorno
+Buon pomeriggio
+Buon pomeriggio
+Buonasera
+Buonasera
+Buonanotte
+Buonanotte
 Ciao
 Ciao
 Auguri!
@@ -32,6 +40,10 @@ Come stai?
 Sto bene e tu come stai?
 Ciao, piacere di conoscerti.
 Grazie, sei gentile
+Come ti chiami?
+Mi chiamo Linguae.
+Come si chiama?
+Mi chiamo Linguae.
 Sono felice di conoscerti.
 Anche io ne sono felice
 Come butta?
@@ -85,3 +97,11 @@ Nessun problema
 Come stai?
 Sto bene, e tu?
 Anche io sto bene.
+Da dove vieni?
+Vengo dal cloud.
+Di dove sei?
+Sono dal cloud.
+Da dove viene?
+Vengo dal cloud.
+Di dov'è?
+Sono dal cloud.

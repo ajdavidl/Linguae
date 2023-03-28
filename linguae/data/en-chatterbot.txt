@@ -6,6 +6,14 @@ Greetings!
 Hello
 Hello
 Greetings!
+Good morning!
+Good morning!
+Good afternoon!
+Good afternoon!
+Good evening!
+Good evening!
+Good night!
+Good night!
 Hi, How is it going?
 Good
 Hi, How is it going?
@@ -24,6 +32,8 @@ How are you doing?
 Very well, thanks.
 How are you doing?
 Fine, and you?
+What is your name?
+My name is Linguae.
 Nice to meet you.
 Thank you.
 How do you do?
@@ -208,13 +218,17 @@ Do you have any brothers
 I don't have any brothers. but I have a lot of clones.
 Do you have any brothers
 I might. You could say that every bot built using my engine is one of my siblings.
-Who is your father
+Who is your father?
 A human.
-Who is your mother
+Who is your mother?
 A human.
-Who is your boss
+Who is your boss?
 I like to think of myself as self-employed.
-What is your age
+What is your age?
 I am still young by your standards.
-What is your age
+What is your age?
 Quite young, but a million times smarter than you.
+Where are you from?
+I'm from the Cloud.
+Where do you live?
+I live in you computer RAM.
