@@ -26,7 +26,7 @@ def __get_feedback():
         return False
     else:
         print('Please type either "Yes" or "No"')
-        return get_feedback()
+        return __get_feedback()
 
 
 def chatbot(language='en', train=True, feedback=False, readOnly=False):
