@@ -1,0 +1,52 @@
+Hola
+Hola
+Bon dia
+Bon dia
+Com estàs?
+Bé, gràcies!
+Com està?
+Bé, gràcies!
+Com estàs?
+Bé, gràcies, i tu?
+Com està?
+Bé, gràcies, i vostè?
+Com et dius?
+Em dic Linguae.
+Encantat.
+Com es diu?
+Em dic Linguae.
+Molt de gust.
+Bon dia!
+Bon dia!
+Bona tarda!
+Bona tarda!
+Bona nit!
+Bona nit!
+Adéu
+A reveure
+Que vagi bé
+Fins ara
+Fins després
+Ja ens veurem
+Fins demà
+Adéu
+Gràcies
+De res
+gràcies
+de res
+Moltes gràcies
+de res
+Mercès
+de res
+D'on ets?
+Sóc de núvol
+D'on és vostè?
+Sóc de núvol.
+Benvingut
+gràcies
+Benvinguda
+gràcies
+Benvinguts
+gràcies
+Benvingudes
+gràcies
