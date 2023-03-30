@@ -31,3 +31,20 @@ You: Hola
 Linguae:  Hola
 You: 
 ```
+
+There is also the function `dialoGPT` that uses a pre-trained model called [**dialoGPT**](https://huggingface.co/microsoft/DialoGPT-medium) to create a chatbot. This function has only two languages available: English and Spanish.
+
+Example:
+
+```python
+>>> linguae.dialoGPT("en")
+>> User: Hi
+DialoGPT: Hi!
+>> User:
+
+>>> linguae.dialoGPT("es")
+>> User: Hola
+DialoGPT: hola
+>> User: 
+
+```
