@@ -8,6 +8,7 @@ from ..fillMask.fillMask import fillMaskBert, loadBertEnglish
 from ..textGeneration.textGeneration import loadGPTEnglish, generateText
 from ..sentiment.sentiment import *
 from ..stemming.stemming import stem
+from ..chatbot.chatbot import dialoGPT
 
 
 class English(Language):
@@ -165,3 +166,16 @@ class English(Language):
             String with the root of the token.
         """
         return stem(self.code2, token)
+
+    def dialoGPT(self, numberOfLines=20):
+        """
+        Create a chatbot using the DialoGPT-medium model.
+
+        The code of the function was adapted from "https://huggingface.co/microsoft/DialoGPT-medium".
+
+        Parameters
+        ----------
+        numberOfLines : integer (default = 20)
+            The number of questions/sentences to send to the chatbot.
+        """
+        return dialoGPT(self.code2, numberOfLines=numberOfLines)

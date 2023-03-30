@@ -7,6 +7,7 @@ from ..dictionary.dictionaries import dlerae, wordReference
 from ..fillMask.fillMask import fillMaskBert, loadBertSpanish
 from ..textGeneration.textGeneration import loadGPTSpanish, generateText
 from ..sentiment.sentiment import *
+from ..chatbot.chatbot import dialoGPT
 
 
 class Spanish(Language):
@@ -119,3 +120,16 @@ class Spanish(Language):
         if self.Sentiment_ == None:
             self.Sentiment_ = loadSentiment(self.code2)
         return polarity(self.Sentiment_, word)
+
+    def dialoGPT(self, numberOfLines=20):
+        """
+        Create a chatbot using the DialoGPT-medium model.
+
+        The code of the function was adapted from "https://huggingface.co/microsoft/DialoGPT-medium".
+
+        Parameters
+        ----------
+        numberOfLines : integer (default = 20)
+            The number of questions/sentences to send to the chatbot.
+        """
+        return dialoGPT(self.code2, numberOfLines=numberOfLines)
