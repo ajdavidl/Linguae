@@ -3,6 +3,7 @@
 Main folder of the package. Here you can find the modules that exists inside the Linguae package:
 
 - [audioSamples](audioSamples);
+- [chatbot](chatbot);
 - [conceptnet](conceptnet);
 - [concordance](concordance);
 - [data](data);
