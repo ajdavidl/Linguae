@@ -8,6 +8,7 @@ Subpackages
    :maxdepth: 4
 
    linguae.audioSamples
+   linguae.chatbot
    linguae.conceptnet
    linguae.concordance
    linguae.data
