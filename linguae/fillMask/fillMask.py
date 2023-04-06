@@ -3,6 +3,7 @@ Module for the task of fill the mask on sentences
 """
 import re
 from transformers import pipeline
+from warnings import warn
 
 
 def loadBertMultilingual():
@@ -206,6 +207,8 @@ def loadBertPortuguese():
     --------
     >>> pipeline = linguae.loadBertPortuguese()
     """
+    warn("This function is deprecated, use linguae.loadBert('pt') instead.",
+         DeprecationWarning, stacklevel=2)
     return pipeline('fill-mask', model='neuralmind/bert-base-portuguese-cased')
 
 
@@ -235,6 +238,8 @@ def loadBertEnglish():
     --------
     >>> pipeline = linguae.loadBertEnglish()
     """
+    warn("This function is deprecated, use linguae.loadBert('en') instead.",
+         DeprecationWarning, stacklevel=2)
     return pipeline('fill-mask', model='bert-base-cased')
 
 
@@ -264,4 +269,48 @@ def loadBertSpanish():
     --------
     >>> pipeline = linguae.loadBertSpanish()
     """
+    warn("This function is deprecated, use linguae.loadBert('es') instead.",
+         DeprecationWarning, stacklevel=2)
     return pipeline('fill-mask', model='dccuchile/bert-base-spanish-wwm-cased')
+
+
+def loadBert(language):
+    """
+    Load Bert Language model.
+
+    It uses the pipeline from transformers package.
+
+    Parameters
+    ----------
+    language : str
+        Language to be loaded.
+        examples: 'en', 'pt', 'es', 'de'
+
+
+    Returns
+    -------
+    A Pipeline object from the transformers package with the model loaded.
+    <class 'transformers.pipelines.fill_mask.FillMaskPipeline'>
+
+    See Also
+    --------
+    linguae.loadBertMultilingual : Load multilingual Bert Language model.
+    linguae.fillMaskBert : Fill the mask tag on the masked Sentence.
+
+    Examples
+    --------
+    >>> pipeline = linguae.loadBert('en')
+
+    >>> pipeline = linguae.loadBert('pt')
+    """
+    if language == 'en':
+        return pipeline('fill-mask', model='bert-base-cased')
+    elif language == 'pt':
+        return pipeline('fill-mask', model='neuralmind/bert-base-portuguese-cased')
+    elif language == 'es':
+        return pipeline('fill-mask', model='dccuchile/bert-base-spanish-wwm-cased')
+    elif language == 'de':
+        return pipeline('fill-mask', model='bert-base-german-cased')
+    else:
+        Warning("Language "+language+" not available in Linguae.")
+        return None
