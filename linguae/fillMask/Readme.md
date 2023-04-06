@@ -63,7 +63,7 @@ Idiomas são muito fácil de aprender. - 0.028021013364195824
 Idiomas são muito difícil de aprender. - 0.01971607282757759
 ```
 
--English Bert
+- English Bert
 ```python
 >>> import linguae
 >>> pipeline = linguae.loadBertEnglish()
@@ -80,4 +80,11 @@ Idiomas são muito difícil de aprender. - 0.01971607282757759
 ```python
 >>> import linguae
 >>> pipeline = linguae.loadBertSpanish()
+```
+
+- Bert
+```python
+>>> import linguae
+>>> pipelineEng = linguae.loadBert('en')
+>>> pipelinePor = linguae.loadBert('pt')
 ```
