@@ -13,7 +13,7 @@ from ..dictionary.wiktionary import wiktionaryQuery
 from ..dictionary.dictionaries import linguee, glosbe, pons
 from ..conceptnet.conceptnet import conceptnetQuery
 from ..news.news import googleNews, emmNewsBrief
-from ..fillMask.fillMask import loadBertMultilingual, loadXLMRoberta, fillMaskBert, fillMaskXLMRoberta
+from ..fillMask.fillMask import loadBertMultilingual, loadXLMRoberta, fillMaskBert, fillMaskXLMRoberta, loadBert
 from ..textSamples.textSamples import textSamples
 from ..tatoeba.tatoeba import loadLanguageTatoeba, tatoebaSite
 from ..wikipediaQuery.wikipediaQuery import wikipediaQuery
@@ -23,6 +23,8 @@ from ..audioSamples.audioSamples import forvo
 from ..sentenceVector.sentenceVector import *
 from ..ner.ner import *
 from ..chatbot.chatbot import chatbot
+
+from warnings import warn
 
 
 class Language:
@@ -80,6 +82,7 @@ class Language:
         self.Bloom = None
         self.mGPT = None
         self.tatoeba = None
+        self.Bert = None
         self.BertMultilingual = None
         self.XLMRoberta = None
         self.hyphenatorModel = None
@@ -448,9 +451,11 @@ class Language:
         """
         return emmNewsBrief(self.code2, num)
 
-    def fillMaskmBert(self, maskedSentence):
+    def fillMaskBertMultilingual(self, maskedSentence):
         """
         Fill the mask tag on the masked Sentence.
+
+        It uses the Multilingual Bert.
 
         Parameters
         ----------
@@ -466,12 +471,61 @@ class Language:
             self.BertMultilingual = loadBertMultilingual()
         return fillMaskBert(self.BertMultilingual, maskedSentence)
 
+    def fillMaskmBert(self, maskedSentence):
+        """
+        Fill the mask tag on the masked Sentence.
+
+        It uses the Multilingual Bert.
+
+        Parameters
+        ----------
+        maskedSentence : str
+            The masked sentence to be used by the language model.
+
+        Returns
+        -------
+        str
+            String with the words that fill the mask and their score.
+        """
+        warn("This function is deprecated, use fillMaskBertMultilingual instead.",
+             DeprecationWarning, stacklevel=2)
+        if self.BertMultilingual == None:
+            self.BertMultilingual = loadBertMultilingual()
+        return fillMaskBert(self.BertMultilingual, maskedSentence)
+
+    def fillMaskBert(self, maskedSentence):
+        """
+        Fill the mask tag on the masked Sentence.
+
+        It uses the monolingual Bert Model.
+
+        Parameters
+        ----------
+        maskedSentence : str
+            The masked sentence to be used by the language model.
+
+        Returns
+        -------
+        str
+            String with the words that fill the mask and their score.
+        """
+        if self.Bert == None:
+            self.Bert = loadBert(self.code2)
+        return fillMaskBert(self.Bert, maskedSentence)
+
     def deleteBertMultilingual(self):
         """
-        Delete the Bert Multilingual Language model.
+        Delete the Multilingual Bert Language model.
         """
         del self.BertMultilingual
         self.BertMultilingual = None
+
+    def deleteBert(self):
+        """
+        Delete the Monolingual Bert Language model.
+        """
+        del self.Bert
+        self.Bert = None
 
     def fillMaskXLMRoberta(self, maskedSentence):
         """
