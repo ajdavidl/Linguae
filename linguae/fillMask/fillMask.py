@@ -312,5 +312,6 @@ def loadBert(language):
     elif language == 'de':
         return pipeline('fill-mask', model='bert-base-german-cased')
     else:
-        Warning("Language "+language+" not available in Linguae.")
+        raise Exception("Language "+language +
+                        " not available in linguae.loadBert function.")
         return None
