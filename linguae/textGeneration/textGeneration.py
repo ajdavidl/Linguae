@@ -2,6 +2,7 @@
 Module to generate text using language models.
 """
 from transformers import pipeline
+from warnings import warn
 
 
 def loadBloom():
@@ -88,6 +89,8 @@ def loadGPTPortuguese():
     --------
     >>> pipelineGPTPor = linguae.loadGPTPortuguese()
     """
+    warn("This function is deprecated, use linguae.loadGPT('pt') instead.",
+         DeprecationWarning, stacklevel=2)
     return pipeline("text-generation", model="pierreguillou/gpt2-small-portuguese")
 
 
@@ -117,6 +120,8 @@ def loadGPTEnglish():
     --------
     >>> pipelineGPTEng = linguae.loadGPTEnglish()
     """
+    warn("This function is deprecated, use linguae.loadGPT('en') instead.",
+         DeprecationWarning, stacklevel=2)
     return pipeline("text-generation", model="gpt2-medium")
 
 
@@ -146,7 +151,47 @@ def loadGPTSpanish():
     --------
     >>> pipelineGPTSpa = linguae.loadGPTSpanish()
     """
+    warn("This function is deprecated, use linguae.loadGPT('es') instead.",
+         DeprecationWarning, stacklevel=2)
     return pipeline("text-generation", model="datificate/gpt2-small-spanish")
+
+
+def loadGPT(language):
+    """
+    Load Spanish GPT2 Language model.
+
+    It uses the pipeline from transformers package.
+
+    Parameters
+    ----------
+    language : str
+        Language to be loaded.
+        examples: 'en', 'pt', 'es', 'de'
+
+    See Also
+    --------
+    loadBloom : Load Bloom Language model.
+    loadmGPT : Load mGPT Language model.
+    generateText : Generate text using a language model.
+
+    Examples
+    --------
+    >>> pipeline = linguae.loadGPT('en')
+
+    >>> pipeline = linguae.loadGPT('pt')
+    """
+    if language == 'en':
+        return pipeline("text-generation", model="gpt2-medium")
+    elif language == 'pt':
+        return pipeline("text-generation", model="pierreguillou/gpt2-small-portuguese")
+    elif language == 'es':
+        return pipeline("text-generation", model="datificate/gpt2-small-spanish")
+    elif language == 'de':
+        return pipeline("text-generation", model="dbmdz/german-gpt2")
+    else:
+        raise Exception("Language "+language +
+                        " not available in linguae.loadGPT function.")
+        return None
 
 
 def generateText(modelPipeline, textSeed, textSize=80, numberSentences=1):
@@ -187,7 +232,7 @@ def generateText(modelPipeline, textSeed, textSize=80, numberSentences=1):
 
     Examples
     --------
-    >>> pipelineGPTEng = linguae.loadGPTEnglish()
+    >>> pipelineGPTEng = linguae.loadGPT('en')
     >>> linguae.generateText(pipelineGPTEng, "Learning languages is very important to ")
 
     >>> pipelineBloom = linguae.loadBloom()

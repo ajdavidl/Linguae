@@ -37,7 +37,7 @@ Examples:
 >>> linguae.generateText(pipelinemGPT, "Aprender idiomas es muy importante para")
 ```
 
-* GPT:
+* English GPT:
 
 ```python
 >>> import linguae
@@ -60,3 +60,15 @@ Examples:
 >>> pipelineGPTSpa = linguae.loadGPTSpanish()
 >>> linguae.generateText(pipelineGPTSpa, "Aprender idiomas es muy importante para")
 ```
+
+* GPT:
+
+Available languages: English, Spanish, Portuguese and German.
+
+```python
+>>> import linguae
+>>> pipeline = linguae.loadGPT('en')
+>>> linguae.generateText(pipeline, "Learning languages is very important to ")
+```
+
+
