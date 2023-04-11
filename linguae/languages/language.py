@@ -6,7 +6,7 @@ from ..translation.translate import *
 from ..parsing.parse import loadSpacyModel, parseSpacy
 from ..wordFrequency.wordFrequency import wordFreq
 from ..wordVector.wordVector import *
-from ..textGeneration.textGeneration import loadBloom, loadmGPT, generateText
+from ..textGeneration.textGeneration import loadBloom, loadmGPT, generateText, loadGPT
 from ..concordance.concordance import concordance
 from ..verbConjugation.verbConjugation import *
 from ..dictionary.wiktionary import wiktionaryQuery
@@ -80,6 +80,7 @@ class Language:
         self.spaCyModel = None
         self.wordVectorModel = None
         self.Bloom = None
+        self.GPT = None
         self.mGPT = None
         self.tatoeba = None
         self.Bert = None
@@ -279,6 +280,29 @@ class Language:
         str
             String with the seed text and all text generated.
         """
+        warn("This function is deprecated, use generateTextGPTMultilingual instead.",
+             DeprecationWarning, stacklevel=2)
+        if self.mGPT == None:
+            self.mGPT = loadmGPT()
+        return generateText(self.mGPT, textSeed, textSize)
+
+    def generateTextGPTMultilingual(self, textSeed, textSize=80):
+        """
+        Generate texts using the multilingual GPT language model.
+
+        Parameters
+        ----------
+        textSeed : str
+            The text to be used by the language model as a seed.
+
+        textSize : integer
+            The number of words to be generated.
+
+        Returns
+        -------
+        str
+            String with the seed text and all text generated.
+        """
         if self.mGPT == None:
             self.mGPT = loadmGPT()
         return generateText(self.mGPT, textSeed, textSize)
@@ -289,6 +313,34 @@ class Language:
         """
         del self.mGPT
         self.mGPT = None
+
+    def generateTextGPT(self, textSeed, textSize=80):
+        """
+        Generate texts using the GPT language model.
+
+        Parameters
+        ----------
+        textSeed : str
+            The text to be used by the language model as a seed.
+
+        textSize : integer
+            The number of words to be generated.
+
+        Returns
+        -------
+        str
+            String with the seed text and all text generated.
+        """
+        if self.GPT == None:
+            self.GPT = loadGPT(self.code2)
+        return generateText(self.GPT, textSeed, textSize)
+
+    def deleteGPTModel(self):
+        """
+        Delete the GPT Language model.
+        """
+        del self.GPT
+        self.GPT = None
 
     def concordance(self, word):
         """
