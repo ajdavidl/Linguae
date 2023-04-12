@@ -8,7 +8,8 @@ Funtions:
 
 ```
 loadBloom : Load Bloom Language model.
-loadmGPT : Load mGPT Language model.
+loadGPT : Load GPT2 Language model.
+loadmGPT : Load multilingual GPT Language model.
 loadGPTPortuguese : Load Portuguese GPT2 Language model.
 loadGPTEnglish : Load English GPT2 Language model.
 loadGPTSpanish : Load Spanish GPT2 Language model. 
