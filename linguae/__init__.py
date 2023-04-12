@@ -32,4 +32,4 @@ from .ner.ner import *
 from .stemming.stemming import stem
 from .chatbot.chatbot import chatbot, dialoGPT
 
-__version__ = '0.2.0-alpha'
+__version__ = '0.2.0'
