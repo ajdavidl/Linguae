@@ -36,7 +36,7 @@ def loadBloom():
 
 def loadmGPT():
     """
-    Load mGPT Language model.
+    Load multilingual GPT Language model.
 
     It uses the pipeline from transformers package.
 
@@ -158,7 +158,7 @@ def loadGPTSpanish():
 
 def loadGPT(language):
     """
-    Load Spanish GPT2 Language model.
+    Load GPT2 Language model.
 
     It uses the pipeline from transformers package.
 
