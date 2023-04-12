@@ -9,6 +9,7 @@ Functions:
 ```
 linguae.loadBertMultilingual : Load multilingual Bert Language model.
 linguae.loadXLMRoberta : Load XLM-Roberta Language model.
+linguae.loadBert : Load Bert Language model.
 linguae.loadBertPortuguese : Load Portuguese Bert Language model.
 linguae.loadBertEnglish : Load English Bert Language model.
 linguae.loadBertSpanish : Load Spanish Bert Language model.
