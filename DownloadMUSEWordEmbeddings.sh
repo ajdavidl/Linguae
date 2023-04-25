@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd linguae/data/
+cd linguae/data/museWordVectors
 wget https://dl.fbaipublicfiles.com/arrival/vectors/wiki.multi.en.vec
 wget https://dl.fbaipublicfiles.com/arrival/vectors/wiki.multi.es.vec
 wget https://dl.fbaipublicfiles.com/arrival/vectors/wiki.multi.pt.vec

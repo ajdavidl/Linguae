@@ -7,7 +7,7 @@ try:
 except ImportError:
     import importlib_resources as pkg_resources
 
-from .. import data
+from ..data import museWordVectors
 
 
 def loadWordVectors(language):
@@ -41,7 +41,7 @@ def loadWordVectors(language):
 
     """
     vectorFile = 'wiki.multi.%s.vec' % language
-    template = pkg_resources.open_text(data, vectorFile)
+    template = pkg_resources.open_text(museWordVectors, vectorFile)
 
     return KeyedVectors.load_word2vec_format(template, binary=False)
 
