@@ -10,7 +10,7 @@ try:
 except ImportError:
     import importlib_resources as pkg_resources
 
-from .. import data
+from ..data import chatterbotFiles
 import re
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
