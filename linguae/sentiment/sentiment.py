@@ -9,7 +9,7 @@ try:
 except ImportError:
     import importlib_resources as pkg_resources
 
-from .. import data
+from ..data import sentimentFiles
 
 
 def loadSentiment(language):
@@ -46,7 +46,7 @@ def loadSentiment(language):
     else:
         print("Language not supported!")
         return None
-    file = pkg_resources.open_text(data, nameFile)
+    file = pkg_resources.open_text(sentimentFiles, nameFile)
 
     df = pd.read_xml(file, xpath='.//word')
     df.columns = ['word', 'polarity']
