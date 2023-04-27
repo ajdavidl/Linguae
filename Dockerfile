@@ -20,8 +20,8 @@ RUN ./DownloadTatoebaSentences.sh
 
 COPY . .
 
-RUN mv wiki.multi* ./linguae/data/
-RUN mv sentences.csv ./linguae/data/
+RUN mv wiki.multi* ./linguae/data/museWordVectors/
+RUN mv sentences.csv ./linguae/data/tatoebaFiles/
 
 # install linguae
 RUN pip install -e .

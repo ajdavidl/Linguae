@@ -27,7 +27,7 @@ Download the languages you wish and put the files in the `Linguae/linguae/data/m
 
 To use the concordance and the text sample functions you need the Tatoeba's sentences.
 Download the sentences in [Tatoeba](https://tatoeba.org/en/downloads) (clicking in the [sentences.tar.bz2](https://downloads.tatoeba.org/exports/sentences.tar.bz2) link). 
-Extract the csv file (`sentences.csv`) and save it in the `Linguae/linguae/data` directory. You can use the shell script [`DownloadTatoebaSentences.sh`](DownloadTatoebaSentences.sh) to download the sentences.
+Extract the csv file (`sentences.csv`) and save it in the `Linguae/linguae/data/tatoebaFiles` directory. You can use the shell script [`DownloadTatoebaSentences.sh`](DownloadTatoebaSentences.sh) to download the sentences.
 
 After the above steps, you already can use the `linguae` package inside the root folder. You can also install the package in your python enviroment with the command:
 

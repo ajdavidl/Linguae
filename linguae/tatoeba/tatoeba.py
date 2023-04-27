@@ -10,7 +10,7 @@ try:
 except ImportError:
     import importlib_resources as pkg_resources
 
-from .. import data
+from ..data import tatoebaFiles
 
 
 def loadTatoeba():
@@ -37,7 +37,7 @@ def loadTatoeba():
     >>> dfTatoeba = linguae.loadTatoeba()
     >>> dfTatoeba.info()
     """
-    tatoebaFile = pkg_resources.open_text(data, "sentences.csv")
+    tatoebaFile = pkg_resources.open_text(tatoebaFiles, "sentences.csv")
     return pd.read_csv(tatoebaFile, sep="\t", header=None, names=["index", "language", "sentence"])
 
 
@@ -70,7 +70,7 @@ def loadLanguageTatoeba(language):
     >>> porList = linguae.loadLanguageTatoeba('por')
     >>> print(porList[:5])
     """
-    tatoebaFile = pkg_resources.open_text(data, "sentences.csv")
+    tatoebaFile = pkg_resources.open_text(tatoebaFiles, "sentences.csv")
     tatoeba = pd.read_csv(tatoebaFile, sep="\t", header=None, names=[
                           "index", "language", "sentence"])
     return tatoeba[tatoeba.language == language]['sentence'].values.tolist()
