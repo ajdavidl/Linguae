@@ -10,6 +10,8 @@ def num2words(lang, num):
         return __num2wordsSpa(num)
     elif lang == 'pt':
         return __num2wordsPor(num)
+    elif lang == 'it':
+        return __num2wordsIta(num)
     else:
         return "Sorry, language not supported."
 
@@ -37,7 +39,7 @@ def __num2wordsEng(num):
         elif num < 1000000:
             return __num2wordsEng(num // 1000) + ' thousand ' + __num2wordsEng(num % 1000)
         else:
-            return 'number out of range'
+            return 'Number out of range.'
 
 
 def __num2wordsSpa(num):
@@ -81,7 +83,7 @@ def __num2wordsSpa(num):
                 else:
                     return __num2wordsSpa(num // 1000) + ' mil ' + __num2wordsSpa(num % 1000)
         else:
-            return 'Out of range.'
+            return 'Number out of range.'
 
 
 def __num2wordsPor(num):
@@ -125,4 +127,66 @@ def __num2wordsPor(num):
                 else:
                     return __num2wordsPor(num // 1000) + ' mil ' + __num2wordsPor(num % 1000)
         else:
-            return 'fora de alcance'
+            return 'Number out of range.'
+
+
+def __num2wordsIta(num):
+    ones = ['', 'uno', 'due', 'tre', 'quattro',
+            'cinque', 'sei', 'sette', 'otto', 'nove']
+    tens = ['', 'dieci', 'venti', 'trenta', 'quaranta',
+            'cinquanta', 'sessanta', 'settanta', 'ottanta', 'novanta']
+    teens = ['dieci', 'undici', 'dodici', 'tredici', 'quattordici',
+             'quindici', 'sedici', 'diciassette', 'diciotto', 'diciannove']
+    if num == 0:
+        return 'zero'
+    elif num < 0:
+        return 'meno ' + __num2wordsIta(abs(num))
+    elif num < 10:
+        return ones[num]
+    elif num < 20:
+        return teens[num - 10]
+    elif num < 100:
+        if num % 10 == 1 or num % 10 == 8:
+            return tens[num // 10][:-1] + ones[num % 10]
+        else:
+            return tens[num // 10] + ones[num % 10]
+    elif num < 1000:
+        if num % 100 == 0:
+            if num // 100 == 1:
+                return 'cento'
+            else:
+                return ones[num // 100] + 'cento'
+        elif num % 100 < 10:
+            if num // 100 == 1:
+                return 'cento' + ones[num % 100]
+            else:
+                return ones[num // 100] + 'cento' + ones[num % 100]
+        elif num % 100 < 20:
+            if num // 100 == 1:
+                return 'cento' + teens[num % 10]
+            else:
+                return ones[num // 100] + 'cento' + teens[num % 10]
+        else:
+            if num // 100 == 1:
+                if num % 10 == 1 or num % 10 == 8:
+                    return 'cento' + tens[(num % 100) // 10][:-1] + ones[num % 10]
+                else:
+                    return 'cento' + tens[(num % 100) // 10] + ones[num % 10]
+            else:
+                if num % 10 == 1 or num % 10 == 8:
+                    return ones[num // 100] + 'cento' + tens[(num % 100) // 10][:-1] + ones[num % 10]
+                else:
+                    return ones[num // 100] + 'cento' + tens[(num % 100) // 10] + ones[num % 10]
+    elif num < 1000000:
+        if num % 1000 == 0:
+            if num // 1000 == 1:
+                return 'mille'
+            else:
+                return __num2wordsIta(num // 1000) + 'mila'
+        else:
+            if num // 1000 == 1:
+                return 'mille' + __num2wordsIta(num % 1000)
+            else:
+                return __num2wordsIta(num // 1000) + 'mila' + __num2wordsIta(num % 1000)
+    else:
+        return 'Number out of range.'
