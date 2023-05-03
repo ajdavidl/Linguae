@@ -4,6 +4,30 @@ Module that convert integer numbers in its spelling.
 
 
 def num2words(lang, num):
+    """
+    This function takes a language and an integer between 0 and 999,999 and returns a string with the cardinal number spelling for that language.
+
+    Parameters
+    ----------
+    language : str
+        Language desired.
+        example: 'en', 'pt', 'es', 'it'
+    num : int 
+        The integer to be converted to words. Must be between 0 and 999,999.
+
+    Returns
+    -------
+    str: A string with the cardinal number spelling in the languages asked.
+
+    Examples
+    --------
+    >>> linguae.num2words('en', 123456)
+    'one hundred twenty three thousand four hundred fifty six'
+    >>> linguae.num2words('es', 123456)
+    'ciento veinte y tres mil cuatrocientos cincuenta y seis'
+    >>> linguae.num2words('pt',123456)
+    'cento e vinte e três mil quatrocentos e cinquenta e seis'
+    """
     if lang == 'en':
         return __num2wordsEng(num)
     elif lang == 'es':
@@ -17,6 +41,23 @@ def num2words(lang, num):
 
 
 def __num2wordsEng(num):
+    """
+    This function takes an integer between 0 and 999,999 and returns a string with the cardinal number spelling in English.
+
+    Parameters
+    ----------
+    num : int 
+        The integer to be converted to words. Must be between 0 and 999,999.
+
+    Returns
+    -------
+    str: A string with the cardinal number spelling in English.
+
+    Examples
+    --------
+    >>> linguae.numspell.numspell.__num2wordsEng(123456)
+    'one hundred twenty three thousand four hundred fifty six'
+    """
     ones = ['', 'one', 'two', 'three', 'four',
             'five', 'six', 'seven', 'eight', 'nine']
     tens = ['', '', 'twenty', 'thirty', 'forty',
@@ -43,6 +84,23 @@ def __num2wordsEng(num):
 
 
 def __num2wordsSpa(num):
+    """
+    This function takes an integer between 0 and 999,999 and returns a string with the cardinal number spelling in Spanish.
+
+    Parameters
+    ----------
+    num : int 
+        The integer to be converted to words. Must be between 0 and 999,999.
+
+    Returns
+    -------
+    str: A string with the cardinal number spelling in Spanish.
+
+    Examples
+    --------
+    >>> linguae.numspell.numspell.__num2wordsSpa(123456)
+    'ciento veinte y tres mil cuatrocientos cincuenta y seis'
+    """
     ones = ['', 'uno', 'dos', 'tres', 'cuatro',
             'cinco', 'seis', 'siete', 'ocho', 'nueve']
     tens = ['', '', 'veinte', 'treinta', 'cuarenta',
@@ -87,6 +145,23 @@ def __num2wordsSpa(num):
 
 
 def __num2wordsPor(num):
+    """
+    This function takes an integer between 0 and 999,999 and returns a string with the cardinal number spelling in Portuguese.
+
+    Parameters
+    ----------
+    num : int 
+        The integer to be converted to words. Must be between 0 and 999,999.
+
+    Returns
+    -------
+    str: A string with the cardinal number spelling in Portuguese.
+
+    Examples
+    --------
+    >>> linguae.numspell.numspell.__num2wordsPor(123456)
+    'cento e vinte e três mil quatrocentos e cinquenta e seis'
+    """
     ones = ['', 'um', 'dois', 'três', 'quatro',
             'cinco', 'seis', 'sete', 'oito', 'nove']
     tens = ['', '', 'vinte', 'trinta', 'quarenta', 'cinquenta',
@@ -131,6 +206,23 @@ def __num2wordsPor(num):
 
 
 def __num2wordsIta(num):
+    """
+    This function takes an integer between 0 and 999,999 and returns a string with the cardinal number spelling in Italian.
+
+    Parameters
+    ----------
+    num : int 
+        The integer to be converted to words. Must be between 0 and 999,999.
+
+    Returns
+    -------
+    str: A string with the cardinal number spelling in Italian.
+
+    Examples
+    --------
+    >>> linguae.numspell.numspell.__num2wordsIta(123456)
+    'centoventitremilaquattrocentocinquantasei'
+    """
     ones = ['', 'uno', 'due', 'tre', 'quattro',
             'cinque', 'sei', 'sette', 'otto', 'nove']
     tens = ['', 'dieci', 'venti', 'trenta', 'quaranta',
