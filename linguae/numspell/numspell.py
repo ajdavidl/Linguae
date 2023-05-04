@@ -36,6 +36,8 @@ def num2words(lang, num):
         return __num2wordsPor(num)
     elif lang == 'it':
         return __num2wordsIta(num)
+    elif lang == 'fr':
+        return __num2wordsFre(num)
     else:
         return "Sorry, language not supported."
 
@@ -285,3 +287,80 @@ def __num2wordsIta(num):
                 return __num2wordsIta(num // 1000) + 'mila' + __num2wordsIta(num % 1000)
     else:
         return 'Number out of range.'
+
+
+def __num2wordsFre(num):
+    """
+    This function takes an integer between 0 and 999,999 and returns a string with the cardinal number spelling in French.
+
+    Parameters
+    ----------
+    num : int 
+        The integer to be converted to words. Must be between 0 and 999,999.
+
+    Returns
+    -------
+    str: A string with the cardinal number spelling in French.
+
+    Examples
+    --------
+    >>> linguae.numspell.numspell.__num2wordsFre('fr', 123456)
+    'cent vingt-trois mille quatre cent cinquante-six'
+    """
+    units = ['', 'un', 'deux', 'trois', 'quatre',
+             'cinq', 'six', 'sept', 'huit', 'neuf']
+    tens = ['', 'dix', 'vingt', 'trente', 'quarante', 'cinquante',
+            'soixante', 'soixante-', 'quatre-vingts', 'quatre-vingt-']
+    exceptions = ['dix', 'onze', 'douze',
+                  'treize', 'quatorze', 'quinze', 'seize']
+    if num == 0:
+        return 'zéro'
+    elif num < 0:
+        return 'moins ' + __num2wordsFre(abs(num))
+    elif num < 10:
+        return units[num]
+    elif num < 17:
+        return exceptions[num - 10]
+    elif num < 20:
+        return 'dix-' + units[num - 10]
+    elif num < 100:
+        if num % 10 == 0 and num != 70 and num != 90:
+            return tens[num // 10]
+        if num % 10 == 1 and num < 70:
+            return tens[num // 10] + '-et-' + units[num % 10]
+        elif num >= 70 and num < 77:
+            if num == 71:
+                return tens[7] + 'et-' + exceptions[num - 70]
+            else:
+                return tens[7] + exceptions[num - 70]
+        elif num >= 77 and num < 80:
+            return tens[7] + 'dix-' + units[num - 70]
+        elif num > 80 and num < 90:
+            return tens[8][:-1] + '-' + units[num - 80]
+        elif num >= 90 and num < 97:
+            return tens[9] + exceptions[num - 90]
+        elif num >= 97:
+            return tens[9] + 'dix-' + units[num - 90]
+        else:
+            return tens[num // 10] + '-' + units[num % 10]
+    elif num < 1000:
+        if num % 100 == 0:
+            if num // 100 == 1:
+                return 'cent'
+            else:
+                return units[num // 100] + ' cents'
+        elif num < 200:
+            return 'cent ' + __num2wordsFre(num % 100)
+        else:
+            return units[num // 100] + ' cent ' + __num2wordsFre(num % 100)
+    elif num < 1000000:
+        if num == 1000:
+            return 'mille'
+        elif num % 1000 == 0:
+            return __num2wordsFre(num // 1000) + ' mille'
+        elif num < 2000:
+            return 'mille ' + __num2wordsFre(num % 1000)
+        else:
+            return __num2wordsFre(num // 1000) + ' mille ' + __num2wordsFre(num % 1000)
+    else:
+        return 'Number out of range'
