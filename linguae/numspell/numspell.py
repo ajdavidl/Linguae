@@ -107,6 +107,9 @@ def __num2wordsSpa(num):
             'cincuenta', 'sesenta', 'setenta', 'ochenta', 'noventa']
     teens = ['diez', 'once', 'doce', 'trece', 'catorce', 'quince',
              'dieciséis', 'diecisiete', 'dieciocho', 'diecinueve']
+    hundreds = ['', 'ciento', 'doscientos', 'trescientos', 'cuatrocientos',
+                'quinientos', 'seiscientos', 'setecientos', 'ochocientos',
+                'novecientos']
     if num == 0:
         return 'cero'
     elif num < 0:
@@ -123,12 +126,12 @@ def __num2wordsSpa(num):
                 if num // 100 == 1:
                     return 'cien'
                 else:
-                    return ones[num // 100] + 'cientos'
+                    return hundreds[num // 100]
             else:
                 if num // 100 == 1:
                     return 'ciento ' + __num2wordsSpa(num % 100)
                 else:
-                    return ones[num // 100] + 'cientos ' + __num2wordsSpa(num % 100)
+                    return hundreds[num // 100] + ' ' + __num2wordsSpa(num % 100)
         elif num < 1000000:
             if num % 1000 == 0:
                 if num // 1000 == 1:
