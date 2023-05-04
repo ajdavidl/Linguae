@@ -1,5 +1,5 @@
 """
-Module that convert integer numbers in its spelling.
+Module that converts integer numbers in its spelling.
 """
 
 
