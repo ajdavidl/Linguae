@@ -13,6 +13,7 @@ Main folder of the package. Here you can find the modules that exists inside the
 - [languages](languages);
 - [ner](ner);
 - [news](news);
+- [numspell](numspell);
 - [parsing](parsing);
 - [sentenceVector](sentenceVector);
 - [sentiment](sentiment);
