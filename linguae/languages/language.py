@@ -23,6 +23,7 @@ from ..audioSamples.audioSamples import forvo
 from ..sentenceVector.sentenceVector import *
 from ..ner.ner import *
 from ..chatbot.chatbot import chatbot
+from ..numspell.numspell import num2words
 
 from warnings import warn
 
@@ -908,3 +909,18 @@ class Language:
             If False, it saves the user's answer in a database for future use.
         """
         return(chatbot(self.code2, train=True, feedback=False, readOnly=False))
+
+    def num2words(self, number):
+        """
+        This function takes a language and an integer between 0 and 999,999 and returns a string with the cardinal number spelling for that language.
+
+        Parameters
+        ----------
+        number : int 
+            The integer to be converted to words. Must be between 0 and 999,999.
+
+        Returns
+        -------
+        str: A string with the cardinal number spelling in the languages asked.
+        """
+        return num2words(self.code2, num=number)
