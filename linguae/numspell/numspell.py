@@ -11,7 +11,7 @@ def num2words(lang, num):
     ----------
     language : str
         Language desired.
-        example: 'en', 'pt', 'es', 'it'
+        example: 'en', 'pt', 'es', 'it', 'fr', 'de'
     num : int 
         The integer to be converted to words. Must be between 0 and 999,999.
 
@@ -38,6 +38,8 @@ def num2words(lang, num):
         return __num2wordsIta(num)
     elif lang == 'fr':
         return __num2wordsFre(num)
+    elif lang == 'de':
+        return __num2wordsDeu(num)
     else:
         return "Sorry, language not supported."
 
@@ -362,5 +364,77 @@ def __num2wordsFre(num):
             return 'mille ' + __num2wordsFre(num % 1000)
         else:
             return __num2wordsFre(num // 1000) + ' mille ' + __num2wordsFre(num % 1000)
+    else:
+        return 'Number out of range'
+
+
+def __num2wordsDeu(num):
+    """
+    This function takes an integer between 0 and 999,999 and returns a string with the cardinal number spelling in German.
+
+    Parameters
+    ----------
+    num : int 
+        The integer to be converted to words. Must be between 0 and 999,999.
+
+    Returns
+    -------
+    str: A string with the cardinal number spelling in German.
+
+    Examples
+    --------
+    >>> linguae.numspell.numspell.__num2wordsDeu('fr', 123456)
+    'einhundertdreiundzwanzigtausendvierhundertsechsundfünfzig'
+    """
+    units = ['', 'eins', 'zwei', 'drei', 'vier',
+             'fünf', 'sechs', 'sieben', 'acht', 'neun', 'zehn']
+    tens = ['', 'zehn', 'zwanzig', 'dreißig', 'vierzig',
+            'fünfzig', 'sechzig', 'siebzig', 'achtzig', 'neunzig']
+    if num == 0:
+        return 'null'
+    elif num < 0:
+        return 'minus ' + __num2wordsDeu(abs(num))
+    elif num <= 10:
+        return units[num]
+    elif num < 20:
+        if num == 11:
+            return 'elf'
+        elif num == 12:
+            return 'zwölf'
+        elif num == 13:
+            return 'dreizehn'
+        elif num == 14:
+            return 'vierzehn'
+        elif num == 15:
+            return 'fünfzehn'
+        elif num == 16:
+            return 'sechzehn'
+        elif num == 17:
+            return 'siebzehn'
+        elif num == 18:
+            return 'achtzehn'
+        elif num == 19:
+            return 'neunzehn'
+    elif num < 100:
+        if num % 10 == 0:
+            return tens[num // 10]
+        else:
+            if num % 10 == 1:
+                return units[num % 10][:-1] + 'und' + __num2wordsDeu(num // 10 * 10)
+            else:
+                return units[num % 10] + 'und' + __num2wordsDeu(num // 10 * 10)
+    elif num < 1000:
+        if num % 100 == 0:
+            return units[num // 100] + 'hundert'
+        else:
+            if num // 100 == 1:
+                return units[num // 100][:-1] + 'hundert' + __num2wordsDeu(num % 100)
+            else:
+                return units[num // 100] + 'hundert' + __num2wordsDeu(num % 100)
+    elif num < 1000000:
+        if num % 1000 == 0:
+            return __num2wordsDeu(num // 1000) + 'tausend'
+        else:
+            return __num2wordsDeu(num // 1000) + 'tausend' + __num2wordsDeu(num % 1000)
     else:
         return 'Number out of range'
