@@ -40,6 +40,8 @@ def num2words(lang, num):
         return __num2wordsFre(num)
     elif lang == 'de':
         return __num2wordsDeu(num)
+    elif lang == 'ro':
+        return __num2wordsRon(num)
     else:
         return "Sorry, language not supported."
 
@@ -306,7 +308,7 @@ def __num2wordsFre(num):
 
     Examples
     --------
-    >>> linguae.numspell.numspell.__num2wordsFre('fr', 123456)
+    >>> linguae.numspell.numspell.__num2wordsFre(123456)
     'cent vingt-trois mille quatre cent cinquante-six'
     """
     units = ['', 'un', 'deux', 'trois', 'quatre',
@@ -383,7 +385,7 @@ def __num2wordsDeu(num):
 
     Examples
     --------
-    >>> linguae.numspell.numspell.__num2wordsDeu('fr', 123456)
+    >>> linguae.numspell.numspell.__num2wordsDeu(123456)
     'einhundertdreiundzwanzigtausendvierhundertsechsundfünfzig'
     """
     units = ['', 'eins', 'zwei', 'drei', 'vier',
@@ -438,3 +440,85 @@ def __num2wordsDeu(num):
             return __num2wordsDeu(num // 1000) + 'tausend' + __num2wordsDeu(num % 1000)
     else:
         return 'Number out of range'
+
+
+def __num2wordsRon(number):
+    """
+    This function takes an integer between 0 and 999,999 and returns a string with the cardinal number spelling in Romanian.
+
+    Parameters
+    ----------
+    num : int 
+        The integer to be converted to words. Must be between 0 and 999,999,999.
+
+    Returns
+    -------
+    str: A string with the cardinal number spelling in Romanian.
+
+    Examples
+    --------
+    >>> linguae.numspell.numspell.__num2wordsRon(123456)
+    'o sută douăzeci și trei mie patru sute cincizeci și șase'
+    """
+    # Define the Romanian words for the numbers
+    units = ['', 'unu', 'doi', 'trei', 'patru',
+             'cinci', 'șase', 'șapte', 'opt', 'nouă']
+    tens = ['', 'zece', 'douăzeci', 'treizeci', 'patruzeci',
+            'cincizeci', 'șaizeci', 'șaptezeci', 'optzeci', 'nouăzeci']
+    hundreds = ['', 'o sută', 'două sute', 'trei sute', 'patru sute',
+                'cinci sute', 'șase sute', 'șapte sute', 'opt sute', 'nouă sute']
+    thousands = ['', 'o mie', 'două mii', 'trei mii', 'patru mii',
+                 'cinci mii', 'șase mii', 'șapte mii', 'opt mii', 'nouă mii']
+
+    # Handle the case when number is 0
+    if number == 0:
+        return 'zero'
+    elif number < 0:
+        return 'minus ' + __num2wordsRon(abs(number))
+
+    if number > 1000000000:
+        return 'Number out of range'
+    # Split the number into groups of three digits
+    groups = []
+    while number > 0:
+        groups.append(number % 1000)
+        number //= 1000
+
+    # Define the Romanian names for the powers of 1000
+    powers = ['', 'mie', 'milioane']
+
+    # Spell out each group of three digits and concatenate them with the corresponding power of 1000
+    result = []
+    for i in range(len(groups)):
+        group = groups[i]
+        if group == 0:
+            continue
+        if i > 0:
+            result.append(powers[i])
+        if group < 10:
+            result.append(units[group])
+        elif group < 20:
+            result.append('zece' if group ==
+                          10 else units[group % 10] + 'sprezece')
+        elif group < 100:
+            result.append(units[group % 10])
+            if group % 10 != 0:
+                result.append('și')
+            result.append(tens[group // 10])
+        else:
+            if group % 100 != 0:
+                if group % 100 < 10:
+                    result.append(units[group % 100])
+                elif group % 100 < 20:
+                    result.append('zece' if group % 10 ==
+                                  0 else units[group % 10] + 'sprezece')
+                else:
+                    result.append(units[group % 10])
+                    if group % 10 != 0:
+                        result.append('și')
+                    result.append(tens[(group % 100) // 10])
+
+            result.append(hundreds[group // 100])
+
+    # Reverse the list and join the elements with spaces
+    return ' '.join(result[::-1])
