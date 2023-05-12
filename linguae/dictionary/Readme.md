@@ -15,6 +15,7 @@ Functions:
 - linguae.dlerae : Open browser and query the Diccionario de la lengua española.
 - linguae.wordReference : Open browser and query the WordReference dictionary.
 - linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
+- linguae.wikwik : Open browser and query the Wikwik dictionary.
 ```
 
 Examples:
@@ -88,6 +89,15 @@ https://dle.rae.es/idioma?m=form
 https://www.wordreference.com/definition/language
 >>> linguae.wordReference('es','idioma')
 https://www.wordreference.com/definicion/idioma
+```
+
+- Wikwik
+```python
+>>> import linguae
+>>> linguae.wikwik('en','language')
+https://en.wikwik.org/language
+>>> linguae.wikwik('es','idioma')
+https://es.wikwik.org/idioma
 ```
 
 - Wiktionary
