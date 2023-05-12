@@ -10,7 +10,7 @@ from ..textGeneration.textGeneration import loadBloom, loadmGPT, generateText, l
 from ..concordance.concordance import concordance
 from ..verbConjugation.verbConjugation import *
 from ..dictionary.wiktionary import wiktionaryQuery
-from ..dictionary.dictionaries import linguee, glosbe, pons
+from ..dictionary.dictionaries import linguee, glosbe, pons, wikwik
 from ..conceptnet.conceptnet import conceptnetQuery
 from ..news.news import googleNews, emmNewsBrief
 from ..fillMask.fillMask import loadBertMultilingual, loadXLMRoberta, fillMaskBert, fillMaskXLMRoberta, loadBert
@@ -788,6 +788,17 @@ class Language:
 
         """
         return pons(from_language, self.name.lower(), word)
+
+    def wikwik(self, word):
+        """
+        Open browser and query wikwik site.
+
+        Parameters
+        ----------
+        word : str
+            Word to be queried
+        """
+        return wikwik(self.code2, word)
 
     def tatoebaSite(self, text, languageTo=None):
         """
