@@ -42,6 +42,8 @@ def num2words(lang, num):
         return __num2wordsDeu(num)
     elif lang == 'ro':
         return __num2wordsRon(num)
+    elif lang == 'ca':
+        return __num2wordsCat(num)
     else:
         return "Sorry, language not supported."
 
@@ -522,3 +524,82 @@ def __num2wordsRon(number):
 
     # Reverse the list and join the elements with spaces
     return ' '.join(result[::-1])
+
+
+def __num2wordsCat(number):
+    """
+    This function takes an integer between 0 and 999,999 and returns a string with the cardinal number spelling in Catalan.
+
+    Parameters
+    ----------
+    num : int 
+        The integer to be converted to words. Must be between 0 and 999,999,999.
+
+    Returns
+    -------
+    str: A string with the cardinal number spelling in catalan.
+
+    Examples
+    --------
+    >>> linguae.numspell.numspell.__num2wordsCat(123456)
+    'cent vint-i-tres mil quatre-cents cinquanta-i-sis'
+    """
+    # Define the Catalan words for the numbers
+    units = ['', 'un', 'dos', 'tres', 'quatre',
+             'cinc', 'sis', 'set', 'vuit', 'nou']
+    tens = ['', 'deu', 'vint', 'trenta', 'quaranta', 'cinquanta',
+            'seixanta', 'setanta', 'vuitanta', 'noranta']
+    teens = ['deu', 'onze', 'dotze', 'tretze', 'catorze', 'quinze',
+             'setze', 'disset', 'divuit', 'dinou']
+    hundreds = ['', 'cent', 'dos-cents', 'tres-cents', 'quatre-cents',
+                'cinc-cents', 'sis-cents', 'set-cents', 'vuit-cents', 'nou-cents']
+    thousands = ['', 'mil', 'dos mil', 'tres mil', 'quatre mil',
+                 'cinc mil', 'sis mil', 'set mil', 'vuit mil', 'nou mil']
+
+    # Handle the case when number is 0
+    if number == 0:
+        return 'zero'
+    elif number < 0:
+        return 'menys ' + __num2wordsCat(abs(number))
+
+    if number > 1000000000:
+        return 'Number out of range'
+    # Split the number into groups of three digits
+    groups = []
+    while number > 0:
+        groups.append(number % 1000)
+        number //= 1000
+
+    # Define the function to spell out a group of three digits
+    def spell_group(group):
+        if group == 0:
+            return ''
+        elif group < 10:
+            return units[group]
+        elif group < 20:
+            return teens[group % 10]
+        elif group < 100:
+            return tens[group // 10] + ('' if group % 10 == 0 else '-i-' + units[group % 10])
+        else:
+            return hundreds[group // 100] + ('' if group % 100 == 0 else ' ' + spell_group(group % 100))
+
+    # Spell out each group of three digits and combine them with the appropriate thousand separator
+    result = []
+    for i, group in enumerate(groups):
+        if group > 0:
+            if i == 2:  # millions
+                if group == 1:
+                    result.append('millió')
+                else:
+                    result.append('milions')
+            if i == 0:
+                result.append(spell_group(group))
+            elif i == 1:
+                result.append(spell_group(group) +
+                              (' ' + thousands[i]))
+            else:
+                result.append(spell_group(group) + ' ')
+    result.reverse()
+
+    # Combine the groups into a single string
+    return ' '.join(result)
