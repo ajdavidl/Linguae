@@ -11,7 +11,7 @@ from ..concordance.concordance import concordance
 from ..verbConjugation.verbConjugation import *
 from ..dictionary.wiktionary import wiktionaryQuery
 from ..dictionary.dictionaries import linguee, glosbe, pons, wikwik
-from ..conceptnet.conceptnet import conceptnetQuery
+from ..conceptnet.conceptnet import *
 from ..news.news import googleNews, emmNewsBrief
 from ..fillMask.fillMask import loadBertMultilingual, loadXLMRoberta, fillMaskBert, fillMaskXLMRoberta, loadBert
 from ..textSamples.textSamples import textSamples
@@ -471,6 +471,17 @@ class Language:
             String with the concepts in the knowledge graph.
         """
         return conceptnetQuery(self.code2, word, num)
+
+    def conceptnetSite(self, word):
+        """
+        Open the Conceptnet Site.
+
+        Parameters
+        ----------
+        word : str
+            word to be queried.
+        """
+        return conceptnetSite(self.code2, word)
 
     def googleNews(self, num=None):
         """
