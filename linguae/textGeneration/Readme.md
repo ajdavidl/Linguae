@@ -4,7 +4,7 @@ Module to generate text using language models.
 
 It uses the [pipeline class](https://huggingface.co/docs/transformers/main_classes/pipelines) from [transformers](https://github.com/huggingface/transformers) package under the hood.
 
-Funtions:
+Functions:
 
 ```
 loadBloom : Load Bloom Language model.
