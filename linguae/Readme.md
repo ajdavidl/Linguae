@@ -22,6 +22,7 @@ Main folder of the package. Here you can find the modules that exists inside the
 - [tatoeba](tatoeba);
 - [textGeneration](textGeneration);
 - [textSamples](textSamples);
+- [text2speech](text2speech);
 - [translation](translation);
 - [verbConjugation](verbConjugation);
 - [wikipediaQuery](wikipediaQuery);
