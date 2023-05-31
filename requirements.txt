@@ -1,7 +1,9 @@
 feedparser
 gensim>=4.1.0
+gTTS
 nltk
 pandas
+playsound
 pyhyphen
 sentence_transformers
 smart-open>=5.0.0,<6.0.0
