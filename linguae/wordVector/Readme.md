@@ -2,7 +2,7 @@
 
 Module to explore word similarity using pre-trained word embeddings. It uses the [gensim](https://radimrehurek.com/gensim/) package under the hood.
 
-Funtions:
+Functions:
 
 ```
 linguae.loadWordVectors : Load word vectors from the desired language.
