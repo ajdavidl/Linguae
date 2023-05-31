@@ -22,6 +22,7 @@ def forvo(language, word):
     --------
     linguae.googleImages : Open browser and query Google Images.
     linguae.duckduckGoImages : Open browser and query Duckduckgo images.
+    linguae.tts : Convert text to speech.
 
     Examples
     --------
