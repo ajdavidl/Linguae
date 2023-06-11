@@ -14,6 +14,7 @@ pip install sphinx-markdown-builder
 ### Update `rst` files:
 
 ```bash
+cd docs/
 sphinx-apidoc -o . ..
 ```
 
