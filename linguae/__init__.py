@@ -34,4 +34,4 @@ from .chatbot.chatbot import chatbot, dialoGPT
 from .numspell.numspell import num2words
 from .text2speech.text2speech import tts
 
-__version__ = '0.4.0-alpha'
+__version__ = '0.4.0'
