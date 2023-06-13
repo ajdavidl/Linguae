@@ -5,6 +5,7 @@ nltk
 pandas
 playsound
 pyhyphen
+pyspellchecker
 sentence_transformers
 smart-open>=5.0.0,<6.0.0
 textblob
