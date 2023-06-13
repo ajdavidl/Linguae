@@ -17,6 +17,7 @@ Main folder of the package. Here you can find the modules that exists inside the
 - [parsing](parsing);
 - [sentenceVector](sentenceVector);
 - [sentiment](sentiment);
+- [spellChecker](spellChecker);
 - [stemming](stemming);
 - [syllables](syllables);
 - [tatoeba](tatoeba);
