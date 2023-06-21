@@ -34,5 +34,6 @@ from .chatbot.chatbot import chatbot, dialoGPT
 from .numspell.numspell import num2words
 from .text2speech.text2speech import tts
 from .spellChecker.spellChecker import spellchecker
+from .report.report import *
 
 __version__ = '0.5.0-alpha'
