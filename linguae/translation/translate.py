@@ -43,7 +43,12 @@ def translate(from_language, to_language, text):
     >>> linguae.translate('pt','en','Aprender idiomas é divertido.')
     'Learning languages is fun.'
     """
-    blob = TextBlob(text).translate(to=to_language, from_lang=from_language)
+    try:
+        blob = TextBlob(text).translate(
+            to=to_language, from_lang=from_language)
+    except:
+        print("Error!")
+        return "Error in textblob translation!"
     return str(blob)
 
 
