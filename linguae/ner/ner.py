@@ -71,7 +71,11 @@ def dbpediaEntityLink(language, sentence):
     linguae.nerSpacy : Get entities from text using spaCy model.    
     """
     nlp = spacy_dbpedia_spotlight.create(language)
-    doc = nlp(sentence)
+    try:
+        doc = nlp(sentence)
+    except:
+        print("Error!")
+        return "Error in dbpedia-spotlight api."
     listEntities = [(ent.text, ent.kb_id_, ent._.dbpedia_raw_result['@similarityScore'])
                     for ent in doc.ents]
     textOutput = ""
