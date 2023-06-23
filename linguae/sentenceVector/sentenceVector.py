@@ -65,6 +65,9 @@ def encodeSentence(model, sentences):
     >>> sentTransfModel = linguae.loadSentenceTransformerModel()
     >>> linguae.encodeSentence(sentTransfModel, ['Learn languages is good.', 'I like to learn languages.'])
     """
+    if len(sentences) == 0:
+        print("Error while encoding sentences. The list of sentences is empty.")
+        return
     return model.encode(sentences)
 
 

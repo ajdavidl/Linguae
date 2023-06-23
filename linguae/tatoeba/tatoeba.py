@@ -73,6 +73,10 @@ def loadLanguageTatoeba(language):
     tatoebaFile = pkg_resources.open_text(tatoebaFiles, "sentences.csv")
     tatoeba = pd.read_csv(tatoebaFile, sep="\t", header=None, names=[
                           "index", "language", "sentence"])
+    if language not in tatoeba.language.tolist():
+        print(
+            f"Error while filtering Tatoeba's data: Language code '{language}' isn't in Tatoeba data.")
+        return
     return tatoeba[tatoeba.language == language]['sentence'].values.tolist()
 
 
