@@ -17,7 +17,7 @@ class French(Language):
     """
 
     def __init__(self):
-        Language.__init__(self, name='French', code2='fr', code3='fre')
+        Language.__init__(self, name='French', code2='fr', code3='fra')
         self.Sentiment_ = None
 
     def sentiment(self, word):
