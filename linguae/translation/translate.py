@@ -46,9 +46,9 @@ def translate(from_language, to_language, text):
     try:
         blob = TextBlob(text).translate(
             to=to_language, from_lang=from_language)
-    except:
-        print("Error!")
-        return "Error in textblob translation!"
+    except Exception as e:
+        print("Error:", e)
+        return
     return str(blob)
 
 

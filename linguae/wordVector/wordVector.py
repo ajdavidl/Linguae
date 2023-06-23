@@ -88,7 +88,11 @@ def similarWords(fromLanguageVectors, word, toLanguagesVectors=[]):
     >>> print(linguae.similarWords(engVectors, 'language', [porVectors, spaVectors]))
     >>> print(linguae.similarWords(porVectors, 'idioma', [engVectors, spaVectors]))
     """
-    vector = fromLanguageVectors.get_vector(word)
+    try:
+        vector = fromLanguageVectors.get_vector(word)
+    except Exception as e:
+        print("Error:", e)
+        return
     tuples = fromLanguageVectors.similar_by_vector(vector)
     textOutput = "%s:\n" % word
     for t in tuples:

@@ -73,9 +73,9 @@ def dbpediaEntityLink(language, sentence):
     nlp = spacy_dbpedia_spotlight.create(language)
     try:
         doc = nlp(sentence)
-    except:
-        print("Error!")
-        return "Error in dbpedia-spotlight api."
+    except Exception as e:
+        print("Error:", e)
+        return
     listEntities = [(ent.text, ent.kb_id_, ent._.dbpedia_raw_result['@similarityScore'])
                     for ent in doc.ents]
     textOutput = ""
