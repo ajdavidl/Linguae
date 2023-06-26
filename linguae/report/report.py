@@ -12,7 +12,27 @@ from ..languages.german import German
 
 
 def wordReport(language, word):
+    """
+    Makes a report about words.
 
+    Parameters
+    ----------
+    language : str
+        Language of the text.
+        example: 'en', 'pt', 'es', 'fr', 'de', 'it'
+
+    word : str
+        Thw word that will be analysed in the report.
+
+    See Also
+    --------
+    linguae.sentenceReport : Makes a report about sentences.
+
+    Examples
+    --------
+    >>> linguae.wordReport('en','language')
+    >>> linguae.wordReport('pt','idioma')
+    """
     if language == "en":
         obj = English()
     elif language == "pt":
@@ -38,7 +58,7 @@ def wordReport(language, word):
     print(f"Definition of the word {word} in English Wiktionary:")
     print(obj.wiktionaryEnglish(word))
     print()
-    print("Syllables of the word {word}:")
+    print(f"Syllables of the word {word}:")
     print(obj.syllables(word))
     print()
     print(f"Word Frequency in {obj.name} language:")
@@ -82,7 +102,27 @@ def wordReport(language, word):
 
 
 def sentenceReport(language, sentence):
+    """
+    Makes a report about sentences. 
 
+    Parameters
+    ----------
+    language : str
+        Language of the text.
+        example: 'en', 'pt', 'es', 'fr', 'de', 'it'
+
+    sentence : str
+        Thw sentence that will be analysed in the report.
+
+    See Also
+    --------
+    linguae.wordReport : Makes a report about words.
+
+    Examples
+    --------
+    >>> linguae.sentenceReport('en', 'Learn languages is good')
+    >>> linguae.sentenceReport('pt', 'Aprender idiomas é divertido.')
+    """
     if language == "en":
         obj = English()
     elif language == "pt":

@@ -9,11 +9,20 @@ linguae.wordReport : Makes a report about words.
 linguae.sentenceReport : Makes a report about sentences.
 ```
 
-Examples:
+Examples
+
+- wordReport:
 
 ```python
 >>> import linguae
 >>> linguae.wordReport('en','language')
->>> linguae.sentenceReport('en', 'Learn languages is good')
+>>> linguae.wordReport('pt','idioma')
 ```
 
+- sentenceReport:
+
+```python
+>>> import linguae
+>>> linguae.sentenceReport('en', 'Learn languages is good')
+>>> linguae.sentenceReport('pt', 'Aprender idiomas é divertido.')
+```

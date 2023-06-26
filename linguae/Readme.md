@@ -15,6 +15,7 @@ Main folder of the package. Here you can find the modules that exists inside the
 - [news](news);
 - [numspell](numspell);
 - [parsing](parsing);
+- [report](report);
 - [sentenceVector](sentenceVector);
 - [sentiment](sentiment);
 - [spellChecker](spellChecker);
