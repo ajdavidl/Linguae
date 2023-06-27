@@ -18,12 +18,16 @@ Subpackages
    linguae.languages
    linguae.ner
    linguae.news
+   linguae.numspell
    linguae.parsing
+   linguae.report
    linguae.sentenceVector
    linguae.sentiment
+   linguae.spellChecker
    linguae.stemming
    linguae.syllables
    linguae.tatoeba
+   linguae.text2speech
    linguae.textGeneration
    linguae.textSamples
    linguae.translation
