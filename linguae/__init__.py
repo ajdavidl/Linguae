@@ -36,4 +36,4 @@ from .text2speech.text2speech import tts
 from .spellChecker.spellChecker import spellchecker
 from .report.report import *
 
-__version__ = '0.5.0-alpha'
+__version__ = '0.5.0'
