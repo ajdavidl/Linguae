@@ -1,7 +1,7 @@
 """
 Module to do stemming task
 """
-from nltk.stem import RSLPStemmer, PorterStemmer
+from nltk.stem import RSLPStemmer, PorterStemmer, SnowballStemmer
 
 
 def stem(language, token):
@@ -14,8 +14,8 @@ def stem(language, token):
     Parameters
     ----------
     language : str
-        Language of the stemming model. Only Portuguese and English is supported.
-        example: 'en', 'pt'
+        Language of the stemming model. 
+        example: 'en', 'pt', 'es', 'it', 'fr', 'de', 'ro', 'nl'
 
     token : str
         The word to be used in the task.
@@ -36,6 +36,18 @@ def stem(language, token):
         stem = PorterStemmer()
     elif language == 'pt':
         stem = RSLPStemmer()
+    elif language == 'es':
+        stem = SnowballStemmer('spanish')
+    elif language == 'it':
+        stem = SnowballStemmer('italian')
+    elif language == 'fr':
+        stem = SnowballStemmer('french')
+    elif language == 'de':
+        stem = SnowballStemmer('german')
+    elif language == 'ro':
+        stem = SnowballStemmer('romanian')
+    elif language == 'nl':
+        stem = SnowballStemmer('dutch')
     else:
         print('Language not supported.')
     if type(token) == str:
