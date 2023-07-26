@@ -5,6 +5,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain.llms import GPT4All
 from langchain.chains import ConversationChain
 from langchain.prompts.prompt import PromptTemplate
+from langchain import LLMChain
 
 
 def llmChat(language, model_path):
@@ -144,3 +145,48 @@ AI:
         print(txt_out)
         print()
         txt_input = input("Human: ")
+
+
+def llmDefinitions(language, word, model_path):
+    """
+    Print the definition of the word according the language model in the language asked.
+
+    It uses the langchain and gpt4all package.
+
+    Parameters
+    ----------
+    language : str
+        Language to be used in the answer. Not always the LLM will respect this. Sometimes it answers in English. 
+        examples: 'English', 'Portuguese', 'Spanish', 'French', 'Italian, 'German'
+
+    word : str
+        The word that will be defined by the language model. It can be an expression.
+
+    model_path : str
+        The path of the large language model. 
+
+
+    Examples
+    --------
+    >>> linguae.definitions('English','language','wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin')
+    >>> linguae.definitions('Portuguese','aprender','wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin')
+    """
+    templateDefinition = """
+### Instruction: 
+Give the definition of the word {word} in {language} language. Answer in the {language} language.
+
+### Response:
+"""
+    promptDefinition = PromptTemplate(template=templateDefinition, input_variables=[
+        "word", "language"])
+
+    llm = GPT4All(model=model_path,
+                  n_threads=8,
+                  temp=0.5, top_p=0.95, top_k=40,
+                  repeat_penalty=1.3, n_predict=2048)
+
+    llm_definition = LLMChain(prompt=promptDefinition, llm=llm)
+    print("\n", word, " - ", language, ":")
+    txt = llm_definition.run({"word": word, "language": language})
+    print(txt, "\n")
+    return

@@ -10,6 +10,7 @@ Functions:
 
 ```
 linguae.llmChat : Create a chat with the large language model.
+linguae.llmDefinitions : Print the definition of the word according the language model in the language asked.
 ```
 
 - llmChat:
@@ -17,4 +18,13 @@ linguae.llmChat : Create a chat with the large language model.
 ```python
 >>> import linguae
 >>> linguae.llmChat('en',"wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin")
+>>> linguae.llmChat('en',"ggml-gpt4all-l13b-snoozy.bin")
+```
+
+- llmDefinitions:
+
+```python
+>>> import linguae
+>>> linguae.definitions('English','language','wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin')
+>>> linguae.definitions('Portuguese','aprender','wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin')
 ```
