@@ -1,6 +1,8 @@
 feedparser
 gensim>=4.1.0
+gpt4all
 gTTS
+langchain
 nltk
 pandas
 playsound
