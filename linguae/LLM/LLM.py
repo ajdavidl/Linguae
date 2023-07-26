@@ -6,96 +6,10 @@ from langchain.llms import GPT4All
 from langchain.chains import ConversationChain
 from langchain.prompts.prompt import PromptTemplate
 
-templateENG = """
-# Instruction:
-            The prompt below is a question to answer, a task to complete, or a conversation
-            to respond to; decide which and write an appropriate response.
-
-# Prompt:
-Current conversation:
-{history}
-
-Human: {input}
-# Response:
-AI:
-"""
-
-templatePOR = """
-# Instruction:
-            O prompt abaixo é uma pergunta a ser respondida, uma tarefa a ser concluída ou uma conversa
-            para responder; decida qual e escreva uma resposta apropriada.
-            Responda em português.
-
-# Prompt:
-Conversa atual:
-{history}
-
-Human: {input}
-# Response:
-AI:
-"""
-
-templateSPA = """
-# Instruction:
-            El siguiente mensaje es una pregunta que debe responderse, una tarea que debe completarse o una conversación
-            para responder; decide cuál y escribe una respuesta apropiada.
-            Responde en español.
-
-# Prompt:
-Conversación actual:
-{history}
-
-Human: {input}
-# Response:
-AI:
-"""
-
-templateITA = """
-# Instruction:
-            Il prompt di seguito è una domanda a cui rispondere, un'attività da completare o una conversazione a cui rispondere;
-            decidere quale e scrivere una risposta appropriata. Rispondi in italiano.
-
-# Prompt:
-Conversazione in corso:
-{history}
-
-Human: {input}
-# Response:
-AI:
-"""
-
-templateFRE = """
-# Instruction:
-            L'invite ci-dessous est une question à laquelle répondre, une tâche à accomplir ou une conversation à laquelle répondre;
-            décidez lequel et écrivez une réponse appropriée. Réponse en français.
-
-# Prompt:
-Conversation en cours:
-{history}
-
-Human: {input}
-# Response:
-AI:
-"""
-
-templateDEU = """
-# Instruction:
-             Bei der folgenden Eingabeaufforderung handelt es sich um eine zu beantwortende Frage, eine zu erledigende Aufgabe oder ein Gespräch
-             Antworten auf; Entscheiden Sie sich für welche und schreiben Sie eine entsprechende Antwort. Antwort auf Deutsch.
-
-# Prompt:
-Aktuelles Gespräch:
-{history}
-
-Human: {input}
-# Response:
-AI:
-"""
-
 
 def llmChat(language, model_path):
     """
-    Create a chat with the language model.
+    Create a chat with the large language model.
 
     It uses the langchain and the gpt4all packages.
 
@@ -119,17 +33,91 @@ def llmChat(language, model_path):
     >>> linguae.llmChat('pt',"wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin")
     """
     if language == 'en':
-        template_ = templateENG
+        template_ = """
+# Instruction:
+            The prompt below is a question to answer, a task to complete, or a conversation
+            to respond to; decide which and write an appropriate response.
+
+# Prompt:
+Current conversation:
+{history}
+
+Human: {input}
+# Response:
+AI:
+"""
     elif language == 'pt':
-        template_ = templatePOR
+        template_ = """
+# Instruction:
+            O prompt abaixo é uma pergunta a ser respondida, uma tarefa a ser concluída ou uma conversa
+            para responder; decida qual e escreva uma resposta apropriada.
+            Responda em português.
+
+# Prompt:
+Conversa atual:
+{history}
+
+Human: {input}
+# Response:
+AI:
+"""
     elif language == 'es':
-        template_ = templateSPA
+        template_ = """
+# Instruction:
+            El siguiente mensaje es una pregunta que debe responderse, una tarea que debe completarse o una conversación
+            para responder; decide cuál y escribe una respuesta apropiada.
+            Responde en español.
+
+# Prompt:
+Conversación actual:
+{history}
+
+Human: {input}
+# Response:
+AI:
+"""
     elif language == 'it':
-        template_ = templateITA
+        template_ = """
+# Instruction:
+            Il prompt di seguito è una domanda a cui rispondere, un'attività da completare o una conversazione a cui rispondere;
+            decidere quale e scrivere una risposta appropriata. Rispondi in italiano.
+
+# Prompt:
+Conversazione in corso:
+{history}
+
+Human: {input}
+# Response:
+AI:
+"""
     elif language == 'fr':
-        template_ = templateFRE
+        template_ = """
+# Instruction:
+            L'invite ci-dessous est une question à laquelle répondre, une tâche à accomplir ou une conversation à laquelle répondre;
+            décidez lequel et écrivez une réponse appropriée. Réponse en français.
+
+# Prompt:
+Conversation en cours:
+{history}
+
+Human: {input}
+# Response:
+AI:
+"""
     elif language == 'de':
-        template_ = templateDEU
+        template_ = """
+# Instruction:
+            Bei der folgenden Eingabeaufforderung handelt es sich um eine zu beantwortende Frage, eine zu erledigende Aufgabe oder ein Gespräch
+            Antworten auf; Entscheiden Sie sich für welche und schreiben Sie eine entsprechende Antwort. Antwort auf Deutsch.
+
+# Prompt:
+Aktuelles Gespräch:
+{history}
+
+Human: {input}
+# Response:
+AI:
+"""
     else:
         print("Language not supported!")
         return
