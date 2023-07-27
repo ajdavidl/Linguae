@@ -6,6 +6,14 @@ https://conceptnet.io/
 import requests
 import webbrowser
 
+from gensim.models import KeyedVectors
+try:
+    import importlib.resources as pkg_resources
+except ImportError:
+    import importlib_resources as pkg_resources
+
+from ..data import conceptnetFiles
+
 
 def conceptnetQuery(language, word, num=20):
     """
@@ -106,3 +114,86 @@ def conceptnetSite(language, word):
     url = 'https://conceptnet.io/c/%s/%s' % (language, word)
     print(url)
     webbrowser.open_new_tab(url)
+
+
+def loadConceptnetNumberbatch():
+    """
+    Load word vectors from the Conceptnet Numberbatch.
+
+    It uses the Conceptnet word embeddings and gensim KeyedVectors model.
+
+    Returns
+    -------
+    gensim KeyedVectors model
+        A gensim model with the word vectors loaded.
+
+    See Also
+    --------
+    linguae.loadWordVectors : Load word vectors from the desired language.
+    linguae.similarWords : Get similar words with word embeddings.
+    linguae.similarConcepts : Get similar words with Conceptnet Numberbatch word embeddings.
+
+    Examples
+    --------
+    >>> numberbatch = linguae.loadConceptnetNumberbatch()
+    """
+    template = pkg_resources.open_text(
+        conceptnetFiles, 'conceptnetNumberbatchMini.vec')
+
+    return KeyedVectors.load_word2vec_format(template, binary=False)
+
+
+def similarConcepts(conceptnetVectors, language, word, topn=20):
+    """
+    Get similar words with Conceptnet Numberbatch word embeddings.
+
+    It receives the loaded word vectors model from one language; 
+    Then load a vector from a given word; 
+    and then gives the most similar words in each model given.
+
+    It uses the gensim KeyedVectors model.
+
+    Parameters
+    ----------
+    conceptnetVectors : gensim KeyedVectors model
+        The model load with the function loadConceptnetNumberbatch.
+        Alternatively, the model given by the funtion gensim.models.KeyedVectors.load_word2vec_format.
+
+    language : str
+        Language of the word.
+        example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'it'
+
+    word : str
+        word to be queried.
+
+    topn : int
+        The number of words to be returned.
+
+    Returns
+    -------
+    str
+        String with the similar words.
+
+    See Also
+    --------
+    linguae.loadWordVectors : Load word vectors from the desired language.
+    linguae.similarWords : Get similar words with word embeddings.
+    linguae.loadConceptnetNumberbatch : Load word vectors from the Conceptnet Numberbatch.
+
+    Examples
+    --------
+    >>> numberbatch = linguae.loadConceptnetNumberbatch()
+    >>> s = linguae.similarConcepts(numberbatch, 'en', 'language', 20)
+    >>> print(s)
+    """
+    concept = f"/c/{language}/{word}"
+    try:
+        vector = conceptnetVectors.get_vector(concept)
+    except Exception as e:
+        print("Error:", e)
+        return
+    tuples = conceptnetVectors.similar_by_vector(vector, topn=topn)
+    textOutput = "%s:\n" % concept
+    for t in tuples:
+        textOutput = textOutput + t[0] + " - " + str(t[1]) + "\n"
+    return textOutput
