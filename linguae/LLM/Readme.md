@@ -11,6 +11,8 @@ Functions:
 ```
 linguae.llmChat : Create a chat with the large language model.
 linguae.llmDefinitions : Print the definition of the word according the language model in the language asked.
+linguae.llmStory : Print a short story written by the language model about the specified topic and in the language asked.
+
 ```
 
 - llmChat:
@@ -25,6 +27,14 @@ linguae.llmDefinitions : Print the definition of the word according the language
 
 ```python
 >>> import linguae
->>> linguae.definitions('English','language','wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin')
->>> linguae.definitions('Portuguese','aprender','wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin')
+>>> linguae.llmDefinitions('English','language','wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin')
+>>> linguae.llmDefinitions('Portuguese','aprender','wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin')
+```
+
+- llmStory:
+
+```python
+>>> import linguae
+>>> linguae.llmStory('English','the colonization of Mars by Human kind.','wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin')
+>>> linguae.llmStory('Portuguese',"the exploration of the Saturn's moons.",'wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin')
 ```
