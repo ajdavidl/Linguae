@@ -8,7 +8,40 @@ from langchain.prompts.prompt import PromptTemplate
 from langchain import LLMChain
 
 
-def llmChat(language, model_path):
+def loadLLM(model_path):
+    """
+    Load a large language model.
+
+    It uses the langchain and the gpt4all packages.
+
+    Parameters
+    ----------
+    model_path : str
+        The path of the large language model. 
+
+    Returns
+    -------
+    <class 'langchain.llms.gpt4all.GPT4All'>
+
+    See Also
+    --------
+    linguae.llmChat : Create a chat with the large language model.
+    linguae.llmDefinitions : Print the definition of the word according the language model in the language asked.
+    linguae.llmStory : Print a short story written by the language model about the specified topic and in the language asked.
+
+    Examples
+    --------
+    >>> llmWizardlm = linguae.loadLLM("wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin")
+    >>> llmStableVicuna = linguae.loadLLM("ggml-stable-vicuna-13B.q4_2.bin")
+    >>> llmMPT = linguae.loadLLM("ggml-mpt-7b-instruct.bin")
+    """
+    return GPT4All(model=model_path,
+                   n_threads=8, echo=False,
+                   temp=0.5, top_p=0.95, top_k=40,
+                   repeat_penalty=1.3, n_predict=2048)
+
+
+def llmChat(language, model):
     """
     Create a chat with the large language model.
 
@@ -24,11 +57,13 @@ def llmChat(language, model_path):
         Language to be loaded.
         examples: 'en', 'pt', 'es', 'fr', 'it, 'de'
 
-    model_path : str
-        The path of the large language model. 
+    model : str or <class 'langchain.llms.gpt4all.GPT4All'>
+        You can pass the string with the path of the large language model.
+        Or you can pass the model loaded by the function linguae.loadLLM.
 
     See Also
     --------
+    linguae.loadLLM : Load a large language model.
     linguae.llmDefinitions : Print the definition of the word according the language model in the language asked.
     linguae.llmStory : Print a short story written by the language model about the specified topic and in the language asked.
 
@@ -36,6 +71,10 @@ def llmChat(language, model_path):
     --------
     >>> linguae.llmChat('en',"ggml-gpt4all-l13b-snoozy.bin")
     >>> linguae.llmChat('pt',"wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin")
+    or
+    >>> llm = linguae.loadLLM('wizardLM-13B-Uncensored.ggmlv3.q4_0.bin')
+    >>> linguae.llmChat('es',llm)
+
     """
     if language == 'en':
         template_ = """
@@ -132,10 +171,13 @@ AI:
 
     memory = ConversationBufferMemory(memory_key="chat_history")
 
-    llm = GPT4All(model=model_path,
-                  n_threads=8, echo=False,
-                  temp=0.5, top_p=0.95, top_k=40,
-                  repeat_penalty=1.3, n_predict=2048)
+    if type(model) == str:
+        llm = GPT4All(model=model,
+                      n_threads=8, echo=False,
+                      temp=0.5, top_p=0.95, top_k=40,
+                      repeat_penalty=1.3, n_predict=2048)
+    else:
+        llm = model
 
     conversation = ConversationChain(
         prompt=PROMPT,
@@ -151,7 +193,7 @@ AI:
         txt_input = input("Human: ")
 
 
-def llmDefinitions(language, word, model_path):
+def llmDefinitions(language, word, model):
     """
     Print the definition of the word according the language model in the language asked.
 
@@ -166,11 +208,13 @@ def llmDefinitions(language, word, model_path):
     word : str
         The word that will be defined by the language model. It can be an expression.
 
-    model_path : str
-        The path of the large language model. 
+    model : str or <class 'langchain.llms.gpt4all.GPT4All'>
+        You can pass the string with the path of the large language model.
+        Or you can pass the model loaded by the function linguae.loadLLM.
 
     See Also
     --------
+    linguae.loadLLM : Load a large language model.
     linguae.llmChat : Create a chat with the large language model.
     linguae.llmStory : Print a short story written by the language model about the specified topic and in the language asked.
 
@@ -178,6 +222,9 @@ def llmDefinitions(language, word, model_path):
     --------
     >>> linguae.llmDefinitions('English','language','wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin')
     >>> linguae.llmDefinitions('Portuguese','aprender','wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin')
+    or
+    >>> llm = linguae.loadLLM('wizardLM-13B-Uncensored.ggmlv3.q4_0.bin')
+    >>> linguae.llmDefinitions('French', 'parole', llm)
     """
     templateDefinition = """
 ### Instruction: 
@@ -188,10 +235,13 @@ Give the definition of the word {word} in {language} language. Answer in the {la
     promptDefinition = PromptTemplate(template=templateDefinition, input_variables=[
         "word", "language"])
 
-    llm = GPT4All(model=model_path,
-                  n_threads=8,
-                  temp=0.5, top_p=0.95, top_k=40,
-                  repeat_penalty=1.3, n_predict=2048)
+    if type(model) == str:
+        llm = GPT4All(model=model,
+                      n_threads=8,
+                      temp=0.5, top_p=0.95, top_k=40,
+                      repeat_penalty=1.3, n_predict=2048)
+    else:
+        llm = model
 
     llm_definition = LLMChain(prompt=promptDefinition, llm=llm)
     print("\n", word, " - ", language, ":")
@@ -200,7 +250,7 @@ Give the definition of the word {word} in {language} language. Answer in the {la
     return
 
 
-def llmStory(language, topic, model_path):
+def llmStory(language, topic, model):
     """
     Print a short story written by the language model about the specified topic and in the language asked.
 
@@ -215,11 +265,13 @@ def llmStory(language, topic, model_path):
     topic : str
         The topic of the story that will be written by the language model. 
 
-    model_path : str
-        The path of the large language model. 
+    model : str or <class 'langchain.llms.gpt4all.GPT4All'>
+        You can pass the string with the path of the large language model.
+        Or you can pass the model loaded by the function linguae.loadLLM.
 
     See Also
     --------
+    linguae.loadLLM : Load a large language model.
     linguae.llmChat : Create a chat with the large language model.
     linguae.llmDefinitions : Print the definition of the word according the language model in the language asked.
 
@@ -227,8 +279,19 @@ def llmStory(language, topic, model_path):
     --------
     >>> linguae.llmStory('English','the colonization of Mars by Human kind.','wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin')
     >>> linguae.llmStory('Portuguese',"the exploration of the Saturn's moons.",'wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin')
+    or
+    >>> llm = linguae.loadLLM('wizardLM-13B-Uncensored.ggmlv3.q4_0.bin')
+    >>> linguae.llmStory('French', 'the discover of an ancient language in a cave of the Moon', llm)
     """
-    if "vicuna" in model_path:
+    if type(model) == str:
+        llm = GPT4All(model=model,
+                      n_threads=8,
+                      temp=0.5, top_p=0.95, top_k=40,
+                      repeat_penalty=1.3, n_predict=2048)
+    else:
+        llm = model
+
+    if "vicuna" in llm.model:
         templateStory = """\
 ### Human: Craft a short story or poem prompt in {language} language about {topic}.
 ### Assistant:\
@@ -246,10 +309,6 @@ Write the story in {language} language.
 """
     promptStory = PromptTemplate(
         template=templateStory, input_variables=["language", "topic"])
-    llm = GPT4All(model=model_path,
-                  n_threads=8,
-                  temp=0.5, top_p=0.95, top_k=40,
-                  repeat_penalty=1.3, n_predict=2048)
     llm_story = LLMChain(prompt=promptStory, llm=llm)
     txt = llm_story.run({"topic": topic, "language": language})
     print(txt, "\n")
