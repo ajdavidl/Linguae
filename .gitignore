@@ -10,3 +10,4 @@ docs/_templates
 *.db
 *.db-shm
 *.db-wal
+*.h5
