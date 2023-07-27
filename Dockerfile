@@ -17,6 +17,7 @@ RUN pip --no-cache-dir install -r requirements.txt
 # Run shell scripts to download data
 RUN ./DownloadMUSEWordEmbeddings.sh
 RUN ./DownloadTatoebaSentences.sh
+RUN ./DownloadConceptnetNumberbatchVectors.sh
 
 COPY . .
 
