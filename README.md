@@ -24,6 +24,7 @@ python -m spacy download name_of_the_model
 
 If you want to play with word embeddings, you need the MUSE word vectors. The links are in [MUSE](https://github.com/facebookresearch/MUSE#download) repository.
 Download the languages you wish and put the files in the `Linguae/linguae/data/museWordVectors` directory. You can edit the shell script [`DownloadMUSEWordEmbeddings.sh`](DownloadMUSEWordEmbeddings.sh) to download the data.
+If you wish to use the word embeddings from the Conceptnet project ([Conceptnet-Numberbatch](https://github.com/commonsense/conceptnet-numberbatch)), you can run the shell script [`DownloadConceptnetNumberbatchVectors.sh`](DownloadConceptnetNumberbatchVectors.sh) that will download the small version of the data and will convert it to be used by the gensim keyed vectors model.
 
 To use the concordance and the text sample functions you need the Tatoeba's sentences.
 Download the sentences in [Tatoeba](https://tatoeba.org/en/downloads) (clicking in the [sentences.tar.bz2](https://downloads.tatoeba.org/exports/sentences.tar.bz2) link). 
