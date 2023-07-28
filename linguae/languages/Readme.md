@@ -19,6 +19,8 @@ XLMRoberta : a Pipeline object from the transformers package with the XLMRoberta
 hyphenatorModel : Hyphenator model.
 sentenceVectorModel : Sentence transformer model.
 tatoebaTensorsEmbeddings : tensor encoded by Sentence Transformer model.
+LLM : 'langchain.llms.gpt4all.GPT4All' large language model.
+ConceptnetNumberbatch : gensim KeyedVectors model with the Conceptnet numberbatch vectors loaded.
 ```
 
 # Class English

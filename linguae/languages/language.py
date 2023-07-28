@@ -48,7 +48,7 @@ class Language:
         wordVectorModel : gensim KeyedVectors model
             A gensim model with the word vectors loaded.
         Bloom : a Pipeline object from the transformers package with the Bloom model loaded.
-        GPT : a Pipeline object from the transformers package with the GPT model loaded.
+        GPT : a Pipeline object from the transformers package with the GPT monolingual model loaded.
         mGPT : a Pipeline object from the transformers package with the mGPT (multilingual GPT) model loaded.
         tatoeba : list
             list of sentences from tatoeba site.
@@ -60,6 +60,7 @@ class Language:
             Sentence transformer model
         tatoebaTensorsEmbeddings : tensor encoded by sentence_transformers.SentenceTransformer.SentenceTransformer model.
         LLM : 'langchain.llms.gpt4all.GPT4All' large language model.
+        ConceptnetNumberbatch : gensim KeyedVectors model with the Conceptnet numberbatch vectors loaded.
     """
 
     def __init__(self, name, code2, code3):
@@ -96,6 +97,7 @@ class Language:
         self.sentenceVectorModel = None
         self.tatoebaTensorsEmbeddings = None
         self.LLM = None
+        self.ConceptnetNumberbatch = None
 
     def __repr__(self):
         return "{self.__class__.__name__}({self.name}, {self.code2}, {self.code3})".format(self=self)
@@ -986,7 +988,7 @@ class Language:
         """
         return stem(self.code2, token)
 
-    def load_LLM(self, model_path):
+    def loadLLM(self, model_path):
         """
         Load a large language model.
 
@@ -1042,3 +1044,39 @@ class Language:
         """
         del self.LLM
         self.LLM = None
+
+    def loadConceptnetNumberbatch(self):
+        """
+        Load word vectors from the Conceptnet Numberbatch.
+
+        It uses the Conceptnet word embeddings and gensim KeyedVectors model.
+        """
+        self.ConceptnetNumberbatch = loadConceptnetNumberbatch()
+
+    def similarConcepts(self, word, topn=20):
+        """
+        Get similar words with Conceptnet Numberbatch word embeddings.
+
+        Parameters
+        ----------
+        word : str
+            word to be queried.
+
+        topn : int
+            The number of words to be returned.
+
+        Returns
+        -------
+        str
+            String with the similar words.
+        """
+        if self.ConceptnetNumberbatch == None:
+            self.ConceptnetNumberbatch = loadConceptnetNumberbatch()
+        return similarConcepts(self.ConceptnetNumberbatch, self.code2, word, topn)
+
+    def deleteConceptnetNumberbatch(self):
+        """
+        Delete the vectors of the conceptnet numberbatch
+        """
+        del self.ConceptnetNumberbatch
+        self.ConceptnetNumberbatch = None
