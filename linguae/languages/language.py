@@ -24,7 +24,7 @@ from ..sentenceVector.sentenceVector import *
 from ..ner.ner import *
 from ..chatbot.chatbot import chatbot
 from ..numspell.numspell import num2words
-from ..text2speech.text2speech import tts
+from ..text2speech.text2speech import tts, loadBark, playBark
 from ..stemming.stemming import stem
 from ..LLM.LLM import *
 
@@ -1080,3 +1080,29 @@ class Language:
         """
         del self.ConceptnetNumberbatch
         self.ConceptnetNumberbatch = None
+
+    def loadBark(self):
+        """
+        Load all suno-bark models.
+        """
+        loadBark()
+
+    def playBark(self, text, voice=None):
+        """
+        Generate and play the audio from the text.
+
+        Parameters
+        ----------
+        text : str
+            The text that will be converted to audio.
+
+        voice : str
+            The voice preset that the bark model will use to generate the sound. Default = None
+            Ex: "en_speaker_0", "en_speaker_1", "en_speaker_2", ..., "en_speaker_9",
+            "es_speaker_0", "es_speaker_1", "es_speaker_2", ..., "es_speaker_9",
+            "pt_speaker_0", "pt_speaker_1", "pt_speaker_2", ..., "pt_speaker_9",
+            "it_speaker_0", "it_speaker_1", "it_speaker_2", ..., "it_speaker_9",
+            "fr_speaker_0", "fr_speaker_1", "fr_speaker_2", ..., "fr_speaker_9",
+            "de_speaker_0", "de_speaker_1", "de_speaker_2", ..., "de_speaker_9".
+        """
+        return playBark(text, voice)
