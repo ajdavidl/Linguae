@@ -26,6 +26,7 @@ from ..chatbot.chatbot import chatbot
 from ..numspell.numspell import num2words
 from ..text2speech.text2speech import tts
 from ..stemming.stemming import stem
+from ..LLM.LLM import *
 
 from warnings import warn
 
@@ -47,16 +48,18 @@ class Language:
         wordVectorModel : gensim KeyedVectors model
             A gensim model with the word vectors loaded.
         Bloom : a Pipeline object from the transformers package with the Bloom model loaded.
-        mGPT : a Pipeline object from the transformers package with the Bloom model loaded.
+        GPT : a Pipeline object from the transformers package with the GPT model loaded.
+        mGPT : a Pipeline object from the transformers package with the mGPT (multilingual GPT) model loaded.
         tatoeba : list
             list of sentences from tatoeba site.
-        BertMultilingual : a Pipeline object from the transformers package with the Bloom model loaded.
-        XLMRoberta : a Pipeline object from the transformers package with the Bloom model loaded.
+        BertMultilingual : a Pipeline object from the transformers package with the Bert multilingual model loaded.
+        XLMRoberta : a Pipeline object from the transformers package with the XLM-Roberta model loaded.
         hyphenatorModel : class hyphen.hyphenator.Hyphenator
             Hyphenator model.
         sentenceVectorModel : 'sentence_transformers.SentenceTransformer.SentenceTransformer' model.
             Sentence transformer model
         tatoebaTensorsEmbeddings : tensor encoded by sentence_transformers.SentenceTransformer.SentenceTransformer model.
+        LLM : 'langchain.llms.gpt4all.GPT4All' large language model.
     """
 
     def __init__(self, name, code2, code3):
@@ -92,6 +95,7 @@ class Language:
         self.hyphenatorModel = None
         self.sentenceVectorModel = None
         self.tatoebaTensorsEmbeddings = None
+        self.LLM = None
 
     def __repr__(self):
         return "{self.__class__.__name__}({self.name}, {self.code2}, {self.code3})".format(self=self)
@@ -981,3 +985,60 @@ class Language:
             String with the root of the token.
         """
         return stem(self.code2, token)
+
+    def load_LLM(self, model_path):
+        """
+        Load a large language model.
+
+        Parameters
+        ----------
+        model_path : str
+            The path of the large language model. 
+        """
+        self.LLM = loadLLM(model_path)
+
+    def llmChat(self):
+        """
+        Create a chat with the large language model.
+
+        The function opens a chat with the language model in the python terminal. Type "QUIT" to end the conversation.
+        """
+        if self.LLM == None:
+            print("Model not loaded. You need to load the LLM model first.")
+            return
+        return llmChat(self.code2, self.LLM)
+
+    def llmDefinitions(self, word):
+        """
+        Print the definition of the word according the language model in the language asked.
+
+        Parameters
+        ----------
+        word : str
+            The word that will be defined by the language model. It can be an expression.
+        """
+        if self.LLM == None:
+            print("Model not loaded. You need to load the LLM model first.")
+            return
+        return llmDefinitions(self.name, word, self.LLM)
+
+    def llmStory(self, topic):
+        """
+         Print a short story written by the language model about the specified topic and in the language asked.
+
+        Parameters
+        ----------
+        topic : str
+            The topic of the story that will be written by the language model. 
+        """
+        if self.LLM == None:
+            print("Model not loaded. You need to load the LLM model first.")
+            return
+        return llmStory(self.name, topic, self.LLM)
+
+    def deleteLLM(self):
+        """
+        Delete the Large Language model.
+        """
+        del self.LLM
+        self.LLM = None
