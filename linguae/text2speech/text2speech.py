@@ -1,6 +1,8 @@
 """
 Module to convert text in speech
 """
+from bark import SAMPLE_RATE, generate_audio, preload_models
+import sounddevice
 from gtts import gTTS
 from tempfile import NamedTemporaryFile
 from playsound import playsound
@@ -37,3 +39,52 @@ def tts(lang, txt):
     gTTS(text=txt, lang=lang).write_to_fp(voice := NamedTemporaryFile())
     playsound(voice.name)
     voice.close()
+
+
+def loadBark():
+    """
+    Load all suno-bark models.
+
+    See Also
+    --------
+    linguae.playBark : Generate and play the audio from the text.
+
+    Examples
+    --------
+    >>> linguae.loadBark()
+    """
+    preload_models()
+
+
+def playBark(text, voice=None):
+    """
+    Generate and play the audio from the text.
+
+    I uses the bark model
+
+    Parameters
+    ----------
+    text : str
+        The text that will be converted to audio.
+
+    voice : str
+        The voice preset that the bark model will use to generate the sound. Default = None
+        Ex: "en_speaker_0", "en_speaker_1", "en_speaker_2", ..., "en_speaker_9",
+        "es_speaker_0", "es_speaker_1", "es_speaker_2", ..., "es_speaker_9",
+        "pt_speaker_0", "pt_speaker_1", "pt_speaker_2", ..., "pt_speaker_9",
+        "it_speaker_0", "it_speaker_1", "it_speaker_2", ..., "it_speaker_9",
+        "fr_speaker_0", "fr_speaker_1", "fr_speaker_2", ..., "fr_speaker_9",
+        "de_speaker_0", "de_speaker_1", "de_speaker_2", ..., "de_speaker_9".
+
+    See Also
+    --------
+    linguae.loadBark : Load all suno-bark models.
+
+    Examples
+    --------
+    >>> linguae.loadBark()
+    >>> linguae.playBark("Language learning is great and wonderfull!!", "en_speaker_0")
+    >>> linguae.playBark("Aprender idiomas é muito divertido!!", "pt_speaker_1")
+    """
+    audio_array = generate_audio(text, voice)
+    sounddevice.play(audio_array, SAMPLE_RATE)

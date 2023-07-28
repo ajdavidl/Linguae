@@ -32,7 +32,7 @@ from .ner.ner import *
 from .stemming.stemming import stem
 from .chatbot.chatbot import chatbot, dialoGPT
 from .numspell.numspell import num2words
-from .text2speech.text2speech import tts
+from .text2speech.text2speech import tts, loadBark, playBark
 from .spellChecker.spellChecker import spellchecker
 from .report.report import *
 from .LLM.LLM import *
