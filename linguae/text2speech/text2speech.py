@@ -60,7 +60,7 @@ def playBark(text, voice=None):
     """
     Generate and play the audio from the text.
 
-    I uses the bark model
+    It uses the bark model.
 
     Parameters
     ----------
