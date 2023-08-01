@@ -16,6 +16,7 @@ Subpackages
    linguae.fillMask
    linguae.image
    linguae.languages
+   linguae.LLM
    linguae.ner
    linguae.news
    linguae.numspell
