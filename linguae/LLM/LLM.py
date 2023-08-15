@@ -169,8 +169,6 @@ AI:
     PROMPT = PromptTemplate(
         input_variables=["history", "input"], template=template_)
 
-    memory = ConversationBufferMemory(memory_key="chat_history")
-
     if type(model) == str:
         llm = GPT4All(model=model,
                       n_threads=8, echo=False,
@@ -313,3 +311,47 @@ Write the story in {language} language.
     txt = llm_story.run({"topic": topic, "language": language})
     print(txt, "\n")
     return
+
+
+def llmTeacher(language, model):
+    templateTeacher = """
+### Instruction: 
+I want you to act as a spoken {language} teacher and improver. 
+I will speak to you in {language} and you will reply to me in {language} to practice my spoken {language}. 
+I want you to keep your reply neat, limiting the reply to 100 words. 
+I want you to strictly correct my grammar mistakes, typos, and factual errors. 
+I want you to ask me a question in your reply. Now let's start practicing, you could ask me a question first. 
+Remember, I want you to strictly correct my grammar mistakes, typos, and factual errors.
+
+# Prompt:
+Current conversation:
+{history}
+
+Human: {input}
+### Response:
+"""
+    PROMPT = PromptTemplate(partial_variables={"language": language},
+                            input_variables=["history", "input"], template=templateTeacher)
+
+    if type(model) == str:
+        llm = GPT4All(model=model,
+                      n_threads=8, echo=False,
+                      temp=0.5, top_p=0.95, top_k=40,
+                      repeat_penalty=1.3, n_predict=2048)
+    else:
+        llm = model
+
+    conversation = ConversationChain(
+        prompt=PROMPT,
+        llm=llm, verbose=False, memory=ConversationBufferMemory())
+
+    print()
+    txt_out = conversation.predict(input=" ")
+    print("Ai:", txt_out)
+    txt_input = input("Human: ")
+    while txt_input != "QUIT":
+        print("\nAi:", end=" ")
+        txt_out = conversation.predict(input=txt_input)
+        print(txt_out)
+        print()
+        txt_input = input("Human: ")
