@@ -19,6 +19,7 @@ linguae.loadLLM : Load a large language model.
 linguae.llmChat : Create a chat with the large language model.
 linguae.llmDefinitions : Print the definition of the word according the language model in the language asked.
 linguae.llmStory : Print a short story written by the language model about the specified topic and in the language asked.
+linguae.llmTeacher : Create a chat with the large language model playing a role like a language teacher.
 ```
 
 - loadLLM:
@@ -76,4 +77,20 @@ or
 >>> import linguae
 >>> llm = linguae.loadLLM('wizardLM-13B-Uncensored.ggmlv3.q4_0.bin')
 >>> linguae.llmStory('French', 'the discover of an ancient language in a cave of the Moon', llm)
+```
+
+- llmTeacher:
+
+```python
+>>> import linguae
+>>> linguae.llmTeacher('English',"wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin")
+>>> linguae.llmTeacher('Portuguese',"ggml-gpt4all-l13b-snoozy.bin")
+```
+
+or
+
+```python
+>>> import linguae
+>>> llm = linguae.loadLLM('wizardLM-13B-Uncensored.ggmlv3.q4_0.bin')
+>>> linguae.llmTeacher('Spanish',llm)
 ```
