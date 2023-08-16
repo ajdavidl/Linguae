@@ -28,6 +28,7 @@ def loadLLM(model_path):
     linguae.llmChat : Create a chat with the large language model.
     linguae.llmDefinitions : Print the definition of the word according the language model in the language asked.
     linguae.llmStory : Print a short story written by the language model about the specified topic and in the language asked.
+    linguae.llmTeacher : Create a chat with the large language model playing a role like a language teacher.
 
     Examples
     --------
@@ -66,6 +67,7 @@ def llmChat(language, model):
     linguae.loadLLM : Load a large language model.
     linguae.llmDefinitions : Print the definition of the word according the language model in the language asked.
     linguae.llmStory : Print a short story written by the language model about the specified topic and in the language asked.
+    linguae.llmTeacher : Create a chat with the large language model playing a role like a language teacher.
 
     Examples
     --------
@@ -215,6 +217,7 @@ def llmDefinitions(language, word, model):
     linguae.loadLLM : Load a large language model.
     linguae.llmChat : Create a chat with the large language model.
     linguae.llmStory : Print a short story written by the language model about the specified topic and in the language asked.
+    linguae.llmTeacher : Create a chat with the large language model playing a role like a language teacher.
 
     Examples
     --------
@@ -272,6 +275,7 @@ def llmStory(language, topic, model):
     linguae.loadLLM : Load a large language model.
     linguae.llmChat : Create a chat with the large language model.
     linguae.llmDefinitions : Print the definition of the word according the language model in the language asked.
+    linguae.llmTeacher : Create a chat with the large language model playing a role like a language teacher.
 
     Examples
     --------
@@ -314,6 +318,41 @@ Write the story in {language} language.
 
 
 def llmTeacher(language, model):
+    """
+    Create a chat with the large language model playing a role like a language teacher.
+
+    It uses the langchain and the gpt4all packages.
+
+    It uses the models available in the gpt4all site.
+
+    The function opens a chat with the language model in the python terminal. Type "QUIT" to end the conversation.
+
+    Parameters
+    ----------
+    language : str
+        Language to be loaded.
+        examples: 'English', 'Portuguese', 'Spanish', 'French', 'Italian, 'German'
+
+    model : str or <class 'langchain.llms.gpt4all.GPT4All'>
+        You can pass the string with the path of the large language model.
+        Or you can pass the model loaded by the function linguae.loadLLM.
+
+    See Also
+    --------
+    linguae.loadLLM : Load a large language model.
+    linguae.llmDefinitions : Print the definition of the word according the language model in the language asked.
+    linguae.llmStory : Print a short story written by the language model about the specified topic and in the language asked.
+    linguae.llmChat : Create a chat with the large language model.
+
+    Examples
+    --------
+    >>> linguae.llmTeacher('English',"ggml-gpt4all-l13b-snoozy.bin")
+    >>> linguae.llmTeacher('Portuguese',"wizardlm-13b-v1.1-superhot-8k.ggmlv3.q4_0.bin")
+    or
+    >>> llm = linguae.loadLLM('wizardLM-13B-Uncensored.ggmlv3.q4_0.bin')
+    >>> linguae.llmTeacher('Spanish',llm)
+
+    """
     templateTeacher = """
 ### Instruction: 
 I want you to act as a spoken {language} teacher and improver. 
