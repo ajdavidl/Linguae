@@ -1038,6 +1038,17 @@ class Language:
             return
         return llmStory(self.name, topic, self.LLM)
 
+    def llmTeacher(self):
+        """
+        Create a chat with the large language model playing a role like a language teacher.
+
+        The function opens a chat with the language model in the python terminal. Type "QUIT" to end the conversation.
+        """
+        if self.LLM == None:
+            print("Model not loaded. You need to load the LLM model first.")
+            return
+        return llmTeacher(self.name, self.LLM)
+
     def deleteLLM(self):
         """
         Delete the Large Language model.
