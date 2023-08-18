@@ -408,3 +408,15 @@ def wikwik(language, word):
         return
     print(url)
     webbrowser.open_new_tab(url)
+
+
+def thefreedictionary(language, word):
+    if language == 'en':
+        url = 'https://www.thefreedictionary.com/%s' % (word)
+    elif language in ['es', 'pt', 'it', 'fr', 'de', 'nl']:
+        url = 'https://%s.thefreedictionary.com/%s' % (language, word)
+    else:
+        print('%s language is not supported' % language)
+        return
+    print(url)
+    webbrowser.open_new_tab(url)
