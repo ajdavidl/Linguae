@@ -28,6 +28,7 @@ def priberam(word):
     linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
     linguae.wikipediaQuery : Query Wikipedia. 
     linguae.wikwik : Open browser and query the Wikwik dictionary.
+    linguae.thefreedictionary : Open browser and query the Free Dictionary.
 
     Examples
     --------
@@ -63,6 +64,7 @@ def sinomimos(word):
     linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
     linguae.wikipediaQuery : Query Wikipedia. 
     linguae.wikwik : Open browser and query the Wikwik dictionary.
+    linguae.thefreedictionary : Open browser and query the Free Dictionary.
 
     Examples
     --------
@@ -116,6 +118,7 @@ def linguee(from_language, to_language, word):
     linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
     linguae.wikipediaQuery : Query Wikipedia. 
     linguae.wikwik : Open browser and query the Wikwik dictionary.
+    linguae.thefreedictionary : Open browser and query the Free Dictionary.
 
     Examples
     --------
@@ -160,6 +163,7 @@ def glosbe(from_language, to_language, word):
     linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
     linguae.wikipediaQuery : Query Wikipedia. 
     linguae.wikwik : Open browser and query the Wikwik dictionary.
+    linguae.thefreedictionary : Open browser and query the Free Dictionary.
 
     Examples
     --------
@@ -195,6 +199,7 @@ def dictionary_com(word):
     linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
     linguae.wikipediaQuery : Query Wikipedia. 
     linguae.wikwik : Open browser and query the Wikwik dictionary.
+    linguae.thefreedictionary : Open browser and query the Free Dictionary.
 
     Examples
     --------
@@ -228,6 +233,7 @@ def thesaurus(word):
     linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
     linguae.wikipediaQuery : Query Wikipedia. 
     linguae.wikwik : Open browser and query the Wikwik dictionary.
+    linguae.thefreedictionary : Open browser and query the Free Dictionary.
 
     Examples
     --------
@@ -269,6 +275,7 @@ def pons(from_language, to_language, word):
     linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
     linguae.wikipediaQuery : Query Wikipedia. 
     linguae.wikwik : Open browser and query the Wikwik dictionary.
+    linguae.thefreedictionary : Open browser and query the Free Dictionary.
 
     Examples
     --------
@@ -305,6 +312,7 @@ def dlerae(word):
     linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
     linguae.wikipediaQuery : Query Wikipedia. 
     linguae.wikwik : Open browser and query the Wikwik dictionary.
+    linguae.thefreedictionary : Open browser and query the Free Dictionary.
 
     Examples
     --------
@@ -344,6 +352,7 @@ def wordReference(language, word):
     linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
     linguae.wikipediaQuery : Query Wikipedia. 
     linguae.wikwik : Open browser and query the Wikwik dictionary.
+    linguae.thefreedictionary : Open browser and query the Free Dictionary.
 
     Examples
     --------
@@ -393,6 +402,7 @@ def wikwik(language, word):
     linguae.wordReference : Open browser and query the WordReference dictionary.
     linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
     linguae.wikipediaQuery : Query Wikipedia. 
+    linguae.thefreedictionary : Open browser and query the Free Dictionary.
 
     Examples
     --------
@@ -411,6 +421,40 @@ def wikwik(language, word):
 
 
 def thefreedictionary(language, word):
+    """
+    Open browser and query the the Free Dictionary.
+
+    Parameters
+    ----------
+    language : str
+        Language of the word.
+        examples: 'en', 'es', 'fr', 'it', 'de', 'pt, 'nl'
+
+    word : str
+        word
+
+    See Also
+    --------
+    linguae.priberam : Open browser and query the Portuguese Priberam dictionary.
+    linguae.sinomimos : Open browser and query the Portuguese Sinonimos dictionary.
+    linguae.linguee : Open browser and query the multilingual Linguee dictionary.
+    linguae.glosbe : Open browser and query the multilingual Glosbe dictionary.
+    linguae.dictionary_com : Open browser and query the English dictionary.com.
+    linguae.thesaurus : Open browser and query the English thesaurus dictionary.
+    linguae.pons : Open browser and query the multilingual Pons dictionary.
+    linguae.dlerae : Open browser and query the Diccionario de la lengua española.
+    linguae.wordReference : Open browser and query the WordReference dictionary.
+    linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
+    linguae.wikipediaQuery : Query Wikipedia. 
+    linguae.wikwik : Open browser and query the Wikwik dictionary.
+
+    Examples
+    --------
+    >>> linguae.thefreedictionary('en','language')
+    https://www.thefreedictionary.com/language
+    >>> linguae.thefreedictionary('es','idioma')
+    https://es.thefreedictionary.com/idioma
+    """
     if language == 'en':
         url = 'https://www.thefreedictionary.com/%s' % (word)
     elif language in ['es', 'pt', 'it', 'fr', 'de', 'nl']:

@@ -16,6 +16,7 @@ Functions:
 - linguae.wordReference : Open browser and query the WordReference dictionary.
 - linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
 - linguae.wikwik : Open browser and query the Wikwik dictionary.
+- linguae.thefreedictionary : Open browser and query the Free Dictionary.
 ```
 
 Examples:
@@ -98,6 +99,15 @@ https://www.wordreference.com/definicion/idioma
 https://en.wikwik.org/language
 >>> linguae.wikwik('es','idioma')
 https://es.wikwik.org/idioma
+```
+
+- The Free Dictionary
+```python
+>>> import linguae
+>>> linguae.glosbe('pt','en','idioma')
+https://glosbe.com/pt/en/idioma
+>>> linguae.glosbe('en','es','language')
+https://glosbe.com/en/es/language
 ```
 
 - Wiktionary
