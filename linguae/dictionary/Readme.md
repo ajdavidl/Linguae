@@ -17,6 +17,7 @@ Functions:
 - linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
 - linguae.wikwik : Open browser and query the Wikwik dictionary.
 - linguae.thefreedictionary : Open browser and query the Free Dictionary.
+- linguae.wikdict : Open browser and query the Wikdict dictionary.
 ```
 
 Examples:
@@ -108,6 +109,15 @@ https://es.wikwik.org/idioma
 https://glosbe.com/pt/en/idioma
 >>> linguae.glosbe('en','es','language')
 https://glosbe.com/en/es/language
+```
+
+- Wikdict
+```python
+>>> import linguae
+>>> linguae.wikdict('pt','en','idioma')
+https://www.wikdict.com/pt-en/idioma
+>>> linguae.wikdict('en','es','language')
+https://www.wikdict.com/en-es/language
 ```
 
 - Wiktionary

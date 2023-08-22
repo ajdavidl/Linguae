@@ -37,6 +37,9 @@ def wiktionaryQuery(language, word):
     linguae.dlerae : Open browser and query the Diccionario de la lengua española.
     linguae.wordReference : Open browser and query the WordReference dictionary.
     linguae.wikipediaQuery : Query Wikipedia. 
+    linguae.wikwik : Open browser and query the Wikwik dictionary.
+    linguae.thefreedictionary : Open browser and query the Free Dictionary.
+    linguae.wikdict : Open browser and query the Wikdict dictionary.
 
     Examples
     --------
