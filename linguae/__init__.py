@@ -37,4 +37,5 @@ from .spellChecker.spellChecker import spellchecker
 from .report.report import *
 from .LLM.LLM import *
 
-__version__ = '0.6.0'
+__version__ = '0.7.0-alpha'
+
