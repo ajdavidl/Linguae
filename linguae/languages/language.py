@@ -27,6 +27,7 @@ from ..numspell.numspell import num2words
 from ..text2speech.text2speech import tts, loadBark, playBark
 from ..stemming.stemming import stem
 from ..LLM.LLM import *
+from ..wordLists.wordLists import wordList
 
 from warnings import warn
 
@@ -1117,3 +1118,9 @@ class Language:
             "de_speaker_0", "de_speaker_1", "de_speaker_2", ..., "de_speaker_9".
         """
         return playBark(text, voice)
+
+    def wordList(self):
+        """
+        Return the word list of a language.
+        """
+        return wordList(self.code3)
