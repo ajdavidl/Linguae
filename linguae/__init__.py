@@ -36,6 +36,6 @@ from .text2speech.text2speech import tts, loadBark, playBark
 from .spellChecker.spellChecker import spellchecker
 from .report.report import *
 from .LLM.LLM import *
+from .wordLists.wordLists import wordList
 
 __version__ = '0.7.0-alpha'
-
