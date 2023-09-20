@@ -4,6 +4,8 @@ Module with functions that query dictionaries
 
 import webbrowser
 import re
+import requests
+from bs4 import BeautifulSoup
 
 
 def priberam(word):
@@ -521,3 +523,35 @@ def wikdict(from_language, to_language, word):
         from_language, to_language, word)
     print(url)
     webbrowser.open_new_tab(url)
+
+
+def glosbeScrap(langFrom, langTo, word):
+    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+
+    text = {}
+
+    URL_GLOSBE = 'https://pt.glosbe.com/%s/%s/%s' % (langFrom, langTo, word)
+
+    print(URL_GLOSBE)
+    response = requests.get(URL_GLOSBE, headers={
+                            'User-agent': user_agent})
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    words = []
+    for div in soup.findAll('h3'):
+        words.append(div.text)
+
+    text[word] = words
+
+    expressions = {}
+    for li in soup.findAll('li', {'class': 'px-2 py-1 flex even:bg-slate-100'}):
+        a = li.find('a')
+        div = li.findAll('div')
+        s = re.sub('\n', ' ', a.text)
+        try:
+            t = re.sub('\n', ' ', div[1].text)
+            expressions[s] = t
+        except:
+            pass
+    text['expressions'] = expressions
+    return text
