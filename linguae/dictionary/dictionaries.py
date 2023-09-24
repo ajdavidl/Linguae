@@ -526,6 +526,31 @@ def wikdict(from_language, to_language, word):
 
 
 def glosbeScrap(langFrom, langTo, word):
+    """
+    Scrap the multilingual Glosbe dictionary and return translations and expressions.
+
+    Parameters
+    ----------
+    langFrom : str
+        Language of the text.
+        examples: 'en', 'pt', 'es', 'fr'
+
+    langTo : str
+        Language that the text will be translated
+        examples: 'en', 'pt', 'es', 'fr'
+
+    word : str
+        word
+
+    See Also
+    --------
+    linguae.glosbe : Open browser and query the multilingual Glosbe dictionary.
+
+    Examples
+    --------
+    >>> linguae.glosbeScrap('pt','en','idioma')
+    >>> linguae.glosbeScrap('en','es','language')
+    """
     user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
 
     text = {}
