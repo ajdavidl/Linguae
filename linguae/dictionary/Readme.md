@@ -18,6 +18,7 @@ Functions:
 - linguae.wikwik : Open browser and query the Wikwik dictionary.
 - linguae.thefreedictionary : Open browser and query the Free Dictionary.
 - linguae.wikdict : Open browser and query the Wikdict dictionary.
+- linguae.glosbeScrap : Scrap the multilingual Glosbe dictionary and return translations and expressions.
 ```
 
 Examples:
@@ -52,6 +53,14 @@ https://www.linguee.com/english-spanish/search?source=english&query=language
 https://glosbe.com/pt/en/idioma
 >>> linguae.glosbe('en','es','language')
 https://glosbe.com/en/es/language
+```
+
+- GlosbeScrap
+
+```python
+>>> import linguae
+>>> linguae.glosbeScrap('pt','en','idioma')
+>>> linguae.glosbeScrap('en','es','language')
 ```
 
 - Dictionary.com
