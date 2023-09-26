@@ -542,6 +542,11 @@ def glosbeScrap(langFrom, langTo, word):
     word : str
         word
 
+    Returns
+    -------
+    Dictionary
+        A python dictionary whit the translation and expressions.
+
     See Also
     --------
     linguae.glosbe : Open browser and query the multilingual Glosbe dictionary.
