@@ -525,17 +525,17 @@ def wikdict(from_language, to_language, word):
     webbrowser.open_new_tab(url)
 
 
-def glosbeScrap(langFrom, langTo, word):
+def glosbeScrap(from_language, to_language, word):
     """
     Scrap the multilingual Glosbe dictionary and return translations and expressions.
 
     Parameters
     ----------
-    langFrom : str
+    from_language : str
         Language of the text.
         examples: 'en', 'pt', 'es', 'fr'
 
-    langTo : str
+    to_language : str
         Language that the text will be translated
         examples: 'en', 'pt', 'es', 'fr'
 
@@ -544,7 +544,7 @@ def glosbeScrap(langFrom, langTo, word):
 
     Returns
     -------
-    Dictionary
+    dict
         A python dictionary whit the translation and expressions.
 
     See Also
@@ -560,7 +560,8 @@ def glosbeScrap(langFrom, langTo, word):
 
     text = {}
 
-    URL_GLOSBE = 'https://pt.glosbe.com/%s/%s/%s' % (langFrom, langTo, word)
+    URL_GLOSBE = 'https://pt.glosbe.com/%s/%s/%s' % (
+        from_language, to_language, word)
 
     print(URL_GLOSBE)
     response = requests.get(URL_GLOSBE, headers={
