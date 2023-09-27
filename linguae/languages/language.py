@@ -10,7 +10,7 @@ from ..textGeneration.textGeneration import loadBloom, loadmGPT, generateText, l
 from ..concordance.concordance import concordance
 from ..verbConjugation.verbConjugation import *
 from ..dictionary.wiktionary import wiktionaryQuery
-from ..dictionary.dictionaries import linguee, glosbe, pons, wikwik
+from ..dictionary.dictionaries import linguee, glosbe, glosbeScrap, pons, wikwik
 from ..conceptnet.conceptnet import *
 from ..news.news import googleNews, emmNewsBrief
 from ..fillMask.fillMask import loadBertMultilingual, loadXLMRoberta, fillMaskBert, fillMaskXLMRoberta, loadBert
@@ -744,6 +744,38 @@ class Language:
 
         """
         return glosbe(from_language, self.code2, word)
+
+    def glosbeScrapTo(self, to_language, word):
+        """
+        Scrap the multilingual Glosbe dictionary and query word to the informed language.
+
+        Parameters
+        ----------
+        to_language : str
+            Language that the text will be translated
+            example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
+
+        word : str
+            word to be queried.
+
+        """
+        return glosbeScrap(self.code2, to_language, word)
+
+    def glosbeScrapFrom(self, from_language, word):
+        """
+        Scrap the multilingual Glosbe dictionary and query word from the informed language.
+
+        Parameters
+        ----------
+        from_language : str
+            Language from the word that will be translated
+            example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
+
+        word : str
+            word to be queried.
+
+        """
+        return glosbeScrap(from_language, self.code2, word)
 
     def lingueeTo(self, to_language, word):
         """
