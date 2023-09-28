@@ -19,6 +19,7 @@ Functions:
 - linguae.thefreedictionary : Open browser and query the Free Dictionary.
 - linguae.wikdict : Open browser and query the Wikdict dictionary.
 - linguae.glosbeScrap : Scrap the multilingual Glosbe dictionary and return translations and expressions.
+- linguae.ponsScrap : Scrap the Pons dictionary and return translations.
 ```
 
 Examples:
@@ -84,6 +85,13 @@ https://www.thesaurus.com/browse/language
 https://en.pons.com/translate/portuguese-english/idioma
 >>> linguae.pons('english','spanish','language')
 https://en.pons.com/translate/english-spanish/language
+```
+
+- PonsScrap
+```python
+>>> import linguae
+>>> linguae.ponsScrap('portuguese','english','idioma')
+>>> linguae.ponsScrap('english','spanish','language')
 ```
 
 - DLR.RAE
