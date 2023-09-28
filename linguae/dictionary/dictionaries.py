@@ -170,6 +170,7 @@ def glosbe(from_language, to_language, word):
     linguae.wikwik : Open browser and query the Wikwik dictionary.
     linguae.thefreedictionary : Open browser and query the Free Dictionary.
     linguae.wikdict : Open browser and query the Wikdict dictionary.
+    linguae.glosbeScrap : Scrap the multilingual Glosbe dictionary and return translations and expressions.
 
     Examples
     --------
@@ -549,6 +550,7 @@ def glosbeScrap(from_language, to_language, word):
 
     See Also
     --------
+    linguae.ponsScrap : Scrap the Pons dictionary and return translations.
     linguae.glosbe : Open browser and query the multilingual Glosbe dictionary.
 
     Examples
@@ -556,7 +558,7 @@ def glosbeScrap(from_language, to_language, word):
     >>> linguae.glosbeScrap('pt','en','idioma')
     >>> linguae.glosbeScrap('en','es','language')
     """
-    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
 
     text = {}
 
@@ -585,4 +587,67 @@ def glosbeScrap(from_language, to_language, word):
         except:
             pass
     text['expressions'] = expressions
+    return text
+
+
+def ponsScrap(from_language, to_language, word):
+    """
+    Scrap the Pons dictionary and return translations.
+
+    Parameters
+    ----------
+    from_language : str
+        Language of the text.
+        examples: 'english', 'portuguese', 'spanish', 'french'
+
+    to_language : str
+        Language that the text will be translated
+        examples: 'english', 'portuguese', 'spanish', 'french'
+
+    word : str
+        word
+
+    Returns
+    -------
+    dict
+        A python dictionary whit the translation and expressions.
+
+    See Also
+    --------
+    linguae.glosbeScrap : Scrap the multilingual Glosbe dictionary and return translations and expressions.
+    linguae.pons : Open browser and query the multilingual Pons dictionary.
+
+    Examples
+    --------
+    >>> linguae.ponsScrap('portuguese','english','idioma')
+    >>> linguae.ponsScrap('english','spanish','language')
+    """
+    from_language = from_language.lower()
+    to_language = to_language.lower()
+    text = {}
+
+    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
+
+    URL_PONS = 'https://en.pons.com/translate/%s-%s/%s' % (
+        from_language, to_language, word)
+    print(URL_PONS)
+
+    response = requests.get(URL_PONS, headers={
+                            'User-agent': user_agent})
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    wordsSource = []
+    wordsTarget = []
+
+    for div in soup.findAll('div', {'class': 'source'}):
+        wordsSource.append(div.text)
+
+    for div in soup.findAll('div', {'class': 'target'}):
+        wordsTarget.append(div.text)
+
+    if len(wordsSource) == len(wordsTarget):
+        for i in range(1, len(wordsTarget)):
+            s = re.sub('\n', '', wordsSource[i])
+            t = re.sub('\n', '', wordsTarget[i])
+            text[s] = t
     return text
