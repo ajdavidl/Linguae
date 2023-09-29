@@ -10,7 +10,7 @@ from ..textGeneration.textGeneration import loadBloom, loadmGPT, generateText, l
 from ..concordance.concordance import concordance
 from ..verbConjugation.verbConjugation import *
 from ..dictionary.wiktionary import wiktionaryQuery
-from ..dictionary.dictionaries import linguee, glosbe, glosbeScrap, pons, wikwik
+from ..dictionary.dictionaries import linguee, glosbe, glosbeScrap, pons, ponsScrap, wikwik
 from ..conceptnet.conceptnet import *
 from ..news.news import googleNews, emmNewsBrief
 from ..fillMask.fillMask import loadBertMultilingual, loadXLMRoberta, fillMaskBert, fillMaskXLMRoberta, loadBert
@@ -720,7 +720,7 @@ class Language:
         Parameters
         ----------
         to_language : str
-            Language that the text will be translated
+            Language that the word will be translated to.
             example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
 
         word : str
@@ -736,7 +736,7 @@ class Language:
         Parameters
         ----------
         from_language : str
-            Language from the word that will be translated
+            Language that the word will be translated from.
             example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
 
         word : str
@@ -752,7 +752,7 @@ class Language:
         Parameters
         ----------
         to_language : str
-            Language that the text will be translated
+            Language that the word will be translated to.
             example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
 
         word : str
@@ -768,7 +768,7 @@ class Language:
         Parameters
         ----------
         from_language : str
-            Language from the word that will be translated
+            Language that the word will be translated from.
             example: 'en', 'pt', 'es', 'fr', 'de', 'ro', 'ca', 'it', 'nl'
 
         word : str
@@ -784,7 +784,7 @@ class Language:
         Parameters
         ----------
         to_language : str
-            Language that the text will be translated
+            Language that the word will be translated to.
             examples: 'english', 'portuguese', 'spanish', 'french'
 
         word : str
@@ -800,7 +800,7 @@ class Language:
         Parameters
         ----------
         from_language : str
-            Language from the word that will be translated
+            Language that the word will be translated from.
             examples: 'english', 'portuguese', 'spanish', 'french'
 
         word : str
@@ -816,7 +816,7 @@ class Language:
         Parameters
         ----------
         to_language : str
-            Language that the text will be translated
+            Language that the word will be translated to.
             examples: 'english', 'portuguese', 'spanish', 'french'
 
         word : str
@@ -832,7 +832,7 @@ class Language:
         Parameters
         ----------
         from_language : str
-            Language from the word that will be translated
+            Language from that the word that will be translated from.
             examples: 'english', 'portuguese', 'spanish', 'french'
 
         word : str
@@ -840,6 +840,38 @@ class Language:
 
         """
         return pons(from_language, self.name.lower(), word)
+
+    def ponsScrapTo(self, to_language, word):
+        """
+        Scrap the Pons dictionary and query word to the informed language.
+
+        Parameters
+        ----------
+        to_language : str
+            Language that the word will be translated to.
+            examples: 'english', 'portuguese', 'spanish', 'french'
+
+        word : str
+            word to be queried.
+
+        """
+        return ponsScrap(self.name.lower(), to_language, word)
+
+    def ponsScrapFrom(self, from_language, word):
+        """
+        Scrap the Pons dictionary and query word from the informed language.
+
+        Parameters
+        ----------
+        from_language : str
+            Language from that the word that will be translated from.
+            examples: 'english', 'portuguese', 'spanish', 'french'
+
+        word : str
+            word to be queried.
+
+        """
+        return ponsScrap(from_language, self.name.lower(), word)
 
     def wikwik(self, word):
         """
