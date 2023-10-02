@@ -651,3 +651,10 @@ def ponsScrap(from_language, to_language, word):
             t = re.sub('\n', '', wordsTarget[i])
             text[s] = t
     return text
+
+
+def reversoDictionary(from_language, to_language, word):
+    url = 'https://dictionary.reverso.net/%s-%s/%s' % (
+        from_language, to_language, word)
+    print(url)
+    webbrowser.open_new_tab(url)
