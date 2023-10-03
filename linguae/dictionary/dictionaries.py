@@ -136,7 +136,7 @@ def linguee(from_language, to_language, word):
     https://www.linguee.com/english-spanish/search?source=english&query=language
     """
     url = 'https://www.linguee.com/%s-%s/search?source=%s&query=%s' % (
-        from_language, to_language, from_language, word)
+        from_language.lower(), to_language.lower(), from_language.lower(), word)
     print(url)
     webbrowser.open_new_tab(url)
 
@@ -302,7 +302,7 @@ def pons(from_language, to_language, word):
     https://en.pons.com/translate/english-spanish/language
     """
     url = 'https://en.pons.com/translate/%s-%s/%s' % (
-        from_language, to_language, word)
+        from_language.lower(), to_language.lower(), word)
     print(url)
     webbrowser.open_new_tab(url)
 
@@ -707,6 +707,6 @@ def reversoDictionary(from_language, to_language, word):
     https://dictionary.reverso.net/portuguese-english/idioma
     """
     url = 'https://dictionary.reverso.net/%s-%s/%s' % (
-        from_language, to_language, word)
+        from_language.lower(), to_language.lower(), word)
     print(url)
     webbrowser.open_new_tab(url)
