@@ -20,6 +20,7 @@ Functions:
 - linguae.wikdict : Open browser and query the Wikdict dictionary.
 - linguae.glosbeScrap : Scrap the multilingual Glosbe dictionary and return translations and expressions.
 - linguae.ponsScrap : Scrap the Pons dictionary and return translations.
+- linguae.reversoDictionary : Open browser and query the reverso dictionary.
 ```
 
 Examples:
@@ -136,6 +137,17 @@ https://www.wikdict.com/pt-en/idioma
 >>> linguae.wikdict('en','es','language')
 https://www.wikdict.com/en-es/language
 ```
+
+- Reverso dictionary
+```python
+>>> import linguae
+>>> linguae.reversoDictionary('english','spanish','language')
+https://dictionary.reverso.net/english-spanish/language
+>>> linguae.reversoDictionary('portuguese','english','idioma')
+https://dictionary.reverso.net/portuguese-english/idioma
+```
+
+
 
 - Wiktionary
 ```python
