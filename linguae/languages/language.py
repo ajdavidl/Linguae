@@ -10,7 +10,7 @@ from ..textGeneration.textGeneration import loadBloom, loadmGPT, generateText, l
 from ..concordance.concordance import concordance
 from ..verbConjugation.verbConjugation import *
 from ..dictionary.wiktionary import wiktionaryQuery
-from ..dictionary.dictionaries import linguee, glosbe, glosbeScrap, pons, ponsScrap, wikwik
+from ..dictionary.dictionaries import linguee, glosbe, glosbeScrap, pons, ponsScrap, wikwik, reversoDictionary
 from ..conceptnet.conceptnet import *
 from ..news.news import googleNews, emmNewsBrief
 from ..fillMask.fillMask import loadBertMultilingual, loadXLMRoberta, fillMaskBert, fillMaskXLMRoberta, loadBert
@@ -883,6 +883,38 @@ class Language:
             Word to be queried
         """
         return wikwik(self.code2, word)
+
+    def reversoDictionaryTo(self, to_language, word):
+        """
+        Open browser and query word to the informed language using reverso dictionary.
+
+        Parameters
+        ----------
+        to_language : str
+            Language that the word will be translated to.
+            examples: 'english', 'portuguese', 'spanish', 'french'
+
+        word : str
+            word to be queried.
+
+        """
+        return reversoDictionary(self.name.lower(), to_language, word)
+
+    def reversoDictionaryFrom(self, from_language, word):
+        """
+        Open browser and query word from the informed language using reverso dictionary.
+
+        Parameters
+        ----------
+        from_language : str
+            Language from that the word that will be translated from.
+            examples: 'english', 'portuguese', 'spanish', 'french'
+
+        word : str
+            word to be queried.
+
+        """
+        return reversoDictionary(from_language, self.name.lower(), word)
 
     def tatoebaSite(self, text, languageTo=None):
         """
