@@ -32,6 +32,7 @@ def priberam(word):
     linguae.wikwik : Open browser and query the Wikwik dictionary.
     linguae.thefreedictionary : Open browser and query the Free Dictionary.
     linguae.wikdict : Open browser and query the Wikdict dictionary.
+    linguae.reversoDictionary : Open browser and query the reverso dictionary.
 
     Examples
     --------
@@ -69,6 +70,7 @@ def sinomimos(word):
     linguae.wikwik : Open browser and query the Wikwik dictionary.
     linguae.thefreedictionary : Open browser and query the Free Dictionary.
     linguae.wikdict : Open browser and query the Wikdict dictionary.
+    linguae.reversoDictionary : Open browser and query the reverso dictionary.
 
     Examples
     --------
@@ -124,6 +126,7 @@ def linguee(from_language, to_language, word):
     linguae.wikwik : Open browser and query the Wikwik dictionary.
     linguae.thefreedictionary : Open browser and query the Free Dictionary.
     linguae.wikdict : Open browser and query the Wikdict dictionary.
+    linguae.reversoDictionary : Open browser and query the reverso dictionary.
 
     Examples
     --------
@@ -171,6 +174,7 @@ def glosbe(from_language, to_language, word):
     linguae.thefreedictionary : Open browser and query the Free Dictionary.
     linguae.wikdict : Open browser and query the Wikdict dictionary.
     linguae.glosbeScrap : Scrap the multilingual Glosbe dictionary and return translations and expressions.
+    linguae.reversoDictionary : Open browser and query the reverso dictionary.
 
     Examples
     --------
@@ -208,6 +212,7 @@ def dictionary_com(word):
     linguae.wikwik : Open browser and query the Wikwik dictionary.
     linguae.thefreedictionary : Open browser and query the Free Dictionary.
     linguae.wikdict : Open browser and query the Wikdict dictionary.
+    linguae.reversoDictionary : Open browser and query the reverso dictionary.
 
     Examples
     --------
@@ -243,6 +248,7 @@ def thesaurus(word):
     linguae.wikwik : Open browser and query the Wikwik dictionary.
     linguae.thefreedictionary : Open browser and query the Free Dictionary.
     linguae.wikdict : Open browser and query the Wikdict dictionary.
+    linguae.reversoDictionary : Open browser and query the reverso dictionary.
 
     Examples
     --------
@@ -286,6 +292,7 @@ def pons(from_language, to_language, word):
     linguae.wikwik : Open browser and query the Wikwik dictionary.
     linguae.thefreedictionary : Open browser and query the Free Dictionary.
     linguae.wikdict : Open browser and query the Wikdict dictionary.
+    linguae.reversoDictionary : Open browser and query the reverso dictionary.
 
     Examples
     --------
@@ -324,6 +331,7 @@ def dlerae(word):
     linguae.wikwik : Open browser and query the Wikwik dictionary.
     linguae.thefreedictionary : Open browser and query the Free Dictionary.
     linguae.wikdict : Open browser and query the Wikdict dictionary.
+    linguae.reversoDictionary : Open browser and query the reverso dictionary.
 
     Examples
     --------
@@ -365,6 +373,7 @@ def wordReference(language, word):
     linguae.wikwik : Open browser and query the Wikwik dictionary.
     linguae.thefreedictionary : Open browser and query the Free Dictionary.
     linguae.wikdict : Open browser and query the Wikdict dictionary.
+    linguae.reversoDictionary : Open browser and query the reverso dictionary.
 
     Examples
     --------
@@ -416,6 +425,7 @@ def wikwik(language, word):
     linguae.wikipediaQuery : Query Wikipedia. 
     linguae.thefreedictionary : Open browser and query the Free Dictionary.
     linguae.wikdict : Open browser and query the Wikdict dictionary.
+    linguae.reversoDictionary : Open browser and query the reverso dictionary.
 
     Examples
     --------
@@ -461,6 +471,7 @@ def thefreedictionary(language, word):
     linguae.wikipediaQuery : Query Wikipedia. 
     linguae.wikwik : Open browser and query the Wikwik dictionary.
     linguae.wikdict : Open browser and query the Wikdict dictionary.
+    linguae.reversoDictionary : Open browser and query the reverso dictionary.
 
     Examples
     --------
@@ -512,6 +523,7 @@ def wikdict(from_language, to_language, word):
     linguae.wikipediaQuery : Query Wikipedia. 
     linguae.wikwik : Open browser and query the Wikwik dictionary.
     linguae.thefreedictionary : Open browser and query the Free Dictionary.
+    linguae.reversoDictionary : Open browser and query the reverso dictionary.
 
     Examples
     --------
@@ -654,6 +666,46 @@ def ponsScrap(from_language, to_language, word):
 
 
 def reversoDictionary(from_language, to_language, word):
+    """
+    Open browser and query the reverso dictionary.
+
+    Parameters
+    ----------
+    from_language : str
+        Language of the text.
+        examples: 'english', 'portuguese', 'spanish', 'french'
+
+    to_language : str
+        Language that the text will be translated
+        examples: 'english', 'portuguese', 'spanish', 'french'
+
+    word : str
+        word
+
+    See Also
+    --------
+    linguae.priberam : Open browser and query the Portuguese Priberam dictionary.
+    linguae.sinomimos : Open browser and query the Portuguese Sinonimos dictionary.
+    linguae.linguee : Open browser and query the multilingual Linguee dictionary.
+    linguae.glosbe : Open browser and query the multilingual Glosbe dictionary.
+    linguae.dictionary_com : Open browser and query the English dictionary.com.
+    linguae.thesaurus : Open browser and query the English thesaurus dictionary.
+    linguae.pons : Open browser and query the multilingual Pons dictionary.
+    linguae.dlerae : Open browser and query the Diccionario de la lengua española.
+    linguae.wordReference : Open browser and query the WordReference dictionary.
+    linguae.wiktionaryQuery : Receive a language and a word and gives definitions from Wiktionary.
+    linguae.wikipediaQuery : Query Wikipedia. 
+    linguae.wikwik : Open browser and query the Wikwik dictionary.
+    linguae.thefreedictionary : Open browser and query the Free Dictionary.
+    linguae.wikdict : Open browser and query the Wikdict dictionary.
+
+    Examples
+    --------
+    >>> linguae.reversoDictionary('english','spanish','language')
+    https://dictionary.reverso.net/english-spanish/language
+    >>> linguae.reversoDictionary('portuguese','english','idioma')
+    https://dictionary.reverso.net/portuguese-english/idioma
+    """
     url = 'https://dictionary.reverso.net/%s-%s/%s' % (
         from_language, to_language, word)
     print(url)
