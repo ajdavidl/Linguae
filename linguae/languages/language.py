@@ -10,7 +10,7 @@ from ..textGeneration.textGeneration import loadBloom, loadmGPT, generateText, l
 from ..concordance.concordance import concordance
 from ..verbConjugation.verbConjugation import *
 from ..dictionary.wiktionary import wiktionaryQuery
-from ..dictionary.dictionaries import linguee, glosbe, glosbeScrap, pons, ponsScrap, wikwik, reversoDictionary
+from ..dictionary.dictionaries import linguee, glosbe, glosbeScrap, pons, ponsScrap, wikwik, reversoDictionary, thefreedictionary
 from ..conceptnet.conceptnet import *
 from ..news.news import googleNews, emmNewsBrief
 from ..fillMask.fillMask import loadBertMultilingual, loadXLMRoberta, fillMaskBert, fillMaskXLMRoberta, loadBert
@@ -916,6 +916,17 @@ class Language:
         """
         return reversoDictionary(from_language, self.name.lower(), word)
 
+    def thefreedictionary(self, word):
+        """
+        Open browser and query the freedictionary site.
+
+        Parameters
+        ----------
+        word : str
+            word to be queried.
+        """
+        return thefreedictionary(self.code2, word)
+
     def tatoebaSite(self, text, languageTo=None):
         """
         Open browser and query tatoeba site.
@@ -923,7 +934,7 @@ class Language:
         Parameters
         ----------
         text : str
-            Text to be queried
+            Text to be queried.
 
         languageTo : str (optional)
             Language that the text will be translated
@@ -939,7 +950,7 @@ class Language:
         Parameters
         ----------
         querySentence : str
-            sentence to be queried
+            sentence to be queried.
 
         nrSentencesReturned : int
             number of sentences to be returned
