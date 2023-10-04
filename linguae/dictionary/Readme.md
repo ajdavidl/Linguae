@@ -123,10 +123,10 @@ https://es.wikwik.org/idioma
 - The Free Dictionary
 ```python
 >>> import linguae
->>> linguae.glosbe('pt','en','idioma')
-https://glosbe.com/pt/en/idioma
->>> linguae.glosbe('en','es','language')
-https://glosbe.com/en/es/language
+>>> linguae.thefreedictionary('en','language')
+https://www.thefreedictionary.com/language
+>>> linguae.thefreedictionary('es','idioma')
+https://es.thefreedictionary.com/idioma
 ```
 
 - Wikdict
