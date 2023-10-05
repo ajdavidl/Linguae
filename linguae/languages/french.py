@@ -4,6 +4,7 @@ French Class language
 
 from .language import Language
 from ..sentiment.sentiment import *
+from ..dictionary.dictionaries import reversoDictionary
 
 
 class French(Language):
@@ -36,3 +37,15 @@ class French(Language):
         if self.Sentiment_ == None:
             self.Sentiment_ = loadSentiment(self.code2)
         return polarity(self.Sentiment_, word)
+
+    def reversoDictDefinition(self, word):
+        """
+        Open browser and query the word's definition in the reverso dictionary.
+
+        Parameters
+        ----------
+        word : str
+            word
+
+        """
+        return reversoDictionary(self.name.lower(), 'definition', word)

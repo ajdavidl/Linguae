@@ -3,7 +3,7 @@ Spanish Class language
 """
 
 from .language import Language
-from ..dictionary.dictionaries import dlerae, wordReference
+from ..dictionary.dictionaries import dlerae, wordReference, reversoDictionary
 from ..fillMask.fillMask import fillMaskBert, loadBertSpanish
 from ..textGeneration.textGeneration import loadGPTSpanish, generateText
 from ..sentiment.sentiment import *
@@ -133,3 +133,15 @@ class Spanish(Language):
             The number of questions/sentences to send to the chatbot.
         """
         return dialoGPT(self.code2, numberOfLines=numberOfLines)
+
+    def reversoDictDefinition(self, word):
+        """
+        Open browser and query the word's definition in the reverso dictionary.
+
+        Parameters
+        ----------
+        word : str
+            word
+
+        """
+        return reversoDictionary(self.name.lower(), 'definition', word)

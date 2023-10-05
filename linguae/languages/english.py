@@ -3,7 +3,7 @@ English Class language
 """
 
 from .language import Language
-from ..dictionary.dictionaries import dictionary_com, thesaurus, wordReference
+from ..dictionary.dictionaries import dictionary_com, thesaurus, wordReference, reversoDictionary
 from ..fillMask.fillMask import fillMaskBert, loadBertEnglish
 from ..textGeneration.textGeneration import loadGPTEnglish, generateText
 from ..sentiment.sentiment import *
@@ -179,3 +179,15 @@ class English(Language):
             The number of questions/sentences to send to the chatbot.
         """
         return dialoGPT(self.code2, numberOfLines=numberOfLines)
+
+    def reversoDictDefinition(self, word):
+        """
+        Open browser and query the word's definition in the reverso dictionary.
+
+        Parameters
+        ----------
+        word : str
+            word
+
+        """
+        return reversoDictionary(self.name.lower(), 'definition', word)
