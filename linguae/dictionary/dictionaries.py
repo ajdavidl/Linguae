@@ -665,6 +665,29 @@ def ponsScrap(from_language, to_language, word):
     return text
 
 
+def lingueeScrap(from_language, to_language, word):
+    from_language = from_language.lower()
+    to_language = to_language.lower()
+    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
+    text = {}
+
+    URL_LINGUEE = 'https://www.linguee.com/%s-%s/search?source=auto&query=%s' % (
+        from_language, to_language, word)
+    print(URL_LINGUEE)
+
+    response = requests.get(URL_LINGUEE, headers={
+                            'User-agent': user_agent})
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    wordsList = []
+    for div in soup.findAll('div', {'class': 'translation sortablemg'}):
+        t = re.sub('\n', '', div.text)
+        wordsList.append(t)
+
+    text[word] = wordsList
+    return text
+
+
 def reversoDictionary(from_language, to_language, word):
     """
     Open browser and query the reverso dictionary.
