@@ -563,6 +563,7 @@ def glosbeScrap(from_language, to_language, word):
     See Also
     --------
     linguae.ponsScrap : Scrap the Pons dictionary and return translations.
+    linguae.lingueeScrap : Scrap the Linguee dictionary and return translations.
     linguae.glosbe : Open browser and query the multilingual Glosbe dictionary.
 
     Examples
@@ -627,6 +628,7 @@ def ponsScrap(from_language, to_language, word):
     See Also
     --------
     linguae.glosbeScrap : Scrap the multilingual Glosbe dictionary and return translations and expressions.
+    linguae.lingueeScrap : Scrap the Linguee dictionary and return translations.
     linguae.pons : Open browser and query the multilingual Pons dictionary.
 
     Examples
@@ -666,6 +668,38 @@ def ponsScrap(from_language, to_language, word):
 
 
 def lingueeScrap(from_language, to_language, word):
+    """
+    Scrap the Linguee dictionary and return translations.
+
+    Parameters
+    ----------
+    from_language : str
+        Language of the text.
+        examples: 'english', 'portuguese', 'spanish', 'french'
+
+    to_language : str
+        Language that the text will be translated
+        examples: 'english', 'portuguese', 'spanish', 'french'
+
+    word : str
+        word
+
+    Returns
+    -------
+    dict
+        A python dictionary whit the translation and expressions.
+
+    See Also
+    --------
+    linguae.glosbeScrap : Scrap the multilingual Glosbe dictionary and return translations and expressions.
+    linguae.ponsScrap : Scrap the Pons dictionary and return translations.
+    linguae.linguee : Open browser and query the multilingual Linguee dictionary.
+
+    Examples
+    --------
+    >>> linguae.lingueeScrap('portuguese','english','idioma')
+    >>> linguae.lingueeScrap('english','spanish','language')
+    """
     from_language = from_language.lower()
     to_language = to_language.lower()
     user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
