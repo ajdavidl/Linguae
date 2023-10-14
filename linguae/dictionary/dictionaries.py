@@ -7,6 +7,7 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
 
 def priberam(word):
     """
@@ -571,7 +572,7 @@ def glosbeScrap(from_language, to_language, word):
     >>> linguae.glosbeScrap('pt','en','idioma')
     >>> linguae.glosbeScrap('en','es','language')
     """
-    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
+    user_agent = USER_AGENT
 
     text = {}
 
@@ -640,7 +641,7 @@ def ponsScrap(from_language, to_language, word):
     to_language = to_language.lower()
     text = {}
 
-    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
+    user_agent = USER_AGENT
 
     URL_PONS = 'https://en.pons.com/translate/%s-%s/%s' % (
         from_language, to_language, word)
@@ -702,7 +703,7 @@ def lingueeScrap(from_language, to_language, word):
     """
     from_language = from_language.lower()
     to_language = to_language.lower()
-    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
+    user_agent = USER_AGENT
     text = {}
 
     URL_LINGUEE = 'https://www.linguee.com/%s-%s/search?source=auto&query=%s' % (
