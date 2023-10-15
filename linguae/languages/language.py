@@ -10,7 +10,7 @@ from ..textGeneration.textGeneration import loadBloom, loadmGPT, generateText, l
 from ..concordance.concordance import concordance
 from ..verbConjugation.verbConjugation import *
 from ..dictionary.wiktionary import wiktionaryQuery
-from ..dictionary.dictionaries import linguee, glosbe, glosbeScrap, pons, ponsScrap, wikwik, reversoDictionary, thefreedictionary
+from ..dictionary.dictionaries import linguee, lingueeScrap, glosbe, glosbeScrap, pons, ponsScrap, wikwik, reversoDictionary, thefreedictionary
 from ..conceptnet.conceptnet import *
 from ..news.news import googleNews, emmNewsBrief
 from ..fillMask.fillMask import loadBertMultilingual, loadXLMRoberta, fillMaskBert, fillMaskXLMRoberta, loadBert
@@ -808,6 +808,38 @@ class Language:
 
         """
         return linguee(from_language, self.name.lower(), word)
+
+    def lingueeScrapTo(self, to_language, word):
+        """
+        Scrap the Linguee dictionary and query word to the informed language.
+
+        Parameters
+        ----------
+        to_language : str
+            Language that the word will be translated to.
+            examples: 'english', 'portuguese', 'spanish', 'french'
+
+        word : str
+            word to be queried.
+
+        """
+        return lingueeScrap(self.name.lower(), to_language, word)
+
+    def lingueeScrapFrom(self, from_language, word):
+        """
+        Scrap the Linguee dictionary and query word from the informed language.
+
+        Parameters
+        ----------
+        from_language : str
+            Language from that the word that will be translated from.
+            examples: 'english', 'portuguese', 'spanish', 'french'
+
+        word : str
+            word to be queried.
+
+        """
+        return lingueeScrap(from_language, self.name.lower(), word)
 
     def ponsTo(self, to_language, word):
         """
