@@ -35,6 +35,7 @@ Subpackages
    linguae.verbConjugation
    linguae.wikipediaQuery
    linguae.wordFrequency
+   linguae.wordLists
    linguae.wordVector
 
 Module contents
