@@ -38,4 +38,4 @@ from .report.report import *
 from .LLM.LLM import *
 from .wordLists.wordLists import wordList
 
-__version__ = '0.7.0-alpha'
+__version__ = '0.7.0'
