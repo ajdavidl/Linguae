@@ -11,6 +11,7 @@ Main folder of the package. Here you can find the modules that exists inside the
 - [fillMask](fillMask);
 - [image](image);
 - [languages](languages);
+- [LLM](LLM);
 - [ner](ner);
 - [news](news);
 - [numspell](numspell);
@@ -29,4 +30,5 @@ Main folder of the package. Here you can find the modules that exists inside the
 - [verbConjugation](verbConjugation);
 - [wikipediaQuery](wikipediaQuery);
 - [wordFrequency](wordFrequency);
+- [wordLists](wordLists);
 - [wordVector](wordVector).
