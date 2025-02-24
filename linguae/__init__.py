@@ -37,5 +37,6 @@ from .spellChecker.spellChecker import spellchecker
 from .report.report import *
 from .LLM.LLM import *
 from .wordLists.wordLists import wordList
+from .tokenizers.tokenizer import *
 
-__version__ = '0.7.0'
+__version__ = '0.8.0.beta'
