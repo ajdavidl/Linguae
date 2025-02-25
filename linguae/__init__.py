@@ -3,7 +3,7 @@ Python package to explore natural languages.
 """
 from .translation.translate import *
 from .parsing.parse import parse, loadSpacyModel, parseSpacy
-from .wordFrequency.wordFrequency import wordFreq
+from .wordFrequency.wordFrequency import *
 from .wordVector.wordVector import *
 from .textGeneration.textGeneration import *
 from .concordance.concordance import concordance
@@ -38,5 +38,6 @@ from .report.report import *
 from .LLM.LLM import *
 from .wordLists.wordLists import wordList
 from .tokenizers.tokenizer import *
+from .ngrams.ngram import nGram
 
 __version__ = '0.8.0.beta'
