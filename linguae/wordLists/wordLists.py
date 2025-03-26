@@ -17,7 +17,7 @@ def wordList(language):
     Parameters
     ----------
     language : str
-        Language of the chatbot.
+        Language of the list of words.
         example: 'eng', 'por', 'spa', 'fre', 'deu', 'ita', 'nld'
 
     Examples
