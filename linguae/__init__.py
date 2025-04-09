@@ -40,5 +40,6 @@ from .wordLists.wordLists import wordList
 from .tokenizers.tokenizer import *
 from .ngrams.ngram import nGram
 from .stopwords.stopword import *
+from .loremIpsum.loremIpsum import generateLoremIpsum
 
 __version__ = '0.8.0.beta'
