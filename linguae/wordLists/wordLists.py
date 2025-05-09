@@ -27,7 +27,7 @@ def wordList(language):
     >>> spaList = linguae.wordList('spa')
     >>> print(len(spaList))
     """
-    if language in ['por', 'eng', 'ita', 'fre', 'spa', 'deu', 'nld']:
+    if language in ['por', 'eng', 'ita', 'fre', 'spa', 'deu', 'nld', 'multilingual']:
         nameFile = '%s.txt' % language
     else:
         print("Language not supported!")

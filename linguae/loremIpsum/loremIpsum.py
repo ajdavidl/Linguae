@@ -51,7 +51,7 @@ def generateLoremIpsum(language = None, num_words = 10, num_sentences = None, st
             "sunt", "in", "culpa", "qui", "officia", "deserunt", "molit", "anim", "id",
             "est", "laborum"
         ]
-    elif language in ['por', 'eng', 'ita', 'fre', 'spa', 'deu', 'nld']:
+    elif language in ['por', 'eng', 'ita', 'fre', 'spa', 'deu', 'nld', 'multilingual']:
         words = wordList(language=language)
     else:
         print("Language not supported!")
